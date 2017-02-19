@@ -1,14 +1,13 @@
 import Foundation
 
 class Results {
-
     let riskScore: UInt
     let remark: String
     
-    init(withRiskScore riskScore: UInt, forCareer career: Career) {
+    init(withRiskScore riskScore: UInt) {
         self.riskScore = riskScore
-
-        switch career {
+        
+        switch UserDefaults.standard.getCareer() {
         case .pilot:
             if riskScore < 6 {
                 remark = "Continue as normal."
@@ -36,7 +35,5 @@ class Results {
                 remark = "Defer all maintenance."
             }
         }
-        
     }
-    
 }

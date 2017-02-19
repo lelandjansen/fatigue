@@ -1,5 +1,5 @@
 import Foundation
 
-enum Career {
+enum Career: String {
     case pilot, engineer
 }
