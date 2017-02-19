@@ -8,55 +8,11 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         case results
     }
     
-    let questions: [Question] = {
-        return [
-            Question(
-                question: "How long have you slept in the past 24 hours?",
-                details: String(),
-                options: (0...12).map{String($0)} + ["> 12"]
-            ),
-            Question(
-                question: "How long have you slept in the past 48 hours?",
-                details: String(),
-                options: (0...24).map{String($0)} + ["> 24"]
-            ),
-            Question(
-                question: "How many hours will you be awake after the aircraft is shut down?",
-                details: String(),
-                options: (0...16).map{String($0)} + ["> 16"]
-            ),
-            Question(
-                question: "Through how many time zones have you traveled in the past 3 days?",
-                details: String(),
-                options: (0...(14-(-12))).map{String($0)}
-            ),
-            Question(
-                question: "Are you flying with another pilot?",
-                details: String(),
-                options: ["Yes", "No"]
-            ),
-            Question(
-                question: "How many hours will you be flying today?", // you and your copilot?
-                details: String(),
-                options: (0...12).map{String($0)} + ["> 12"]
-            ),
-            Question(
-                question: "Have you experienced elevated stress recently?",
-                details: "Home life, client pressure, team dynamic, etc.",
-                options: ["Yes", "No"]
-            ),
-            Question(
-                question: "Have you been on tour for more than 75% of your planned deployment?",
-                details: String(),
-                options: ["Yes", "No"]
-            ),
-            Question(
-                question: "Are you ill?",
-                details: "Cold, headache, flu, etc.",
-                options: ["Yes", "No"]
-            )
-        ]
-    }()
+    var questions: [Question] {
+        get {
+            return Questions().questions
+        }
+    }
     
     
     lazy var collectionView: UICollectionView = {
@@ -166,7 +122,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == questions.count {
             let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.results.rawValue, for: indexPath) as! ResultsCell
-            resultsCell.results = Results(withRiskScore: 12, forCareer: .pilot)
+            resultsCell.results = Results(withRiskScore: 12)
             return resultsCell
         }
         
