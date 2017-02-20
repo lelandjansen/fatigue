@@ -4,8 +4,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     
     enum CellId: String {
-        case question
-        case results
+        case rangeQuestion, yesNoQuestion, result
     }
     
     var questions: [Question] {
@@ -19,20 +18,20 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .blue
-        cv.dataSource = self
-        cv.delegate = self
-        cv.isPagingEnabled = true
-        cv.showsHorizontalScrollIndicator = false
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor(colorLiteralRed: 91/255, green: 151/255, blue: 184/255, alpha: 1)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
     
     
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = self.questions.count + 1
-        pc.pageIndicatorTintColor = UIColor(white: 2/3, alpha: 1/2)
+        pc.pageIndicatorTintColor = UIColor(white: 1, alpha: 1/2)
         pc.currentPageIndicatorTintColor = .white
         return pc
     }()
@@ -67,8 +66,9 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     
     fileprivate func registerCells() {
-        collectionView.register(QuestionCell.self, forCellWithReuseIdentifier: CellId.question.rawValue)
-        collectionView.register(ResultsCell .self, forCellWithReuseIdentifier: CellId.results.rawValue)
+        collectionView.register(RangeQuestionCell.self, forCellWithReuseIdentifier: CellId.rangeQuestion.rawValue)
+        collectionView.register(YesNoQuestionCell.self, forCellWithReuseIdentifier: CellId.yesNoQuestion.rawValue)
+        collectionView.register(ResultCell .self, forCellWithReuseIdentifier: CellId.result.rawValue)
     }
     
     
@@ -113,24 +113,31 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         )
     }
     
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questions.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == questions.count {
-            let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.results.rawValue, for: indexPath) as! ResultsCell
-            resultsCell.results = Results(withRiskScore: 12)
+            let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
+            resultsCell.result = Result(withRiskScore: 12)
             return resultsCell
         }
         
-        let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.question.rawValue, for: indexPath) as! QuestionCell
+        if questions[indexPath.item] is RangeQuestion {
+            let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rangeQuestion.rawValue, for: indexPath) as! RangeQuestionCell
+            questionCell.question = questions[indexPath.item]
+            return questionCell
+        }
         
-        let question = questions[indexPath.item]
-        questionCell.question = question
-        return questionCell
+        if questions[indexPath.item] is YesNoQuestion {
+            let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.yesNoQuestion.rawValue, for: indexPath) as! YesNoQuestionCell
+            questionCell.question = questions[indexPath.item]
+            return questionCell
+        }
+        
+        return UICollectionViewCell() // TODO: Raise error instead of returning blank cell?
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

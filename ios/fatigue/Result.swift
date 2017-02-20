@@ -1,6 +1,6 @@
 import Foundation
 
-class Results {
+class Result {
     let riskScore: UInt
     let remark: String
     

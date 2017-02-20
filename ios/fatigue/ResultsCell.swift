@@ -1,53 +1,14 @@
 import UIKit
 
-class ResultsCell: UICollectionViewCell {
+class ResultCell: UICollectionViewCell {
     
-    var results: Results? {
+    var result: Result? {
         didSet {
-            guard let results = results else {
+            guard let result = result else {
                 return
             }
             
-            let textColor: UIColor = .white
-            
-            let attributedText = NSMutableAttributedString(
-                string: "Risk Score",
-                attributes: [
-                    NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightMedium),
-                    NSForegroundColorAttributeName: textColor
-                ]
-            )
-            
-            attributedText.append(
-                NSAttributedString(
-                    string: "\n\(results.riskScore)",
-                    attributes: [
-                        NSFontAttributeName: UIFont.systemFont(ofSize: 88),
-                        NSForegroundColorAttributeName: textColor
-                    ]
-                )
-            )
-            
-            attributedText.append(
-                NSAttributedString(
-                    string: "\n\(results.remark)",
-                    attributes: [
-                        NSFontAttributeName: UIFont.systemFont(ofSize: 17),
-                        NSForegroundColorAttributeName: textColor
-                    ]
-                )
-            )
-            
-            let length = attributedText.string.characters.count
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            attributedText.addAttribute(
-                NSParagraphStyleAttributeName,
-                value: paragraphStyle,
-                range: NSRange(location: 0, length: length)
-            )
-            
-            textView.attributedText = attributedText
+            setupText(forResult: result)
         }
     }
     
@@ -58,25 +19,72 @@ class ResultsCell: UICollectionViewCell {
     }
     
     
-    let textView: UITextView = {
-        let tv = UITextView()
-        tv.isEditable = false
-        tv.backgroundColor = .clear
-        return tv
+    let riskScoreTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textColor = .white
+        return label
+    }()
+    
+    let riskScoreLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 88, weight: UIFontWeightLight)
+        label.textAlignment = .center
+        label.textColor = .white
+        return label
+    }()
+    
+    let remarkLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textColor = .white
+        return label
     }()
     
     
+    func setupText(forResult result: Result) {
+        riskScoreTitleLabel.text = "Risk Score"
+        riskScoreLabel.text = String(result.riskScore)
+        remarkLabel.text = result.remark
+    }
+    
+    
     func setupViews() {
-        addSubview(textView)
+        addSubview(riskScoreTitleLabel)
+        addSubview(riskScoreLabel)
+        addSubview(remarkLabel)
         
-        textView.anchorWithConstantsToTop(
+        let sidePadding: CGFloat = 16
+        
+        riskScoreTitleLabel.anchorWithConstantsToTop(
+            topAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            topConstant: 64,
+            leftConstant: sidePadding,
+            rightConstant: sidePadding
+        )
+        
+        riskScoreLabel.anchorToTop(
             topAnchor,
             left: leftAnchor,
             bottom: bottomAnchor,
+            right: rightAnchor
+        )
+        
+        remarkLabel.anchorWithConstantsToTop(
+            riskScoreTitleLabel.bottomAnchor,
+            left: leftAnchor,
             right: rightAnchor,
-            topConstant: 64,
-            leftConstant: 16,
-            rightConstant: 16
+            topConstant: 45,
+            leftConstant: sidePadding,
+            rightConstant: sidePadding
         )
     }
     

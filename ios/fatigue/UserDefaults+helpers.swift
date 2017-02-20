@@ -12,6 +12,6 @@ extension UserDefaults {
     }
     
     func getCareer() -> Career {
-        return Career(rawValue: string(forKey: UserDefaultsKeys.career.rawValue)!)!
+        return Career(rawValue: string(forKey: UserDefaultsKeys.career.rawValue)!) ?? .pilot
     }
 }

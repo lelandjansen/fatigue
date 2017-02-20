@@ -3,17 +3,17 @@ import Foundation
 protocol Question {
     var question: String { get }
     var details: String { get }
-    var options: [Optional<Any>] { get }
+    var options: [String] { get }
 }
 
 class YesNoQuestion: Question {
-    enum Answer {
-        case yes, no
+    enum Answer: String {
+        case yes = "Yes", no = "No"
     }
     
     var question: String
     var details: String
-    var options: [Optional<Any>] = [Answer.yes, Answer.no]
+    var options: [String] = [Answer.yes.rawValue, Answer.no.rawValue]
     
     init(question: String, details: String = String()) {
         self.question = question
@@ -22,14 +22,23 @@ class YesNoQuestion: Question {
 }
 
 class RangeQuestion: Question {
+    enum Units: String {
+        case none = "", hours = "hrs"
+        
+    }
+    
     var question: String
     var details: String
-    var options: [Optional<Any>]
+    var options: [String]
+    let defaultOption: String
+    let units: Units
     
-    init(question: String, details: String = String(), options: [UInt]) {
+    init(question: String, details: String = String(), options: [UInt], defaultOption: UInt, units: Units = .none) {
         self.question = question
         self.details = details
-        self.options = options
+        self.options = options.map{String($0)}
+        self.defaultOption = String(defaultOption)
+        self.units = units
     }
 }
 
@@ -38,17 +47,20 @@ struct Questions {
     
     private let sleepInPast24HoursQuestion: Question = RangeQuestion(
         question: "How long have you slept in the past 24 hours?",
-        options: Array(0...12)
+        options: Array(0...12),
+        defaultOption: 7
     )
     
     private let sleepInPast48HoursQuestion: Question = RangeQuestion(
         question: "How long have you slept in the past 48 hours?",
-        options: Array(0...24)
+        options: Array(0...24),
+        defaultOption: 14
     )
     
     private let timeZoneTravelQuestion: Question = RangeQuestion(
         question: "Through how many time zones have you traveled in the past three days?",
-        options: Array(0...(12+14))
+        options: Array(0...(12+14)),
+        defaultOption: 0
     )
     
     private let stressQuestion: Question = YesNoQuestion(
@@ -79,7 +91,8 @@ struct Questions {
                     ),
                     RangeQuestion(
                         question: "How many hours will you be flying today?", // you and your copilot?
-                        options: Array(0...12)
+                        options: Array(0...12),
+                        defaultOption: 5
                     ),
                     stressQuestion,
                     deployentTimeQuestion,
@@ -91,8 +104,9 @@ struct Questions {
                     sleepInPast48HoursQuestion,
                     timeZoneTravelQuestion,
                     RangeQuestion(
-                        question: "How many hours will you be doing maintenance today?",
-                        options: Array(0...12)
+                        question: "For how many hours will you be doing maintenance today?",
+                        options: Array(0...12),
+                        defaultOption: 5
                     ),
                     stressQuestion,
                     deployentTimeQuestion,
