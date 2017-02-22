@@ -59,7 +59,7 @@ struct Questions {
     
     private let timeZoneTravelQuestion: Question = RangeQuestion(
         question: "Through how many time zones have you traveled in the past three days?",
-        options: Array(0...(12+14)),
+        options: Array(0...12),
         defaultOption: 0
     )
     

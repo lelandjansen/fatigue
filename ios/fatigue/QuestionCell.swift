@@ -12,7 +12,6 @@ class QuestionCell: UICollectionViewCell {
         }
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -82,11 +81,18 @@ class QuestionCell: UICollectionViewCell {
 
 class RangeQuestionCell : QuestionCell {
     
+    var options: [String] = [String()]
+    
+    var optionIndex: Int = 0
+    
     override var question: Question? {
         didSet {
-            guard let question = question else {
+            guard let question = question, question is RangeQuestion else {
                 return
             }
+            
+            options = question.options
+            optionIndex = options.index(of: (question as! RangeQuestion).defaultOption)!
             
             setupText(forQuestion: question)
         }
@@ -95,6 +101,7 @@ class RangeQuestionCell : QuestionCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupViews()
     }
     
@@ -126,6 +133,22 @@ class RangeQuestionCell : QuestionCell {
             bottom: bottomAnchor,
             right: rightAnchor
         )
+    }
+    
+    
+    func incrementOption() {
+        if optionIndex < options.count - 1 {
+            optionIndex += 1
+            optionLabel.text = options[optionIndex]
+        }
+    }
+    
+    
+    func decrementOption() {
+        if 0 < optionIndex {
+            optionIndex -= 1
+            optionLabel.text = options[optionIndex]
+        }
     }
     
     

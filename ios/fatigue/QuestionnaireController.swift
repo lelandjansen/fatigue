@@ -1,6 +1,6 @@
 import UIKit
 
-class QuestionnaireController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class QuestionnaireController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     
     enum CellId: String {
@@ -72,19 +72,6 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
-        pageControl.currentPage = pageNumber
-        
-        (pageNumber == questions.count) ? moveControlsOffScreen() : moveControlsOnScreen()
-    }
-    
-    
-    
     fileprivate func moveControlsOffScreen() {
         pageControlBottomAnchor?.constant = 40
         
@@ -113,7 +100,47 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         )
     }
     
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+        pageControl.currentPage = pageNumber
+        
+        (pageNumber == questions.count) ? moveControlsOffScreen() : moveControlsOnScreen()
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer is UIPanGestureRecognizer {
+            let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocity(in: view)
+            return fabs(velocity.y) > fabs(velocity.x);
+        }
+        
+        return false
+    }
+    
+    
+    func handlePan(gesture: UIPanGestureRecognizer) {
+        guard gesture.view is RangeQuestionCell else {
+            return
+        }
+        
+        let tolerance: CGFloat = 40
+        let yTranslation = gesture.translation(in: view).y
+        
+        if tolerance < yTranslation {
+            (gesture.view as! RangeQuestionCell).decrementOption()
+            gesture.setTranslation(.zero, in: view)
+        }
+        else if yTranslation < -tolerance {
+            (gesture.view as! RangeQuestionCell).incrementOption()
+            gesture.setTranslation(.zero, in: view)
+        }
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questions.count + 1
     }
@@ -128,6 +155,11 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         if questions[indexPath.item] is RangeQuestion {
             let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rangeQuestion.rawValue, for: indexPath) as! RangeQuestionCell
             questionCell.question = questions[indexPath.item]
+            
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
+            panGestureRecognizer.delegate = self
+            questionCell.addGestureRecognizer(panGestureRecognizer)
+            
             return questionCell
         }
         
