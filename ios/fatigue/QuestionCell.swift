@@ -12,6 +12,7 @@ class QuestionCell: UICollectionViewCell {
         }
     }
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -114,6 +115,18 @@ class RangeQuestionCell : QuestionCell {
         return label
     }()
     
+    lazy var incrementButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(incrementOption), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var decrementButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(decrementOption), for: .touchUpInside)
+        return button
+    }()
+    
     
     override func setupText(forQuestion question: Question) {
         super.setupText(forQuestion: question)
@@ -126,6 +139,8 @@ class RangeQuestionCell : QuestionCell {
         super.setupViews()
         
         addSubview(optionLabel)
+        addSubview(incrementButton)
+        addSubview(decrementButton)
         
         optionLabel.anchorToTop(
             topAnchor,
@@ -133,9 +148,24 @@ class RangeQuestionCell : QuestionCell {
             bottom: bottomAnchor,
             right: rightAnchor
         )
+        
+        incrementButton.anchorToTop(
+            topAnchor,
+            left: leftAnchor,
+            bottom: centerYAnchor,
+            right: rightAnchor
+        )
+        
+        decrementButton.anchorToTop(
+            centerYAnchor,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor
+        )
     }
     
     
+
     func incrementOption() {
         if optionIndex < options.count - 1 {
             optionIndex += 1
