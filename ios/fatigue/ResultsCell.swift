@@ -47,6 +47,17 @@ class ResultCell: UICollectionViewCell {
         return label
     }()
     
+    let saveButton: FatigueButton = {
+        let button = FatigueButton()
+        button.setTitle("Save", for: .normal)
+        return button
+    }()
+    
+    let shareButton: FatigueButton = {
+        let button = FatigueButton()
+        button.setTitle("Share and save", for: .normal)
+        return button
+    }()
     
     func setupText(forResult result: Result) {
         riskScoreTitleLabel.text = "Risk Score"
@@ -59,6 +70,8 @@ class ResultCell: UICollectionViewCell {
         addSubview(riskScoreTitleLabel)
         addSubview(riskScoreLabel)
         addSubview(remarkLabel)
+        addSubview(saveButton)
+        addSubview(shareButton)
         
         let sidePadding: CGFloat = 16
         
@@ -71,20 +84,43 @@ class ResultCell: UICollectionViewCell {
             rightConstant: sidePadding
         )
         
-        riskScoreLabel.anchorToTop(
-            topAnchor,
+        riskScoreLabel.anchorWithConstantsToTop(
+            riskScoreTitleLabel.bottomAnchor,
             left: leftAnchor,
-            bottom: bottomAnchor,
-            right: rightAnchor
+            bottom: nil,
+            right: rightAnchor,
+            topConstant: 32
         )
         
         remarkLabel.anchorWithConstantsToTop(
-            riskScoreTitleLabel.bottomAnchor,
+            riskScoreLabel.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 45,
+            topConstant: 32,
             leftConstant: sidePadding,
             rightConstant: sidePadding
+        )
+        
+        let buttonSpacing: CGFloat = 16
+        
+        shareButton.anchorWithConstantsToTop(
+            nil,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor,
+            leftConstant: 80,
+            bottomConstant: 80,
+            rightConstant: 80
+        )
+        
+        saveButton.anchorWithConstantsToTop(
+            nil,
+            left: leftAnchor,
+            bottom: shareButton.topAnchor,
+            right: rightAnchor,
+            leftConstant: 80,
+            bottomConstant: buttonSpacing,
+            rightConstant: 80
         )
     }
     
