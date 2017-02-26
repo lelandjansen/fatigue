@@ -10,7 +10,7 @@ protocol Question {
 
 class YesNoQuestion: Question {
     enum Answer: String {
-        case yes = "Yes", no = "No"
+        case none = "", yes = "Yes", no = "No"
     }
     
     var question: String
