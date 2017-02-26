@@ -2,12 +2,26 @@ import UIKit
 
 protocol QuestionnaireControllerDelegate: class {
     func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell)
+    func updateQuestionnaireOrder()
     func moveToPreviousPage()
     func moveToNextPage()
 }
 
 
 class QuestionnaireController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireControllerDelegate {
+
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        updateQuestionnaireOrder()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     enum CellId: String {
@@ -15,14 +29,42 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    var questions = Questions().questions
+    var questionnaireItems: [QuestionnaireItem] = [Questionnaire().questionnaireTreeRoot]
     
     func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell) {
         let indexPath = collectionView.indexPath(for: cell)
-        if nil != indexPath {
-            questions[indexPath!.item].selection = value
+        guard indexPath != nil else {
+            return
+        }
+        
+        if questionnaireItems[indexPath!.item] is Question {
+            var question = (questionnaireItems[indexPath!.item] as! Question)
+            question.selection = value
         }
     }
+    
+    
+    
+    func updateQuestionnaireOrder() {
+        var questionnaireItem = questionnaireItems.first!
+        questionnaireItems = [questionnaireItem]
+
+        while nil != questionnaireItem.nextItem {
+            questionnaireItems.append(questionnaireItem.nextItem!)
+            questionnaireItem = questionnaireItem.nextItem!
+        }
+        
+        pageControl.numberOfPages = questionnaireItems.count // longestQuestionnaireSequence()
+        
+        collectionView.reloadData()
+    }
+    
+
+//    fileprivate func longestQuestionnaireSequence() -> UInt {
+//    
+//    }
+    
+    
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,7 +82,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.numberOfPages = self.questions.count + 1
+        pageControl.numberOfPages = self.questionnaireItems.count // longestQuestionnaireSequence()
         pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 1/2)
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.defersCurrentPageDisplay = true
@@ -69,7 +111,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             rightConstant: 0,
             widthConstant: 0,
             heightConstant: 32
-            )[1]
+        )[1]
         
         registerCells()
     }
@@ -115,7 +157,8 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         if pageControl.currentPage == 0 {
             return
         }
-        if pageControl.currentPage != questions.count - 1 {
+        
+        if pageControl.currentPage != questionnaireItems.count - 1 {
             moveControlsOnScreen()
         }
         
@@ -125,10 +168,11 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     func moveToNextPage() {
-        if pageControl.currentPage == questions.count {
+        if pageControl.currentPage == questionnaireItems.count {
             return
         }
-        if pageControl.currentPage == questions.count - 1 {
+        
+        if pageControl.currentPage == questionnaireItems.count - 1 {
             moveControlsOffScreen()
         }
         
@@ -146,7 +190,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
         
-        (pageNumber == questions.count) ? moveControlsOffScreen() : moveControlsOnScreen()
+        (pageNumber == questionnaireItems.count) ? moveControlsOffScreen() : moveControlsOnScreen()
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -159,7 +203,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    func handlePan(gesture: UIPanGestureRecognizer) {
+    func handleVerticalPan(gesture: UIPanGestureRecognizer) {
         guard gesture.view is RangeQuestionCell else {
             return
         }
@@ -179,36 +223,35 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return questions.count + 1
+        return questionnaireItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == questions.count {
+        if questionnaireItems[indexPath.item] is Result {
             let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
-            resultsCell.result = Result(withRiskScore: 12)
+            resultsCell.result = questionnaireItems[indexPath.item] as? Result
             return resultsCell
         }
         
-        if questions[indexPath.item] is RangeQuestion {
+        if questionnaireItems[indexPath.item] is RangeQuestion {
             let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rangeQuestion.rawValue, for: indexPath) as! RangeQuestionCell
-            questionCell.question = questions[indexPath.item]
-            questionCell.delegate = self
-            
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleVerticalPan(gesture:)))
             panGestureRecognizer.delegate = self
-            questionCell.addGestureRecognizer(panGestureRecognizer)
             
+            questionCell.question = questionnaireItems[indexPath.item] as! RangeQuestion
+            questionCell.delegate = self
+            questionCell.addGestureRecognizer(panGestureRecognizer)
             return questionCell
         }
         
-        if questions[indexPath.item] is YesNoQuestion {
+        if questionnaireItems[indexPath.item] is YesNoQuestion {
             let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.yesNoQuestion.rawValue, for: indexPath) as! YesNoQuestionCell
-            questionCell.question = questions[indexPath.item]
+            questionCell.question = questionnaireItems[indexPath.item] as! YesNoQuestion
             questionCell.delegate = self
             return questionCell
         }
         
-        return UICollectionViewCell() // TODO: Raise error instead of returning blank cell?
+        fatalError("Questionnaire item is not one of the supported types")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

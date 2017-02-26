@@ -282,11 +282,13 @@ class YesNoQuestionCell : QuestionCell {
     
     func handleYes() {
         selection = .yes
+        delegate?.updateQuestionnaireOrder()
         delegate?.moveToNextPage()
     }
     
     func handleNo() {
         selection = .no
+        delegate?.updateQuestionnaireOrder()
         delegate?.moveToNextPage()
     }
     
