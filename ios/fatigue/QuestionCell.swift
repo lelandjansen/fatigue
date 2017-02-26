@@ -2,24 +2,26 @@ import UIKit
 
 class QuestionCell: UICollectionViewCell {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    
     weak var delegate: QuestionnaireControllerDelegate?
+    
     
     var question: Question? {
         didSet {
             guard let question = question else {
                 return
             }
-    
+            
             setupText(forQuestion: question)
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
     
-        
     let questionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24)
@@ -76,16 +78,30 @@ class QuestionCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 
 
 class RangeQuestionCell : QuestionCell {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    
     var options: [String] = [String()]
     
-    var optionIndex: Int = 0
+    
+    var optionIndex: Int = 0 {
+        didSet {
+            optionLabel.text = options[optionIndex]
+            delegate?.setQuestionSelection(
+                toValue: options[optionIndex],
+                forCell: self
+            )
+        }
+    }
     
     override var question: Question? {
         didSet {
@@ -98,12 +114,6 @@ class RangeQuestionCell : QuestionCell {
             
             setupText(forQuestion: question)
         }
-    }
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
     }
     
     
@@ -165,19 +175,16 @@ class RangeQuestionCell : QuestionCell {
     }
     
     
-
+    
     func incrementOption() {
         if optionIndex < options.count - 1 {
             optionIndex += 1
-            optionLabel.text = options[optionIndex]
         }
     }
-    
     
     func decrementOption() {
         if 0 < optionIndex {
             optionIndex -= 1
-            optionLabel.text = options[optionIndex]
         }
     }
     
@@ -197,10 +204,70 @@ class YesNoQuestionCell : QuestionCell {
     }
     
     
+    override var question: Question? {
+        didSet {
+            guard let question = question, question is YesNoQuestion else {
+                return
+            }
+            
+            switch question.selection {
+            case YesNoQuestion.Answer.yes.rawValue:
+                selection = YesNoQuestion.Answer.yes
+            case YesNoQuestion.Answer.no.rawValue:
+                selection = YesNoQuestion.Answer.no
+            default:
+                selection = YesNoQuestion.Answer.none
+            }
+        }
+    }
+    
+    
+    var selection: YesNoQuestion.Answer = .none {
+        didSet {
+            switch selection {
+            case .yes:
+                selectYes()
+                deselectNo()
+            case .no:
+                deselectYes()
+                selectNo()
+            default:
+                deselectYes()
+                deselectNo()
+            }
+            
+            delegate?.setQuestionSelection(
+                toValue: selection.rawValue,
+                forCell: self
+            )
+        }
+    }
+    
+    
+    func selectYes() {
+        yesButton.isSelected = true
+        yesButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
+    }
+    
+    func deselectYes() {
+        yesButton.isSelected = false
+        yesButton.backgroundColor = .clear
+    }
+    
+    func selectNo() {
+        noButton.isSelected = true
+        noButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
+    }
+    
+    func deselectNo() {
+        noButton.isSelected = false
+        noButton.backgroundColor = .clear
+    }
+    
+    
     lazy var yesButton: FatigueButton = {
         let button = FatigueButton(type: .custom)
         button.setTitle(YesNoQuestion.Answer.yes.rawValue, for: .normal)
-        button.isSelected = false
         button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
         return button
     }()
@@ -208,27 +275,18 @@ class YesNoQuestionCell : QuestionCell {
     lazy var noButton: FatigueButton = {
         let button = FatigueButton(type: .custom)
         button.setTitle(YesNoQuestion.Answer.no.rawValue, for: .normal)
-        button.isSelected = false
         button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
         return button
     }()
     
     
     func handleYes() {
-        print("yes")
-        yesButton.isSelected = true
-        yesButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
-        noButton.isSelected = false
-        noButton.backgroundColor = .clear
+        selection = .yes
         delegate?.moveToNextPage()
     }
     
     func handleNo() {
-        print("no")
-        yesButton.isSelected = false
-        yesButton.backgroundColor = .clear
-        noButton.isSelected = true
-        noButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
+        selection = .no
         delegate?.moveToNextPage()
     }
     
@@ -238,7 +296,7 @@ class YesNoQuestionCell : QuestionCell {
         
         addSubview(yesButton)
         addSubview(noButton)
-
+        
         let buttonSpacing: CGFloat = 16
         
         yesButton.anchorWithConstantsToTop(
@@ -246,20 +304,17 @@ class YesNoQuestionCell : QuestionCell {
             left: leftAnchor,
             bottom: centerYAnchor,
             right: rightAnchor,
-            topConstant: 0,
             leftConstant: 80,
             bottomConstant: buttonSpacing/2,
             rightConstant: 80
         )
-
+        
         noButton.anchorWithConstantsToTop(
             centerYAnchor,
             left: leftAnchor,
-            bottom: nil,
             right: rightAnchor,
             topConstant: buttonSpacing/2,
             leftConstant: 80,
-            bottomConstant: 0,
             rightConstant: 80
         )
     }

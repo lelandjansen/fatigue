@@ -1,6 +1,7 @@
 import UIKit
 
 protocol QuestionnaireControllerDelegate: class {
+    func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell)
     func moveToPreviousPage()
     func moveToNextPage()
 }
@@ -14,12 +15,14 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    var questions: [Question] {
-        get {
-            return Questions().questions
+    var questions = Questions().questions
+    
+    func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell) {
+        let indexPath = collectionView.indexPath(for: cell)
+        if nil != indexPath {
+            questions[indexPath!.item].selection = value
         }
     }
-    
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -66,7 +69,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             rightConstant: 0,
             widthConstant: 0,
             heightConstant: 32
-        )[1]
+            )[1]
         
         registerCells()
     }
@@ -194,7 +197,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
             panGestureRecognizer.delegate = self
             questionCell.addGestureRecognizer(panGestureRecognizer)
-
+            
             return questionCell
         }
         
