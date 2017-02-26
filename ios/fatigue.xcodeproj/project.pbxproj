@@ -17,7 +17,8 @@
 		71CC910C1E581D1A00DA367A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */; };
 		71F2748E1E582C4100983BB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748D1E582C4100983BB4 /* Question.swift */; };
 		71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */; };
-		71F274941E58DC6700983BB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F274931E58DC6700983BB4 /* Extensions.swift */; };
+		71F274941E58DC6700983BB4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F274931E58DC6700983BB4 /* UIView.swift */; };
+		71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF779E1E62773C00A7954B /* FatigueButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		71CC910D1E581D1A00DA367A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71F2748D1E582C4100983BB4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireController.swift; sourceTree = "<group>"; };
-		71F274931E58DC6700983BB4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		71F274931E58DC6700983BB4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		71FF779E1E62773C00A7954B /* FatigueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatigueButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +68,11 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
+				71FF77A01E62797800A7954B /* Extensions */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
-				71F274931E58DC6700983BB4 /* Extensions.swift */,
+				71FF779E1E62773C00A7954B /* FatigueButton.swift */,
 				71F2748D1E582C4100983BB4 /* Question.swift */,
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
@@ -80,6 +83,14 @@
 				71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */,
 			);
 			path = fatigue;
+			sourceTree = "<group>";
+		};
+		71FF77A01E62797800A7954B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				71F274931E58DC6700983BB4 /* UIView.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7176C80C1E59515800E557F0 /* Career.swift in Sources */,
-				71F274941E58DC6700983BB4 /* Extensions.swift in Sources */,
+				71F274941E58DC6700983BB4 /* UIView.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
+				71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */,
 				71F2748E1E582C4100983BB4 /* Question.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,

@@ -2,6 +2,8 @@ import UIKit
 
 class QuestionCell: UICollectionViewCell {
     
+    weak var delegate: QuestionnaireControllerDelegate?
+    
     var question: Question? {
         didSet {
             guard let question = question else {
@@ -11,7 +13,6 @@ class QuestionCell: UICollectionViewCell {
             setupText(forQuestion: question)
         }
     }
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,7 +66,7 @@ class QuestionCell: UICollectionViewCell {
             questionLabel.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 4,
+            topConstant: 16,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
@@ -93,7 +94,7 @@ class RangeQuestionCell : QuestionCell {
             }
             
             options = question.options
-            optionIndex = options.index(of: (question as! RangeQuestion).defaultOption)!
+            optionIndex = options.index(of: (question as! RangeQuestion).selection)!
             
             setupText(forQuestion: question)
         }
@@ -102,7 +103,6 @@ class RangeQuestionCell : QuestionCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupViews()
     }
     
@@ -131,7 +131,7 @@ class RangeQuestionCell : QuestionCell {
     override func setupText(forQuestion question: Question) {
         super.setupText(forQuestion: question)
         
-        optionLabel.text = (question as! RangeQuestion).defaultOption
+        optionLabel.text = (question as! RangeQuestion).selection
     }
     
     
@@ -197,24 +197,40 @@ class YesNoQuestionCell : QuestionCell {
     }
     
     
-    let yesButton: UIButton = {
-        let button = UIButton(type: .system)
+    lazy var yesButton: FatigueButton = {
+        let button = FatigueButton(type: .custom)
         button.setTitle(YesNoQuestion.Answer.yes.rawValue, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 24)
-//        button.addTarget(self, action: #selector(...), for: .touchUpInside)
+        button.isSelected = false
+        button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
         return button
     }()
     
-    
-    let noButton: UIButton = {
-        let button = UIButton(type: .system)
+    lazy var noButton: FatigueButton = {
+        let button = FatigueButton(type: .custom)
         button.setTitle(YesNoQuestion.Answer.no.rawValue, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 24)
-//        button.addTarget(self, action: #selector(...), for: .touchUpInside)
+        button.isSelected = false
+        button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
         return button
     }()
+    
+    
+    func handleYes() {
+        print("yes")
+        yesButton.isSelected = true
+        yesButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
+        noButton.isSelected = false
+        noButton.backgroundColor = .clear
+        delegate?.moveToNextPage()
+    }
+    
+    func handleNo() {
+        print("no")
+        yesButton.isSelected = false
+        yesButton.backgroundColor = .clear
+        noButton.isSelected = true
+        noButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
+        delegate?.moveToNextPage()
+    }
     
     
     override func setupViews() {
@@ -222,18 +238,29 @@ class YesNoQuestionCell : QuestionCell {
         
         addSubview(yesButton)
         addSubview(noButton)
+
+        let buttonSpacing: CGFloat = 16
         
-        yesButton.anchorToTop(
+        yesButton.anchorWithConstantsToTop(
             nil,
             left: leftAnchor,
             bottom: centerYAnchor,
-            right: rightAnchor
+            right: rightAnchor,
+            topConstant: 0,
+            leftConstant: 80,
+            bottomConstant: buttonSpacing/2,
+            rightConstant: 80
         )
-        
-        noButton.anchorToTop(
+
+        noButton.anchorWithConstantsToTop(
             centerYAnchor,
             left: leftAnchor,
-            right: rightAnchor
+            bottom: nil,
+            right: rightAnchor,
+            topConstant: buttonSpacing/2,
+            leftConstant: 80,
+            bottomConstant: 0,
+            rightConstant: 80
         )
     }
     
