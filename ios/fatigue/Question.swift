@@ -8,7 +8,7 @@ protocol Question {
 }
 
 
-class YesNoQuestion: Question {
+class YesNoQuestion: Question, QuestionnaireItem {
     enum Answer: String {
         case none = "", yes = "Yes", no = "No"
     }
@@ -16,7 +16,35 @@ class YesNoQuestion: Question {
     var question: String
     var details: String
     var options: [String] = [Answer.yes.rawValue, Answer.no.rawValue]
-    var selection: String = String()
+    var selection: String = Answer.none.rawValue {
+        didSet {
+            switch selection {
+            case Answer.yes.rawValue:
+                nextItem = nextItemIfYes
+            case Answer.no.rawValue:
+                nextItem = nextItemIfNo
+            default:
+                nextItem = nil
+            }
+        }
+    }
+    var nextItem: QuestionnaireItem?
+    var nextItemIfYes: QuestionnaireItem?
+    var nextItemIfNo: QuestionnaireItem?
+    
+    init(question: String, details: String = String(), nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
+        self.question = question
+        self.details = details
+        self.nextItemIfYes = nextItemIfYes
+        self.nextItemIfNo = nextItemIfNo
+    }
+    
+    init(question: String, details: String = String(), nextItem: QuestionnaireItem) {
+        self.question = question
+        self.details = details
+        self.nextItemIfYes = nextItem
+        self.nextItemIfNo = nextItem
+    }
     
     init(question: String, details: String = String()) {
         self.question = question
@@ -25,7 +53,7 @@ class YesNoQuestion: Question {
 }
 
 
-class RangeQuestion: Question {
+class RangeQuestion: Question, QuestionnaireItem {
     enum Units: String {
         case none = "", hours = "hrs"
     }
@@ -35,87 +63,14 @@ class RangeQuestion: Question {
     var options: [String]
     var selection: String
     let units: Units
+    var nextItem: QuestionnaireItem?
     
-    init(question: String, details: String = String(), options: [UInt], selection: UInt, units: Units = .none) {
+    init(question: String, details: String = String(), options: [UInt], selection: UInt, units: Units = .none, nextItem: QuestionnaireItem?) {
         self.question = question
         self.details = details
         self.options = options.map{String($0)}
         self.selection = String(selection)
         self.units = units
-    }
-}
-
-
-struct Questions {
-    
-    private let sleepInPast24HoursQuestion: Question = RangeQuestion(
-        question: "How long have you slept in the past 24 hours?",
-        options: Array(0...12),
-        selection: 7
-    )
-    
-    private let sleepInPast48HoursQuestion: Question = RangeQuestion(
-        question: "How long have you slept in the past 48 hours?",
-        options: Array(0...24),
-        selection: 14
-    )
-    
-    private let timeZoneTravelQuestion: Question = RangeQuestion(
-        question: "Through how many time zones have you traveled in the past three days?",
-        options: Array(0...12),
-        selection: 0
-    )
-    
-    private let stressQuestion: Question = YesNoQuestion(
-        question: "Have you been experiencing elevated stress?",
-        details: "Home life, client pressure, team dynamic, etc."
-    )
-    
-    private let deployentTimeQuestion: Question = YesNoQuestion(
-        question: "Have you been on tour for more than 75% of your planned deployment?"
-    )
-    
-    private let illQuestion: Question = YesNoQuestion(
-        question: "Are you ill?",
-        details: "Cold, headache, flu, etc."
-    )
-    
-    
-    var questions: [Question] {
-        get {
-            switch UserDefaults.standard.getCareer() {
-            case Career.pilot:
-                return [
-                    sleepInPast24HoursQuestion,
-                    sleepInPast48HoursQuestion,
-                    timeZoneTravelQuestion,
-                    YesNoQuestion(
-                        question: "Are you flying with another pilot?"
-                    ),
-                    RangeQuestion(
-                        question: "How many hours will you be flying today?", // you and your copilot?
-                        options: Array(0...12),
-                        selection: 5
-                    ),
-                    stressQuestion,
-                    deployentTimeQuestion,
-                    illQuestion
-                ]
-            case Career.engineer:
-                return [
-                    sleepInPast24HoursQuestion,
-                    sleepInPast48HoursQuestion,
-                    timeZoneTravelQuestion,
-                    RangeQuestion(
-                        question: "For how many hours will you be doing maintenance today?",
-                        options: Array(0...12),
-                        selection: 5
-                    ),
-                    stressQuestion,
-                    deployentTimeQuestion,
-                    illQuestion
-                ]
-            }
-        }
+        self.nextItem = nextItem
     }
 }

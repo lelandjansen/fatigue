@@ -12,6 +12,8 @@
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
 		7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultsCell.swift */; };
 		7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */; };
+		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
+		719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414BB1E63FCD1009A16D2 /* Questionnaire.swift */; };
 		71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC91011E581D1A00DA367A /* AppDelegate.swift */; };
 		71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CC91081E581D1A00DA367A /* Assets.xcassets */; };
 		71CC910C1E581D1A00DA367A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */; };
@@ -27,6 +29,8 @@
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7176C80B1E59515800E557F0 /* ResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
+		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
+		719414BB1E63FCD1009A16D2 /* Questionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		71CC90FE1E581D1A00DA367A /* fatigue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fatigue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CC91011E581D1A00DA367A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CC91081E581D1A00DA367A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71A401E81E63FEF7007B548D /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				71F2748D1E582C4100983BB4 /* Question.swift */,
+				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
+				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
+				7176C8091E59515800E557F0 /* QuestionCell.swift */,
+				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
+				7176C80A1E59515800E557F0 /* Result.swift */,
+				7176C80B1E59515800E557F0 /* ResultsCell.swift */,
+			);
+			name = Questionnaire;
+			sourceTree = "<group>";
+		};
 		71CC90F51E581D1900DA367A = {
 			isa = PBXGroup;
 			children = (
@@ -69,15 +87,11 @@
 			isa = PBXGroup;
 			children = (
 				71FF77A01E62797800A7954B /* Extensions */,
+				71A401E81E63FEF7007B548D /* Questionnaire */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
 				71FF779E1E62773C00A7954B /* FatigueButton.swift */,
-				71F2748D1E582C4100983BB4 /* Question.swift */,
-				7176C8091E59515800E557F0 /* QuestionCell.swift */,
-				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
-				7176C80A1E59515800E557F0 /* Result.swift */,
-				7176C80B1E59515800E557F0 /* ResultsCell.swift */,
 				7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
 				71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */,
@@ -170,11 +184,13 @@
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
 				71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */,
+				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
 				71F2748E1E582C4100983BB4 /* Question.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
 				71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */,
 				7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */,
+				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

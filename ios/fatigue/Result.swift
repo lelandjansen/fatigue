@@ -1,8 +1,9 @@
 import Foundation
 
-class Result {
+class Result: QuestionnaireItem {
     let riskScore: UInt
     let remark: String
+    var nextItem: QuestionnaireItem?
     
     init(withRiskScore riskScore: UInt) {
         self.riskScore = riskScore
