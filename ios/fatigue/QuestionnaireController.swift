@@ -48,24 +48,67 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     func updateQuestionnaireOrder() {
         var questionnaireItem = questionnaireItems.first!
         questionnaireItems = [questionnaireItem]
-
+        
         while nil != questionnaireItem.nextItem {
             questionnaireItems.append(questionnaireItem.nextItem!)
             questionnaireItem = questionnaireItem.nextItem!
         }
         
-        pageControl.numberOfPages = questionnaireItems.count // longestQuestionnaireSequence()
+        pageControl.numberOfPages = longestQuestionnaireSequence(fromStartQuestion: questionnaireItems.last!) + questionnaireItems.count // - 1 ???
         
         collectionView.reloadData()
     }
     
 
-//    fileprivate func longestQuestionnaireSequence() -> UInt {
-//    
-//    }
+    fileprivate func longestQuestionnaireSequence(fromStartQuestion startQuestion: QuestionnaireItem) -> Int {
+        let (graph, destination) = graphFromQuestionnaire(fromQuestion: startQuestion)
+        return LongestPath.length(forGraph: graph, toNode: destination)
+    }
+
+    
+    fileprivate func graphFromQuestionnaire(fromQuestion question: QuestionnaireItem) -> (Dictionary<Int, Set<Int>>, Int) {
+        var graph = Dictionary<Int, Set<Int>>()
+        var destination: Int?
+        
+        func createGraph(fromNode node: QuestionnaireItem) {
+            graph[nodeHash(node)] = []
+            
+            switch node {
+            case let node as YesNoQuestion:
+                graph[nodeHash(node)]!.insert(nodeHash(node.nextItemIfYes!))
+                graph[nodeHash(node)]!.insert(nodeHash(node.nextItemIfNo!))
+                createGraph(fromNode: node.nextItemIfYes!)
+                createGraph(fromNode: node.nextItemIfNo!)
+            case let node as RangeQuestion:
+                graph[nodeHash(node)]!.insert(nodeHash(node.nextItem!))
+                createGraph(fromNode: node.nextItem!)
+            case let node as Result:
+                destination = nodeHash(node)
+            default:
+                fatalError("Questionnaire item is not one of the supported types")
+            }
+        }
+        
+        createGraph(fromNode: question)
+        
+        return (graph, destination!)
+    }
     
     
+    fileprivate func nodeHash(_ node: QuestionnaireItem) -> Int {
+        switch node {
+        case let node as YesNoQuestion:
+            return ObjectIdentifier(node).hashValue
+        case let node as RangeQuestion:
+            return ObjectIdentifier(node).hashValue
+        case let node as Result:
+            return ObjectIdentifier(node).hashValue
+        default:
+            fatalError("Questionnaire item is not one of the supported types")
+        }
+    }
     
+ 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -82,7 +125,6 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.numberOfPages = self.questionnaireItems.count // longestQuestionnaireSequence()
         pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 1/2)
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.defersCurrentPageDisplay = true

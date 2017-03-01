@@ -65,6 +65,7 @@ class RangeQuestion: Question, QuestionnaireItem {
     let units: Units
     var nextItem: QuestionnaireItem?
     
+    
     init(question: String, details: String = String(), options: [UInt], selection: UInt, units: Units = .none, nextItem: QuestionnaireItem?) {
         self.question = question
         self.details = details
