@@ -1,12 +1,5 @@
 import UIKit
 
-protocol QuestionnaireControllerDelegate: class {
-    func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell)
-    func updateQuestionnaireOrder()
-    func moveToPreviousPage()
-    func moveToNextPage()
-}
-
 
 class QuestionnaireController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireControllerDelegate {
 
@@ -54,9 +47,10 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             questionnaireItem = questionnaireItem.nextItem!
         }
         
-        pageControl.numberOfPages = longestQuestionnaireSequence(fromStartQuestion: questionnaireItems.last!) + questionnaireItems.count // - 1 ???
+        pageControl.numberOfPages = longestQuestionnaireSequence(fromStartQuestion: questionnaireItems.last!) + questionnaireItems.count
         
         collectionView.reloadData()
+        self.view.layoutIfNeeded()
     }
     
 
@@ -66,24 +60,24 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
 
     
-    fileprivate func graphFromQuestionnaire(fromQuestion question: QuestionnaireItem) -> (Dictionary<Int, Set<Int>>, Int) {
-        var graph = Dictionary<Int, Set<Int>>()
-        var destination: Int?
+    fileprivate func graphFromQuestionnaire(fromQuestion question: QuestionnaireItem) -> (Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>, ObjectIdentifier) {
+        var graph = Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>()
+        var destination: ObjectIdentifier?
         
         func createGraph(fromNode node: QuestionnaireItem) {
-            graph[nodeHash(node)] = []
+            graph[objectIdentifier(node)] = []
             
             switch node {
             case let node as YesNoQuestion:
-                graph[nodeHash(node)]!.insert(nodeHash(node.nextItemIfYes!))
-                graph[nodeHash(node)]!.insert(nodeHash(node.nextItemIfNo!))
+                graph[objectIdentifier(node)]!.insert(objectIdentifier(node.nextItemIfYes!))
+                graph[objectIdentifier(node)]!.insert(objectIdentifier(node.nextItemIfNo!))
                 createGraph(fromNode: node.nextItemIfYes!)
                 createGraph(fromNode: node.nextItemIfNo!)
             case let node as RangeQuestion:
-                graph[nodeHash(node)]!.insert(nodeHash(node.nextItem!))
+                graph[objectIdentifier(node)]!.insert(objectIdentifier(node.nextItem!))
                 createGraph(fromNode: node.nextItem!)
             case let node as Result:
-                destination = nodeHash(node)
+                destination = objectIdentifier(node)
             default:
                 fatalError("Questionnaire item is not one of the supported types")
             }
@@ -95,14 +89,14 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    fileprivate func nodeHash(_ node: QuestionnaireItem) -> Int {
+    fileprivate func objectIdentifier(_ node: QuestionnaireItem) -> ObjectIdentifier {
         switch node {
         case let node as YesNoQuestion:
-            return ObjectIdentifier(node).hashValue
+            return ObjectIdentifier(node)
         case let node as RangeQuestion:
-            return ObjectIdentifier(node).hashValue
+            return ObjectIdentifier(node)
         case let node as Result:
-            return ObjectIdentifier(node).hashValue
+            return ObjectIdentifier(node)
         default:
             fatalError("Questionnaire item is not one of the supported types")
         }
@@ -167,7 +161,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     
     fileprivate func moveControlsOffScreen() {
-        pageControlBottomAnchor?.constant = 40
+        self.pageControlBottomAnchor?.constant = 40
         
         UIView.animate(
             withDuration: 1/2,
@@ -200,7 +194,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             return
         }
         
-        if pageControl.currentPage != questionnaireItems.count - 1 {
+        if pageControl.currentPage != pageControl.numberOfPages - 2 {
             moveControlsOnScreen()
         }
         
@@ -210,11 +204,11 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     func moveToNextPage() {
-        if pageControl.currentPage == questionnaireItems.count {
+        if pageControl.currentPage == pageControl.numberOfPages - 1 {
             return
         }
         
-        if pageControl.currentPage == questionnaireItems.count - 1 {
+        if pageControl.currentPage == pageControl.numberOfPages - 2 {
             moveControlsOffScreen()
         }
         
@@ -232,7 +226,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
         
-        (pageNumber == questionnaireItems.count) ? moveControlsOffScreen() : moveControlsOnScreen()
+        (pageNumber == pageControl.numberOfPages - 1) ? moveControlsOffScreen() : moveControlsOnScreen()
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -272,6 +266,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         if questionnaireItems[indexPath.item] is Result {
             let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
             resultsCell.result = questionnaireItems[indexPath.item] as? Result
+            resultsCell.delegate = self
             return resultsCell
         }
         

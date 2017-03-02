@@ -13,6 +13,9 @@ class ResultCell: UICollectionViewCell {
     }
     
     
+    weak var delegate: QuestionnaireControllerDelegate?
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -112,6 +115,7 @@ class ResultCell: UICollectionViewCell {
             bottomConstant: 80,
             rightConstant: 80
         )
+        shareButton.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
         
         saveButton.anchorWithConstantsToTop(
             nil,
@@ -122,6 +126,15 @@ class ResultCell: UICollectionViewCell {
             bottomConstant: buttonSpacing,
             rightConstant: 80
         )
+        saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+    }
+    
+    func handleSave() {
+        
+    }
+    
+    func handleShare() {
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
