@@ -15,6 +15,7 @@ struct Questionnaire {
     
     
     func generatePilotQuestionTree() -> QuestionnaireItem {
+        
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",

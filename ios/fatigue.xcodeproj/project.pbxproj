@@ -19,7 +19,12 @@
 		71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC91011E581D1A00DA367A /* AppDelegate.swift */; };
 		71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CC91081E581D1A00DA367A /* Assets.xcassets */; };
 		71CC910C1E581D1A00DA367A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */; };
-		71F2748E1E582C4100983BB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748D1E582C4100983BB4 /* Question.swift */; };
+		71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */; };
+		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
+		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
+		71E953A61E67DD0100A59278 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A51E67DD0100A59278 /* Question.swift */; };
+		71E953A91E67DEF600A59278 /* RangeQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */; };
+		71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */; };
 		71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */; };
 		71F274941E58DC6700983BB4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F274931E58DC6700983BB4 /* UIView.swift */; };
 		71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF779E1E62773C00A7954B /* FatigueButton.swift */; };
@@ -40,7 +45,12 @@
 		71CC91081E581D1A00DA367A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CC910B1E581D1A00DA367A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CC910D1E581D1A00DA367A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71F2748D1E582C4100983BB4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireControllerDelegate.swift; sourceTree = "<group>"; };
+		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
+		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
+		71E953A51E67DD0100A59278 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestionCell.swift; sourceTree = "<group>"; };
+		71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestionCell.swift; sourceTree = "<group>"; };
 		71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireController.swift; sourceTree = "<group>"; };
 		71F274931E58DC6700983BB4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		71FF779E1E62773C00A7954B /* FatigueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatigueButton.swift; sourceTree = "<group>"; };
@@ -60,11 +70,16 @@
 		71A401E81E63FEF7007B548D /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
-				71F2748D1E582C4100983BB4 /* Question.swift */,
+				71E953A51E67DD0100A59278 /* Question.swift */,
+				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
+				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
 				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
 				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
+				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
+				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
+				71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */,
 				7176C80A1E59515800E557F0 /* Result.swift */,
 				7176C80B1E59515800E557F0 /* ResultsCell.swift */,
 			);
@@ -99,11 +114,11 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
+				71E953A71E67DD7000A59278 /* UI Components */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
-				71FF779E1E62773C00A7954B /* FatigueButton.swift */,
 				7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
 				71FF77A01E62797800A7954B /* Extensions */,
@@ -111,6 +126,14 @@
 				71A401E81E63FEF7007B548D /* Questionnaire */,
 			);
 			path = fatigue;
+			sourceTree = "<group>";
+		};
+		71E953A71E67DD7000A59278 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				71FF779E1E62773C00A7954B /* FatigueButton.swift */,
+			);
+			name = "UI Components";
 			sourceTree = "<group>";
 		};
 		71FF77A01E62797800A7954B /* Extensions */ = {
@@ -196,16 +219,21 @@
 				7176C80C1E59515800E557F0 /* Career.swift in Sources */,
 				71F274941E58DC6700983BB4 /* UIView.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
+				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
 				71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */,
+				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
 				71C957EE1E66895700F163AF /* LongestPath.swift in Sources */,
+				71E953A91E67DEF600A59278 /* RangeQuestionCell.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */,
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
-				71F2748E1E582C4100983BB4 /* Question.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
+				71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */,
 				71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */,
+				71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */,
 				7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */,
+				71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */,
 				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
