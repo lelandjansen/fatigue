@@ -23,23 +23,27 @@ class YesNoQuestion: Question, QuestionnaireItem {
     var nextItem: QuestionnaireItem?
     var nextItemIfYes: QuestionnaireItem?
     var nextItemIfNo: QuestionnaireItem?
+    var riskScoreContribution: (String) -> Int
     
-    init(question: String, details: String = String(), nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
+    init(question: String, details: String = String(), riskScoreContribution: @escaping (String) -> Int, nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
         self.question = question
         self.details = details
+        self.riskScoreContribution = riskScoreContribution
         self.nextItemIfYes = nextItemIfYes
         self.nextItemIfNo = nextItemIfNo
     }
     
-    init(question: String, details: String = String(), nextItem: QuestionnaireItem) {
+    init(question: String, details: String = String(), riskScoreContribution: @escaping (String) -> Int, nextItem: QuestionnaireItem) {
         self.question = question
         self.details = details
+        self.riskScoreContribution = riskScoreContribution
         self.nextItemIfYes = nextItem
         self.nextItemIfNo = nextItem
     }
     
-    init(question: String, details: String = String()) {
+    init(question: String, riskScoreContribution: @escaping (String) -> Int, details: String = String()) {
         self.question = question
         self.details = details
+        self.riskScoreContribution = riskScoreContribution
     }
 }

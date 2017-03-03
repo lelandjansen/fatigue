@@ -240,6 +240,11 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     
     func handleVerticalPan(gesture: UIPanGestureRecognizer) {
+        if gesture.state == UIGestureRecognizerState.ended {
+            collectionView.reloadData()
+            return
+        }
+        
         guard gesture.view is RangeQuestionCell else {
             return
         }
@@ -258,14 +263,32 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
+    func computeRiskScore() -> Int {
+        var riskScore = 0
+        
+        for question in questionnaireItems {
+            if question is Question {
+                let selection = (question as! Question).selection
+                riskScore += (question as! Question).riskScoreContribution(selection)
+            }
+        }
+        
+        return riskScore
+    }
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questionnaireItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if questionnaireItems[indexPath.item] is Result {
+            let result = questionnaireItems[indexPath.item] as! Result
+            result.riskScore = computeRiskScore()
+            
             let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
-            resultsCell.result = questionnaireItems[indexPath.item] as? Result
+            resultsCell.result = result
             resultsCell.delegate = self
             return resultsCell
         }

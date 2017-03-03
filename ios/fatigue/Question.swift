@@ -5,4 +5,5 @@ protocol Question {
     var details: String { get }
     var options: [String] { get }
     var selection: String { get set }
+    var riskScoreContribution: (String) -> Int { get set }
 }
