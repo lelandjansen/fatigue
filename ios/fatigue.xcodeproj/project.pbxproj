@@ -71,17 +71,17 @@
 			isa = PBXGroup;
 			children = (
 				71E953A51E67DD0100A59278 /* Question.swift */,
-				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
-				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
-				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
-				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
-				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
-				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
+				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
 				71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */,
+				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
+				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
+				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
 				7176C80A1E59515800E557F0 /* Result.swift */,
 				7176C80B1E59515800E557F0 /* ResultsCell.swift */,
+				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
+				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
 			);
 			name = Questionnaire;
 			sourceTree = "<group>";
@@ -89,8 +89,8 @@
 		71C957EA1E66893100F163AF /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
-				71C957EB1E66894100F163AF /* TopologicalSort.swift */,
 				71C957ED1E66895700F163AF /* LongestPath.swift */,
+				71C957EB1E66894100F163AF /* TopologicalSort.swift */,
 			);
 			name = Algorithms;
 			sourceTree = "<group>";
@@ -114,16 +114,16 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
-				71E953A71E67DD7000A59278 /* UI Components */,
-				71C957EA1E66893100F163AF /* Algorithms */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
 				7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
+				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
 				71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
+				71E953A71E67DD7000A59278 /* UI Components */,
 			);
 			path = fatigue;
 			sourceTree = "<group>";
@@ -351,6 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SDRF2SCZQU;
 				INFOPLIST_FILE = fatigue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelandjansen.fatigue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -364,6 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SDRF2SCZQU;
 				INFOPLIST_FILE = fatigue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lelandjansen.fatigue;
 				PRODUCT_NAME = "$(TARGET_NAME)";

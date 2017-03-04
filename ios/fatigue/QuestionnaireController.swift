@@ -42,7 +42,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         var questionnaireItem = questionnaireItems.first!
         questionnaireItems = [questionnaireItem]
         
-        while nil != questionnaireItem.nextItem {
+        while questionnaireItem.nextItem != nil {
             questionnaireItems.append(questionnaireItem.nextItem!)
             questionnaireItem = questionnaireItem.nextItem!
         }
@@ -169,7 +169,9 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
             options: .curveEaseOut,
-            animations: { self.view.layoutIfNeeded() },
+            animations: {
+                self.view.layoutIfNeeded()
+            },
             completion: nil
         )
     }
@@ -183,7 +185,9 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             usingSpringWithDamping: 1,
             initialSpringVelocity: 1,
             options: .curveEaseOut,
-            animations: { self.view.layoutIfNeeded() },
+            animations: {
+                self.view.layoutIfNeeded()
+            },
             completion: nil
         )
     }
@@ -203,6 +207,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    
     func moveToNextPage() {
         if pageControl.currentPage == pageControl.numberOfPages - 1 {
             return
@@ -210,24 +215,56 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         
         if pageControl.currentPage == pageControl.numberOfPages - 2 {
             moveControlsOffScreen()
+            collectionView.isScrollEnabled = false
         }
         
         pageControl.currentPage += 1
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if resultCell != nil {
+            resultCell?.ghostElements()
+        }
     }
+    
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
+        let cell = collectionView.cellForItem(at: indexPath!)
+        
+        if cell is ResultCell {
+            (cell as! ResultCell).animateCountUpRiskScore()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
+        let cell = collectionView.cellForItem(at: indexPath!)
+        
+        if cell is ResultCell {
+            (cell as! ResultCell).removeElementGhosting()
+            (cell as! ResultCell).animateCountUpRiskScore()
+        }
+    }
+    
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
         
-        (pageNumber == pageControl.numberOfPages - 1) ? moveControlsOffScreen() : moveControlsOnScreen()
+        if pageNumber == pageControl.numberOfPages - 1 {
+            moveControlsOffScreen()
+            collectionView.isScrollEnabled = false
+        }
+        else {
+             moveControlsOnScreen()
+        }
     }
+    
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer is UIPanGestureRecognizer {
@@ -277,20 +314,23 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questionnaireItems.count
     }
+    
+    
+    var resultCell: ResultCell?
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if questionnaireItems[indexPath.item] is Result {
             let result = questionnaireItems[indexPath.item] as! Result
             result.riskScore = computeRiskScore()
             
-            let resultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
-            resultsCell.result = result
-            resultsCell.delegate = self
-            return resultsCell
+            let resultCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
+            resultCell.result = result
+            resultCell.delegate = self
+            self.resultCell = resultCell
+            return resultCell
         }
         
         if questionnaireItems[indexPath.item] is RangeQuestion {
