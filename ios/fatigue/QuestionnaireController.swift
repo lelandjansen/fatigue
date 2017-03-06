@@ -134,7 +134,12 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         view.addSubview(collectionView)
         view.addSubview(pageControl)
         
-        collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        collectionView.anchorToTop(
+            view.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor
+        )
         
         pageControlBottomAnchor = pageControl.anchor(
             nil,
@@ -224,6 +229,10 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    
+    func goToHomePage() {
+        dismiss(animated: true, completion: nil)
+    }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if resultCell != nil {

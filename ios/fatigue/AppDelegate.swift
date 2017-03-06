@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = QuestionnaireController()
+        window?.rootViewController = HomePageController()
         
         UIApplication.shared.statusBarStyle = .lightContent
         

@@ -217,7 +217,7 @@ class ResultCell: UICollectionViewCell {
     
     
     func handleSave() {
-        
+        delegate?.goToHomePage()
     }
     
     func handleShare() {
