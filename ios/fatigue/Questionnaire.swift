@@ -105,7 +105,7 @@ struct Questionnaire {
         )
         
         let forecastHoursAwake = RangeQuestion(
-            question: "How many hours do you anticipate to be awake after the aircraft is shut down?",
+            question: "How many hours do you anticipate to have been awake when the aircraft is shut down?",
             options: Array(0...16),
             selection: 6,
             units: .hours,
@@ -228,7 +228,7 @@ struct Questionnaire {
         )
         
         let forecastHoursAwake = RangeQuestion(
-            question: "How many hours do you anticipate to be awake after finishing today's maintenance tasks?",
+            question: "How many hours do you anticipate to have been awake after finishing today's maintenance tasks?",
             options: Array(0...16),
             selection: 6,
             units: .hours,
