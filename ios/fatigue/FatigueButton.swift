@@ -10,7 +10,18 @@ public class FatigueButton: UIButton {
         layer.cornerRadius = 5
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
-        heightAnchor.constraint(equalToConstant: 64).isActive = true
+        translatesAutoresizingMaskIntoConstraints = false
+        addConstraint(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .height,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: 64
+            )
+        )
     }
     
     required public init?(coder aDecoder: NSCoder) {
