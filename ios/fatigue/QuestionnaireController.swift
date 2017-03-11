@@ -165,6 +165,17 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
+    func animateBackgroundColor(toColor color: UIColor, withDuration duration: TimeInterval) {
+        UIView.animate(
+            withDuration: duration,
+            animations: {
+                self.collectionView.backgroundColor = color
+            }
+        )
+    }
+    
+    
+    
     fileprivate func moveControlsOffScreen() {
         self.pageControlBottomAnchor?.constant = 40
         
