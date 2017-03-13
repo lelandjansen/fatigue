@@ -164,6 +164,9 @@ class ResultCell: UICollectionViewCell {
     func animateCountUpRiskScore() {
         let timeInterval: TimeInterval = min(1.0/10.0, 1.0/Double(result!.riskScore))
         
+        let backgroundColor = determineBackgroundColorFromRiskScore()
+        delegate?.animateBackgroundColor(toColor: backgroundColor, withDuration: timeInterval * TimeInterval(result!.riskScore))
+        
         Timer.scheduledTimer(
             timeInterval: timeInterval,
             target: self,
@@ -171,8 +174,19 @@ class ResultCell: UICollectionViewCell {
             userInfo: nil,
             repeats: true
         ).fire()
-        
-        
+    }
+    
+    func determineBackgroundColorFromRiskScore() -> UIColor {
+        switch (result?.qualitativeRisk)! {
+        case .low:
+            return .green
+        case .medium:
+            return .yellow
+        case .high:
+            return .orange
+        case .veryHigh:
+            return .red
+        }
     }
 
     
