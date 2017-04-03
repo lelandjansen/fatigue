@@ -15,19 +15,10 @@ class HomePage: UIView {
     
     let titleLabel: UILabel = {
         let attributedText = NSMutableAttributedString(
-            string: "Daily Fatigue",
+            string: "Fatigue Self-Assessment",
             attributes: [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+                NSFontAttributeName: UIFont.systemFont(ofSize: 22, weight: UIFontWeightSemibold)
             ]
-        )
-        
-        attributedText.append(
-            NSAttributedString(
-                string: "\nSelf-Assessment",
-                attributes: [
-                    NSFontAttributeName: UIFont.systemFont(ofSize: 24)
-                ]
-            )
         )
         
         let label = UILabel()
@@ -35,7 +26,7 @@ class HomePage: UIView {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .dark
         return label
     }()
     
@@ -46,23 +37,20 @@ class HomePage: UIView {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .dark
         return label
     }()
     
-    let beginQuestionnaireButton: FatigueButton = {
-        let button = FatigueButton()
-        button.setTitle("Begin questionnaire", for: .normal)
+    let beginQuestionnaireButton: UIButton = {
+        let button = UIButton.createStyledButton(withColor: .blue)
+        button.setTitle("Begin", for: .normal)
         button.addTarget(self, action: #selector(handleBeginQuestionnaireButton), for: .touchUpInside)
         return button
     }()
     
     let settingsButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton.createStyledButton()
         button.setTitle("Settings", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(UIColor(white: 1, alpha: 1/2), for: .highlighted)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         return button
     }()
     
@@ -79,7 +67,7 @@ class HomePage: UIView {
             topAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 64,
+            topConstant: 94,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
@@ -93,25 +81,20 @@ class HomePage: UIView {
             rightConstant: sidePadding
         )
         
-        // TODO: This is a hacky fix. Properly center button and other elements using AutoLayout.
-        let buttonSize: CGFloat = 64
-        beginQuestionnaireButton.anchorWithConstantsToTop(
-            centerYAnchor,
-            left: leftAnchor,
-            bottom: centerYAnchor,
-            right: rightAnchor,
-            topConstant: -buttonSize/2,
-            leftConstant: 80,
-            bottomConstant: -buttonSize/2,
-            rightConstant: 80
+        beginQuestionnaireButton.frame = CGRect(
+            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
+            y: (self.frame.size.height - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
+            width: UIConstants.buttonWidth,
+            height: UIConstants.buttonHeight
         )
         
-        settingsButton.anchorToTop(
-            beginQuestionnaireButton.bottomAnchor,
-            left: leftAnchor,
-            bottom: bottomAnchor,
-            right: rightAnchor
+        settingsButton.frame = CGRect(
+            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
+            y: (self.frame.size.height + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2,
+            width: UIConstants.buttonWidth,
+            height: UIConstants.buttonHeight
         )
+        
     }
     
     func handleBeginQuestionnaireButton() {

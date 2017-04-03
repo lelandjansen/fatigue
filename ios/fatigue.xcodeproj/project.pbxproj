@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7117599F1E921DD700949FB4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117599E1E921DD700949FB4 /* UIColor.swift */; };
+		7118D6FA1EA19FF4004B7E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118D6F91EA19FF4004B7E19 /* Constants.swift */; };
 		713495F81E6E73060073C3C9 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F71E6E73060073C3C9 /* HomePage.swift */; };
 		713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F91E6E73210073C3C9 /* HomePageController.swift */; };
 		713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */; };
+		713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FD4B91EA13A6A00815B44 /* Log.swift */; };
 		7176C80C1E59515800E557F0 /* Career.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8081E59515800E557F0 /* Career.swift */; };
 		7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8091E59515800E557F0 /* QuestionCell.swift */; };
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
-		7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultsCell.swift */; };
+		7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultCell.swift */; };
 		7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */; };
+		718839391E9B34B000221316 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718839381E9B34B000221316 /* UIButton.swift */; };
+		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
 		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
 		719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414BB1E63FCD1009A16D2 /* Questionnaire.swift */; };
 		71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C957EB1E66894100F163AF /* TopologicalSort.swift */; };
 		71C957EE1E66895700F163AF /* LongestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C957ED1E66895700F163AF /* LongestPath.swift */; };
 		71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC91011E581D1A00DA367A /* AppDelegate.swift */; };
 		71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CC91081E581D1A00DA367A /* Assets.xcassets */; };
-		71CC910C1E581D1A00DA367A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */; };
 		71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
@@ -30,18 +34,22 @@
 		71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */; };
 		71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */; };
 		71F274941E58DC6700983BB4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F274931E58DC6700983BB4 /* UIView.swift */; };
-		71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF779E1E62773C00A7954B /* FatigueButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7117599E1E921DD700949FB4 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		7118D6F91EA19FF4004B7E19 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		713495F71E6E73060073C3C9 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		713495F91E6E73210073C3C9 /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageControllerDelegate.swift; sourceTree = "<group>"; };
+		713FD4B91EA13A6A00815B44 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7176C8081E59515800E557F0 /* Career.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Career.swift; sourceTree = "<group>"; };
 		7176C8091E59515800E557F0 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		7176C80B1E59515800E557F0 /* ResultsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
+		7176C80B1E59515800E557F0 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
+		718839381E9B34B000221316 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
 		719414BB1E63FCD1009A16D2 /* Questionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		71C957EB1E66894100F163AF /* TopologicalSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopologicalSort.swift; sourceTree = "<group>"; };
@@ -49,7 +57,6 @@
 		71CC90FE1E581D1A00DA367A /* fatigue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fatigue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CC91011E581D1A00DA367A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CC91081E581D1A00DA367A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		71CC910B1E581D1A00DA367A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CC910D1E581D1A00DA367A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireControllerDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
@@ -59,7 +66,6 @@
 		71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestionCell.swift; sourceTree = "<group>"; };
 		71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireController.swift; sourceTree = "<group>"; };
 		71F274931E58DC6700983BB4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		71FF779E1E62773C00A7954B /* FatigueButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FatigueButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,7 @@
 				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
 				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
 				7176C80A1E59515800E557F0 /* Result.swift */,
-				7176C80B1E59515800E557F0 /* ResultsCell.swift */,
+				7176C80B1E59515800E557F0 /* ResultCell.swift */,
 				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
 				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
 			);
@@ -105,6 +111,7 @@
 		71C957EA1E66893100F163AF /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				713FD4B91EA13A6A00815B44 /* Log.swift */,
 				71C957ED1E66895700F163AF /* LongestPath.swift */,
 				71C957EB1E66894100F163AF /* TopologicalSort.swift */,
 			);
@@ -131,31 +138,25 @@
 			isa = PBXGroup;
 			children = (
 				71CC910D1E581D1A00DA367A /* Info.plist */,
+				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
+				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
 				7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
 				713495F61E6E72F30073C3C9 /* Home page */,
-				71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
-				71E953A71E67DD7000A59278 /* UI Components */,
 			);
 			path = fatigue;
-			sourceTree = "<group>";
-		};
-		71E953A71E67DD7000A59278 /* UI Components */ = {
-			isa = PBXGroup;
-			children = (
-				71FF779E1E62773C00A7954B /* FatigueButton.swift */,
-			);
-			name = "UI Components";
 			sourceTree = "<group>";
 		};
 		71FF77A01E62797800A7954B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				718839381E9B34B000221316 /* UIButton.swift */,
+				7117599E1E921DD700949FB4 /* UIColor.swift */,
 				71F274931E58DC6700983BB4 /* UIView.swift */,
 			);
 			name = Extensions;
@@ -221,7 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71CC910C1E581D1A00DA367A /* LaunchScreen.storyboard in Resources */,
+				7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,19 +234,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7118D6FA1EA19FF4004B7E19 /* Constants.swift in Sources */,
 				7176C80C1E59515800E557F0 /* Career.swift in Sources */,
 				713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */,
 				71F274941E58DC6700983BB4 /* UIView.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
+				718839391E9B34B000221316 /* UIButton.swift in Sources */,
 				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
-				71FF779F1E62773C00A7954B /* FatigueButton.swift in Sources */,
 				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
 				713495F81E6E73060073C3C9 /* HomePage.swift in Sources */,
 				713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */,
 				71C957EE1E66895700F163AF /* LongestPath.swift in Sources */,
+				7117599F1E921DD700949FB4 /* UIColor.swift in Sources */,
 				71E953A91E67DEF600A59278 /* RangeQuestionCell.swift in Sources */,
-				7176C80F1E59515800E557F0 /* ResultsCell.swift in Sources */,
+				7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */,
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
+				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
@@ -259,17 +263,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		71CC910A1E581D1A00DA367A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71CC910B1E581D1A00DA367A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		71CC910E1E581D1A00DA367A /* Debug */ = {

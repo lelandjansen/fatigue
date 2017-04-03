@@ -1,8 +1,8 @@
 import Foundation
 
 class RangeQuestion: Question, QuestionnaireItem {
-    enum Units: String {
-        case none = "", hours = "hrs"
+    enum Units {
+        case none, hours
     }
     
     var question: String

@@ -24,11 +24,11 @@ class QuestionCell: UICollectionViewCell {
     
     let questionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 22)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .dark
         return label
     }()
     
@@ -38,7 +38,7 @@ class QuestionCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .medium
         return label
     }()
     
@@ -59,7 +59,7 @@ class QuestionCell: UICollectionViewCell {
             topAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 64,
+            topConstant: 10,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
@@ -68,7 +68,7 @@ class QuestionCell: UICollectionViewCell {
             questionLabel.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 16,
+            topConstant: 19,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )

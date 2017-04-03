@@ -157,7 +157,7 @@ struct Questionnaire {
             },
             nextItem: sleepInPast48HoursQuestion
         )
-        
+
         return sleepInPast24HoursQuestion
     }
     

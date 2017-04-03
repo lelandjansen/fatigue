@@ -27,7 +27,7 @@ class ResultCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .dark
         return label
     }()
     
@@ -35,7 +35,13 @@ class ResultCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 88, weight: UIFontWeightLight)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .light
+        
+        let size: CGFloat = 130
+        label.bounds = CGRect(x: 0, y: 0, width: size, height: size)
+        label.layer.cornerRadius = size / 2
+        label.layer.backgroundColor = UIColor.medium.cgColor
+        label.layer.masksToBounds = true
         return label
     }()
     
@@ -45,7 +51,7 @@ class ResultCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .medium
         return label
     }()
     
@@ -56,19 +62,13 @@ class ResultCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = .medium
         return label
     }()
     
-    let saveButton: FatigueButton = {
-        let button = FatigueButton()
-        button.setTitle("Save", for: .normal)
-        return button
-    }()
-    
-    let shareButton: FatigueButton = {
-        let button = FatigueButton()
-        button.setTitle("Share and save", for: .normal)
+    let shareButton: UIButton = {
+        let button = UIButton.createStyledButton(withColor: .blue)
+        button.setTitle("Share", for: .normal)
         return button
     }()
     
@@ -78,7 +78,6 @@ class ResultCell: UICollectionViewCell {
         addSubview(releaseToViewScoreLabel)
         addSubview(riskScoreLabel)
         addSubview(remarkLabel)
-        addSubview(saveButton)
         addSubview(shareButton)
         
         let sidePadding: CGFloat = 16
@@ -88,7 +87,7 @@ class ResultCell: UICollectionViewCell {
             topAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 64,
+            topConstant: 10,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
@@ -101,48 +100,43 @@ class ResultCell: UICollectionViewCell {
             right: rightAnchor
         )
         
+        let circleRadius = riskScoreLabel.bounds.width / 2
+        
         riskScoreLabel.text = String(describing: 0)
+        riskScoreLabel.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: circleRadius * 2,
+            height: circleRadius * 2
+        )
         riskScoreLabel.anchorWithConstantsToTop(
-            riskScoreTitleLabel.bottomAnchor,
+            topAnchor,
             left: leftAnchor,
-            bottom: nil,
+            bottom: bottomAnchor,
             right: rightAnchor,
-            topConstant: 32
+            topConstant: (self.frame.height - 65) / 2 - circleRadius,
+            leftConstant: self.frame.width / 2 - circleRadius,
+            bottomConstant:  (self.frame.height + 65) / 2 - circleRadius,
+            rightConstant: self.frame.width / 2 - circleRadius
         )
         
         remarkLabel.alpha = 0
         remarkLabel.anchorWithConstantsToTop(
-            riskScoreLabel.bottomAnchor,
+            riskScoreTitleLabel.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 32,
+            topConstant: 16,
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
-        
-        let buttonSpacing: CGFloat = 16
-        
-        shareButton.anchorWithConstantsToTop(
-            nil,
-            left: leftAnchor,
-            bottom: bottomAnchor,
-            right: rightAnchor,
-            leftConstant: 80,
-            bottomConstant: 80,
-            rightConstant: 80
+
+        shareButton.frame = CGRect(
+            x: (self.frame.width - UIConstants.buttonWidth) / 2,
+            y: self.frame.height - (self.frame.width - UIConstants.buttonWidth) / 2 - UIConstants.buttonHeight,
+            width: UIConstants.buttonWidth,
+            height: UIConstants.buttonHeight
         )
         shareButton.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
-        
-        saveButton.anchorWithConstantsToTop(
-            nil,
-            left: leftAnchor,
-            bottom: shareButton.topAnchor,
-            right: rightAnchor,
-            leftConstant: 80,
-            bottomConstant: buttonSpacing,
-            rightConstant: 80
-        )
-        saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
     }
     
     
@@ -161,11 +155,25 @@ class ResultCell: UICollectionViewCell {
     }
     
     
+    func animateBackgroundColor(forLabel label: UILabel, toColor color: UIColor, withDuration duration: TimeInterval) {
+        UIView.animate(
+            withDuration: duration,
+            animations: {
+                label.layer.backgroundColor = color.cgColor
+            }
+        )
+    }
+    
+    
     func animateCountUpRiskScore() {
         let timeInterval: TimeInterval = min(1.0/10.0, 1.0/Double(result!.riskScore))
-        
         let backgroundColor = determineBackgroundColorFromRiskScore()
-        delegate?.animateBackgroundColor(toColor: backgroundColor, withDuration: timeInterval * TimeInterval(result!.riskScore))
+        
+        animateBackgroundColor(
+            forLabel: riskScoreLabel,
+            toColor: backgroundColor,
+            withDuration: timeInterval * TimeInterval(result!.riskScore)
+        )
         
         Timer.scheduledTimer(
             timeInterval: timeInterval,
@@ -216,7 +224,6 @@ class ResultCell: UICollectionViewCell {
         riskScoreTitleLabel.alpha = 1
         riskScoreLabel.alpha = 1
         releaseToViewScoreLabel.alpha = 0
-        saveButton.alpha = 1
         shareButton.alpha = 1
     }
     
@@ -225,14 +232,9 @@ class ResultCell: UICollectionViewCell {
         riskScoreTitleLabel.alpha = ghostAlpha
         riskScoreLabel.alpha = 0
         releaseToViewScoreLabel.alpha = 1
-        saveButton.alpha = ghostAlpha
         shareButton.alpha = ghostAlpha
     }
     
-    
-    func handleSave() {
-        delegate?.goToHomePage()
-    }
     
     func handleShare() {
         
