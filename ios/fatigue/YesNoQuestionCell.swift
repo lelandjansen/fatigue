@@ -84,14 +84,14 @@ class YesNoQuestionCell : QuestionCell {
         
         yesButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height - 65 - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
+            y: (self.frame.size.height - UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
         
         noButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height - 65 + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2 ,
+            y: (self.frame.size.height - UIConstants.navigationBarHeight + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2 ,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )

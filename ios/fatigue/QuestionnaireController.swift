@@ -118,7 +118,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     
     lazy var navigationBar: UINavigationBar = {
         let navigationBar: UINavigationBar = UINavigationBar(
-            frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65)
+            frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: UIConstants.navigationBarHeight)
         )
         navigationBar.barTintColor = .light
         navigationBar.isTranslucent = false
