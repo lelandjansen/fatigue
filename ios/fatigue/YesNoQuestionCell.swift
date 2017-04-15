@@ -30,14 +30,14 @@ class YesNoQuestionCell : QuestionCell {
         didSet {
             switch selection {
             case .yes:
-                selectYes()
-                deselectNo()
+                yesButton.isSelected = true
+                noButton.isSelected = false
             case .no:
-                deselectYes()
-                selectNo()
+                yesButton.isSelected = false
+                noButton.isSelected = true
             default:
-                deselectYes()
-                deselectNo()
+                yesButton.isSelected = false
+                noButton.isSelected = false
             }
             
             delegate?.setQuestionSelection(
@@ -48,36 +48,15 @@ class YesNoQuestionCell : QuestionCell {
     }
     
     
-    func selectYes() {
-        yesButton.isSelected = true
-        yesButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
-    }
-    
-    func deselectYes() {
-        yesButton.isSelected = false
-        yesButton.backgroundColor = .clear
-    }
-    
-    func selectNo() {
-        noButton.isSelected = true
-        noButton.backgroundColor = UIColor(white: 1, alpha: 3/20)
-    }
-    
-    func deselectNo() {
-        noButton.isSelected = false
-        noButton.backgroundColor = .clear
-    }
-    
-    
-    lazy var yesButton: FatigueButton = {
-        let button = FatigueButton(type: .custom)
+    lazy var yesButton: UIButton = {
+        let button = UIButton.createStyledSelectButton(withColor: .blue)
         button.setTitle(YesNoQuestion.Answer.yes.rawValue, for: .normal)
         button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
         return button
     }()
     
-    lazy var noButton: FatigueButton = {
-        let button = FatigueButton(type: .custom)
+    lazy var noButton: UIButton = {
+        let button = UIButton.createStyledSelectButton(withColor: .blue)
         button.setTitle(YesNoQuestion.Answer.no.rawValue, for: .normal)
         button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
         return button
@@ -103,25 +82,18 @@ class YesNoQuestionCell : QuestionCell {
         addSubview(yesButton)
         addSubview(noButton)
         
-        let buttonSpacing: CGFloat = 16
-        
-        yesButton.anchorWithConstantsToTop(
-            nil,
-            left: leftAnchor,
-            bottom: centerYAnchor,
-            right: rightAnchor,
-            leftConstant: 80,
-            bottomConstant: buttonSpacing/2,
-            rightConstant: 80
+        yesButton.frame = CGRect(
+            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
+            y: (self.frame.size.height - 65 - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
+            width: UIConstants.buttonWidth,
+            height: UIConstants.buttonHeight
         )
         
-        noButton.anchorWithConstantsToTop(
-            centerYAnchor,
-            left: leftAnchor,
-            right: rightAnchor,
-            topConstant: buttonSpacing/2,
-            leftConstant: 80,
-            rightConstant: 80
+        noButton.frame = CGRect(
+            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
+            y: (self.frame.size.height - 65 + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2 ,
+            width: UIConstants.buttonWidth,
+            height: UIConstants.buttonHeight
         )
     }
     

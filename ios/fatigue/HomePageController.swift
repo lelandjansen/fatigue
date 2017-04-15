@@ -3,8 +3,8 @@ import UIKit
 class HomePageController: UIViewController, HomePageControllerDelegate {
     
     lazy var landingPage: UIView = {
-        let view = HomePage()
-        view.backgroundColor = UIColor(colorLiteralRed: 142/255, green: 141/255, blue: 142/255, alpha: 1)
+        let view = HomePage(frame: self.view.frame)
+        view.backgroundColor = .light
         view.delegate = self
         return view
     }()
@@ -26,4 +26,5 @@ class HomePageController: UIViewController, HomePageControllerDelegate {
         let questionnaireController = QuestionnaireController()
         present(questionnaireController, animated: true, completion: nil)
     }
+
 }

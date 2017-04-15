@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = HomePageController()
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        
         return true
     }
     

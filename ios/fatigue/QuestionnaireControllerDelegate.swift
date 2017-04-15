@@ -6,5 +6,4 @@ protocol QuestionnaireControllerDelegate: class {
     func moveToPreviousPage()
     func moveToNextPage()
     func goToHomePage()
-    func animateBackgroundColor(toColor color: UIColor, withDuration duration: TimeInterval)
 }

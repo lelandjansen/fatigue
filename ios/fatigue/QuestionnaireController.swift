@@ -37,7 +37,6 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    
     func updateQuestionnaireOrder() {
         var questionnaireItem = questionnaireItems.first!
         questionnaireItems = [questionnaireItem]
@@ -108,7 +107,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor(colorLiteralRed: 91/255, green: 151/255, blue: 184/255, alpha: 1)
+        collectionView.backgroundColor = .light
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isPagingEnabled = true
@@ -117,10 +116,33 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }()
     
     
+    lazy var navigationBar: UINavigationBar = {
+        let navigationBar: UINavigationBar = UINavigationBar(
+            frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65)
+        )
+        navigationBar.barTintColor = .light
+        navigationBar.isTranslucent = false
+        navigationBar.tintColor = .medium
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        let navigationItem = UINavigationItem(title: "Questionnaire")
+        let closeItem = UIBarButtonItem(
+            title: "Close",
+            style: UIBarButtonItemStyle.plain,
+            target: nil,
+            action: #selector(goToHomePage)
+        )
+        navigationItem.leftBarButtonItem = closeItem
+        navigationBar.setItems([navigationItem], animated: false)
+        return navigationBar
+    }()
+    
+    
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.pageIndicatorTintColor = UIColor(white: 1, alpha: 1/2)
-        pageControl.currentPageIndicatorTintColor = .white
+        pageControl.pageIndicatorTintColor = UIColor.dark.withAlphaComponent(2 / 5)
+        pageControl.currentPageIndicatorTintColor = .dark
         pageControl.defersCurrentPageDisplay = true
         return pageControl
     }()
@@ -133,9 +155,10 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         
         view.addSubview(collectionView)
         view.addSubview(pageControl)
+        view.addSubview(navigationBar)
         
         collectionView.anchorToTop(
-            view.topAnchor,
+            navigationBar.bottomAnchor,
             left: view.leftAnchor,
             bottom: view.bottomAnchor,
             right: view.rightAnchor
@@ -163,17 +186,6 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
         collectionView.register(YesNoQuestionCell.self, forCellWithReuseIdentifier: CellId.yesNoQuestion.rawValue)
         collectionView.register(ResultCell .self, forCellWithReuseIdentifier: CellId.result.rawValue)
     }
-    
-    
-    func animateBackgroundColor(toColor color: UIColor, withDuration duration: TimeInterval) {
-        UIView.animate(
-            withDuration: duration,
-            animations: {
-                self.collectionView.backgroundColor = color
-            }
-        )
-    }
-    
     
     
     fileprivate func moveControlsOffScreen() {
@@ -375,7 +387,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return CGSize(width: view.frame.width, height: view.frame.height - self.navigationBar.frame.height)
     }
     
 }
