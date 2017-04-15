@@ -121,13 +121,13 @@ class RangeQuestionCell : QuestionCell {
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor,
-            bottomConstant: 65
+            bottomConstant: UIConstants.navigationBarHeight
         )
         
         unitsLabel.anchorWithConstantsToTop(
             nil,
             bottom: centerYAnchor,
-            bottomConstant: 65 - 70
+            bottomConstant: UIConstants.navigationBarHeight - 70
         )
 
         setUnitsLabelLeftAnchor()

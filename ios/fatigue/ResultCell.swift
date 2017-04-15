@@ -114,9 +114,9 @@ class ResultCell: UICollectionViewCell {
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor,
-            topConstant: (self.frame.height - 65) / 2 - circleRadius,
+            topConstant: (self.frame.height - UIConstants.navigationBarHeight) / 2 - circleRadius,
             leftConstant: self.frame.width / 2 - circleRadius,
-            bottomConstant:  (self.frame.height + 65) / 2 - circleRadius,
+            bottomConstant:  (self.frame.height + UIConstants.navigationBarHeight) / 2 - circleRadius,
             rightConstant: self.frame.width / 2 - circleRadius
         )
         
