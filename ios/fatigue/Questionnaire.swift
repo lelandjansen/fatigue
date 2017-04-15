@@ -18,13 +18,21 @@ struct Questionnaire {
         
         let result = Result()
         
+        let reasonNotToFly = YesNoQuestion(
+            question: "Do you know of any other reason you should not fly today?",
+            riskScoreContribution: {
+                selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
+            },
+            nextItem: result
+        )
+        
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: result
+            nextItem: reasonNotToFly
         )
         
         let deployentTimeQuestion = YesNoQuestion(
@@ -87,8 +95,8 @@ struct Questionnaire {
             nextItemIfNo: flightTimeQuestionOnePilot
         )
         
-        let timeZoneTravelQuestion = RangeQuestion(
-            question: "Through how many time zones have you traveled in the past three days?",
+        let timeZoneQuantityQuestion = RangeQuestion(
+            question: "How many time zones did you travel through to get to the project site?",
             options: Array(0...12),
             selection: 0,
             riskScoreContribution: {
@@ -104,8 +112,15 @@ struct Questionnaire {
             nextItem: numberOfPilotsQuestion
         )
         
+        let timeZoneTravelQuestion = YesNoQuestion(
+            question: "Have you been on-site for less than three full days?",
+            riskScoreContribution: { _ in 0 },
+            nextItemIfYes: timeZoneQuantityQuestion,
+            nextItemIfNo: numberOfPilotsQuestion
+        )
+        
         let forecastHoursAwake = RangeQuestion(
-            question: "How many hours do you anticipate to have been awake when the aircraft is shut down?",
+            question: "How many hours do you anticipate having been awake when the aircraft is shut down?",
             options: Array(0...16),
             selection: 6,
             units: .hours,
@@ -166,13 +181,21 @@ struct Questionnaire {
         
         let result = Result()
         
+        let reasonNotToFly = YesNoQuestion(
+            question: "Do you know of any other reason you should not work today?",
+            riskScoreContribution: {
+                selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
+            },
+            nextItem: result
+        )
+        
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: result
+            nextItem: reasonNotToFly
         )
         
         let deployentTimeQuestion = YesNoQuestion(
@@ -210,8 +233,8 @@ struct Questionnaire {
             nextItem: stressQuestion
         )
         
-        let timeZoneTravelQuestion = RangeQuestion(
-            question: "Through how many time zones have you traveled in the past three days?",
+        let timeZoneQuantityQuestion = RangeQuestion(
+            question: "How many time zones did you travel through to get to the project site?",
             options: Array(0...12),
             selection: 0,
             riskScoreContribution: {
@@ -225,6 +248,13 @@ struct Questionnaire {
                 }
             },
             nextItem: maintenanceTimeQuestion
+        )
+        
+        let timeZoneTravelQuestion = YesNoQuestion(
+            question: "Have you been on-site for less than three full days?",
+            riskScoreContribution: { _ in 0 },
+            nextItemIfYes: timeZoneQuantityQuestion,
+            nextItemIfNo: maintenanceTimeQuestion
         )
         
         let forecastHoursAwake = RangeQuestion(

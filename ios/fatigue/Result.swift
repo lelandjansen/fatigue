@@ -19,7 +19,7 @@ class Result: QuestionnaireItem {
                     qualitativeRisk = QualitativeRisk.medium
                 }
                 else if riskScore < 18 {
-                    remark = "Proceed upon approval from Chief Pilot of agreed mitigation measures."
+                    remark = "Proceed upon approval from your supervisor."
                     qualitativeRisk = QualitativeRisk.high
                 }
                 else {
@@ -36,7 +36,7 @@ class Result: QuestionnaireItem {
                     qualitativeRisk = QualitativeRisk.medium
                 }
                 else if riskScore < 18 {
-                    remark = "Proceed upon approval of agreed mitigation measures from Head of Maintenance."
+                    remark = "Proceed upon approval from your supervisor."
                     qualitativeRisk = QualitativeRisk.high
                 }
                 else {

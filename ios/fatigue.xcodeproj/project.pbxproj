@@ -17,7 +17,7 @@
 		7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8091E59515800E557F0 /* QuestionCell.swift */; };
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
 		7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultCell.swift */; };
-		7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */; };
+		7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8101E595C9100E557F0 /* UserDefaults.swift */; };
 		718839391E9B34B000221316 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718839381E9B34B000221316 /* UIButton.swift */; };
 		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
 		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
@@ -47,7 +47,7 @@
 		7176C8091E59515800E557F0 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7176C80B1E59515800E557F0 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
-		7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
+		7176C8101E595C9100E557F0 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		718839381E9B34B000221316 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7176C8081E59515800E557F0 /* Career.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
-				7176C8101E595C9100E557F0 /* UserDefaults+helpers.swift */,
+				7176C8101E595C9100E557F0 /* UserDefaults.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
@@ -256,7 +256,7 @@
 				71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */,
 				71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */,
 				71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */,
-				7176C8111E595C9100E557F0 /* UserDefaults+helpers.swift in Sources */,
+				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
 				71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */,
 				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,
 			);
