@@ -13,7 +13,25 @@
 		713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F91E6E73210073C3C9 /* HomePageController.swift */; };
 		713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */; };
 		713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FD4B91EA13A6A00815B44 /* Log.swift */; };
-		7176C80C1E59515800E557F0 /* Career.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8081E59515800E557F0 /* Career.swift */; };
+		71555D191EAC3F5C00883C45 /* LegalSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D181EAC3F5C00883C45 /* LegalSetting.swift */; };
+		71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */; };
+		71555D1D1EAC3F8600883C45 /* SupervisorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D1C1EAC3F8600883C45 /* SupervisorSetting.swift */; };
+		71555D1F1EAC3FBA00883C45 /* NameSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D1E1EAC3FBA00883C45 /* NameSetting.swift */; };
+		71555D211EAC403500883C45 /* DailyReminderSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D201EAC403500883C45 /* DailyReminderSetting.swift */; };
+		71555D251EAC407000883C45 /* AboutSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D241EAC407000883C45 /* AboutSetting.swift */; };
+		71555D291EAC661E00883C45 /* AboutSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D281EAC661E00883C45 /* AboutSettingController.swift */; };
+		71555D2B1EAC66CA00883C45 /* AboutSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */; };
+		71555D2D1EAC6D7500883C45 /* DailyReminderSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D2C1EAC6D7500883C45 /* DailyReminderSettingController.swift */; };
+		71555D2F1EAC6D9300883C45 /* DailyReminderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D2E1EAC6D9300883C45 /* DailyReminderSettingView.swift */; };
+		71555D311EAC6F7F00883C45 /* NameSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D301EAC6F7F00883C45 /* NameSettingController.swift */; };
+		71555D331EAC701400883C45 /* NameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D321EAC701400883C45 /* NameSettingView.swift */; };
+		71555D351EAC709E00883C45 /* OccupationSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D341EAC709E00883C45 /* OccupationSettingController.swift */; };
+		71555D371EAC70D500883C45 /* OccupationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D361EAC70D500883C45 /* OccupationSettingView.swift */; };
+		71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D381EAC711A00883C45 /* SupervisorSettingController.swift */; };
+		71555D3B1EAC715A00883C45 /* SupervisorSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3A1EAC715A00883C45 /* SupervisorSettingView.swift */; };
+		71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3C1EAC71E200883C45 /* LegalSettingController.swift */; };
+		71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3E1EAC723400883C45 /* LegalSettingView.swift */; };
+		7176C80C1E59515800E557F0 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8081E59515800E557F0 /* Occupation.swift */; };
 		7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8091E59515800E557F0 /* QuestionCell.swift */; };
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
 		7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultCell.swift */; };
@@ -22,6 +40,8 @@
 		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
 		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
 		719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414BB1E63FCD1009A16D2 /* Questionnaire.swift */; };
+		719F50D81EA323A00037B04F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F50D71EA323A00037B04F /* SettingsController.swift */; };
+		719F50DE1EA3DCFB0037B04F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F50DD1EA3DCFB0037B04F /* Setting.swift */; };
 		71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C957EB1E66894100F163AF /* TopologicalSort.swift */; };
 		71C957EE1E66895700F163AF /* LongestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C957ED1E66895700F163AF /* LongestPath.swift */; };
 		71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC91011E581D1A00DA367A /* AppDelegate.swift */; };
@@ -43,7 +63,25 @@
 		713495F91E6E73210073C3C9 /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageControllerDelegate.swift; sourceTree = "<group>"; };
 		713FD4B91EA13A6A00815B44 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		7176C8081E59515800E557F0 /* Career.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Career.swift; sourceTree = "<group>"; };
+		71555D181EAC3F5C00883C45 /* LegalSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSetting.swift; sourceTree = "<group>"; };
+		71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationSetting.swift; sourceTree = "<group>"; };
+		71555D1C1EAC3F8600883C45 /* SupervisorSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupervisorSetting.swift; sourceTree = "<group>"; };
+		71555D1E1EAC3FBA00883C45 /* NameSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSetting.swift; sourceTree = "<group>"; };
+		71555D201EAC403500883C45 /* DailyReminderSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReminderSetting.swift; sourceTree = "<group>"; };
+		71555D241EAC407000883C45 /* AboutSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSetting.swift; sourceTree = "<group>"; };
+		71555D281EAC661E00883C45 /* AboutSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingController.swift; sourceTree = "<group>"; };
+		71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingView.swift; sourceTree = "<group>"; };
+		71555D2C1EAC6D7500883C45 /* DailyReminderSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReminderSettingController.swift; sourceTree = "<group>"; };
+		71555D2E1EAC6D9300883C45 /* DailyReminderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyReminderSettingView.swift; sourceTree = "<group>"; };
+		71555D301EAC6F7F00883C45 /* NameSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSettingController.swift; sourceTree = "<group>"; };
+		71555D321EAC701400883C45 /* NameSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSettingView.swift; sourceTree = "<group>"; };
+		71555D341EAC709E00883C45 /* OccupationSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationSettingController.swift; sourceTree = "<group>"; };
+		71555D361EAC70D500883C45 /* OccupationSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationSettingView.swift; sourceTree = "<group>"; };
+		71555D381EAC711A00883C45 /* SupervisorSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupervisorSettingController.swift; sourceTree = "<group>"; };
+		71555D3A1EAC715A00883C45 /* SupervisorSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupervisorSettingView.swift; sourceTree = "<group>"; };
+		71555D3C1EAC71E200883C45 /* LegalSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingController.swift; sourceTree = "<group>"; };
+		71555D3E1EAC723400883C45 /* LegalSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingView.swift; sourceTree = "<group>"; };
+		7176C8081E59515800E557F0 /* Occupation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		7176C8091E59515800E557F0 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7176C80B1E59515800E557F0 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
@@ -52,6 +90,8 @@
 		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
 		719414BB1E63FCD1009A16D2 /* Questionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
+		719F50D71EA323A00037B04F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		719F50DD1EA3DCFB0037B04F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		71C957EB1E66894100F163AF /* TopologicalSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopologicalSort.swift; sourceTree = "<group>"; };
 		71C957ED1E66895700F163AF /* LongestPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongestPath.swift; sourceTree = "<group>"; };
 		71CC90FE1E581D1A00DA367A /* fatigue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fatigue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +127,33 @@
 				713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */,
 			);
 			name = "Home page";
+			sourceTree = "<group>";
+		};
+		719F50D61EA323970037B04F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				71555D241EAC407000883C45 /* AboutSetting.swift */,
+				71555D281EAC661E00883C45 /* AboutSettingController.swift */,
+				71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */,
+				71555D201EAC403500883C45 /* DailyReminderSetting.swift */,
+				71555D2C1EAC6D7500883C45 /* DailyReminderSettingController.swift */,
+				71555D2E1EAC6D9300883C45 /* DailyReminderSettingView.swift */,
+				71555D181EAC3F5C00883C45 /* LegalSetting.swift */,
+				71555D3C1EAC71E200883C45 /* LegalSettingController.swift */,
+				71555D3E1EAC723400883C45 /* LegalSettingView.swift */,
+				71555D1E1EAC3FBA00883C45 /* NameSetting.swift */,
+				71555D301EAC6F7F00883C45 /* NameSettingController.swift */,
+				71555D321EAC701400883C45 /* NameSettingView.swift */,
+				71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */,
+				71555D341EAC709E00883C45 /* OccupationSettingController.swift */,
+				71555D361EAC70D500883C45 /* OccupationSettingView.swift */,
+				719F50DD1EA3DCFB0037B04F /* Setting.swift */,
+				719F50D71EA323A00037B04F /* SettingsController.swift */,
+				71555D1C1EAC3F8600883C45 /* SupervisorSetting.swift */,
+				71555D381EAC711A00883C45 /* SupervisorSettingController.swift */,
+				71555D3A1EAC715A00883C45 /* SupervisorSettingView.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		71A401E81E63FEF7007B548D /* Questionnaire */ = {
@@ -140,14 +207,14 @@
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
-				7176C8081E59515800E557F0 /* Career.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
-				7176C8101E595C9100E557F0 /* UserDefaults.swift */,
+				7176C8081E59515800E557F0 /* Occupation.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
 				713495F61E6E72F30073C3C9 /* Home page */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
+				719F50D61EA323970037B04F /* Settings */,
 			);
 			path = fatigue;
 			sourceTree = "<group>";
@@ -158,6 +225,7 @@
 				718839381E9B34B000221316 /* UIButton.swift */,
 				7117599E1E921DD700949FB4 /* UIColor.swift */,
 				71F274931E58DC6700983BB4 /* UIView.swift */,
+				7176C8101E595C9100E557F0 /* UserDefaults.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -234,30 +302,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71555D291EAC661E00883C45 /* AboutSettingController.swift in Sources */,
+				719F50DE1EA3DCFB0037B04F /* Setting.swift in Sources */,
+				71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */,
+				71555D211EAC403500883C45 /* DailyReminderSetting.swift in Sources */,
 				7118D6FA1EA19FF4004B7E19 /* Constants.swift in Sources */,
-				7176C80C1E59515800E557F0 /* Career.swift in Sources */,
+				7176C80C1E59515800E557F0 /* Occupation.swift in Sources */,
+				719F50D81EA323A00037B04F /* SettingsController.swift in Sources */,
 				713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */,
 				71F274941E58DC6700983BB4 /* UIView.swift in Sources */,
+				71555D311EAC6F7F00883C45 /* NameSettingController.swift in Sources */,
+				71555D3B1EAC715A00883C45 /* SupervisorSettingView.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
+				71555D371EAC70D500883C45 /* OccupationSettingView.swift in Sources */,
+				71555D351EAC709E00883C45 /* OccupationSettingController.swift in Sources */,
 				718839391E9B34B000221316 /* UIButton.swift in Sources */,
+				71555D1F1EAC3FBA00883C45 /* NameSetting.swift in Sources */,
 				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
 				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
 				713495F81E6E73060073C3C9 /* HomePage.swift in Sources */,
 				713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */,
+				71555D2F1EAC6D9300883C45 /* DailyReminderSettingView.swift in Sources */,
+				71555D1D1EAC3F8600883C45 /* SupervisorSetting.swift in Sources */,
+				71555D2B1EAC66CA00883C45 /* AboutSettingView.swift in Sources */,
 				71C957EE1E66895700F163AF /* LongestPath.swift in Sources */,
+				71555D331EAC701400883C45 /* NameSettingView.swift in Sources */,
+				71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */,
 				7117599F1E921DD700949FB4 /* UIColor.swift in Sources */,
 				71E953A91E67DEF600A59278 /* RangeQuestionCell.swift in Sources */,
+				71555D191EAC3F5C00883C45 /* LegalSetting.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */,
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
 				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
+				71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
 				71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */,
 				71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */,
+				71555D251EAC407000883C45 /* AboutSetting.swift in Sources */,
 				71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */,
 				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
+				71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */,
 				71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */,
+				71555D2D1EAC6D7500883C45 /* DailyReminderSettingController.swift in Sources */,
 				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

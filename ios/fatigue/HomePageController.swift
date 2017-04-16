@@ -26,5 +26,16 @@ class HomePageController: UIViewController, HomePageControllerDelegate {
         let questionnaireController = QuestionnaireController()
         present(questionnaireController, animated: true, completion: nil)
     }
+    
+    func presentSettings() {
+        let settingsController = SettingsController.init(style: .grouped)
+        let navigationController = UINavigationController(rootViewController: settingsController)
+        present(navigationController, animated: true, completion: nil)
+        
+    }
+    
+    func dismissSettings() {
+        dismiss(animated: true, completion: nil)
+    }
 
 }

@@ -4,11 +4,13 @@ struct Questionnaire {
     
     var questionnaireTreeRoot: QuestionnaireItem {
         get {
-            switch UserDefaults.standard.getCareer() {
-            case Career.pilot:
+            switch UserDefaults.standard.occupation {
+            case Occupation.pilot:
                 return generatePilotQuestionTree()
-            case Career.engineer:
+            case Occupation.engineer:
                 return generateEngineerQuestionTree()
+            case Occupation.none:
+                fatalError("Career cannot be none")
             }
         }
     }
