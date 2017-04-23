@@ -131,7 +131,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
             title: "Close",
             style: UIBarButtonItemStyle.plain,
             target: nil,
-            action: #selector(goToHomePage)
+            action: #selector(dismissQuestionnaire)
         )
         navigationItem.leftBarButtonItem = closeItem
         navigationBar.setItems([navigationItem], animated: false)
@@ -253,7 +253,7 @@ class QuestionnaireController : UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    func goToHomePage() {
+    func dismissQuestionnaire() {
         dismiss(animated: true, completion: nil)
     }
     

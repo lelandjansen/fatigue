@@ -8,7 +8,7 @@ class Result: QuestionnaireItem {
     
     var riskScore: Int = 0 {
         didSet {
-            switch UserDefaults.standard.getCareer() {
+            switch UserDefaults.standard.occupation {
             case .pilot:
                 if riskScore < 6 {
                     remark = "Continue as normal."
@@ -43,6 +43,8 @@ class Result: QuestionnaireItem {
                     remark = "Defer all maintenance."
                     qualitativeRisk = QualitativeRisk.veryHigh
                 }
+            default:
+                fatalError("Career cannot be none")
             }
         }
     }

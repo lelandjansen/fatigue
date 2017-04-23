@@ -5,5 +5,5 @@ protocol QuestionnaireControllerDelegate: class {
     func updateQuestionnaireOrder()
     func moveToPreviousPage()
     func moveToNextPage()
-    func goToHomePage()
+    func dismissQuestionnaire()
 }

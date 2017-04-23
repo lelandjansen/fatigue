@@ -44,13 +44,14 @@ class HomePage: UIView {
     let beginQuestionnaireButton: UIButton = {
         let button = UIButton.createStyledButton(withColor: .blue)
         button.setTitle("Begin", for: .normal)
-        button.addTarget(self, action: #selector(handleBeginQuestionnaireButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         return button
     }()
     
     let settingsButton: UIButton = {
         let button = UIButton.createStyledButton()
         button.setTitle("Settings", for: .normal)
+        button.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
         return button
     }()
     
@@ -97,8 +98,12 @@ class HomePage: UIView {
         
     }
     
-    func handleBeginQuestionnaireButton() {
+    func handleBeginButton() {
         delegate?.presentQuestionnaire()
+    }
+    
+    func handleSettingsButton() {
+        delegate?.presentSettings()
     }
     
     
