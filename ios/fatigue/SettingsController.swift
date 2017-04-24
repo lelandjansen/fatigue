@@ -1,6 +1,14 @@
 import UIKit
 
-class SettingsController: UITableViewController {
+class SettingsController: UITableViewController, SettingsDelegate {
+    
+    init() {
+        super.init(style: .grouped)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +34,7 @@ class SettingsController: UITableViewController {
         DailyReminderSetting(),
         SupervisorSetting(),
         AboutSetting(),
-        LegalSetting()
+        LegalSetting(),
     ]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,12 +45,12 @@ class SettingsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.cell.rawValue) else {
-                return UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: CellId.cell.rawValue)
+                return UITableViewCell(style: .value1, reuseIdentifier: CellId.cell.rawValue)
             }
             return cell
         }()
         
-        cell.textLabel?.text = items[indexPath.row].settingName
+        cell.textLabel?.text = type(of: items[indexPath.row]).settingName
         cell.textLabel?.textColor = .dark
         cell.detailTextLabel?.text = items[indexPath.row].details
         cell.detailTextLabel?.textColor = .medium
@@ -72,11 +80,20 @@ class SettingsController: UITableViewController {
             }
         }()
         
+        if controller is SettingDelegate {
+            (controller as! SettingDelegate).delegate = self
+        }
+        
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return .leastNormalMagnitude
+    
+    func setSelectedCellDetails(toValue value: String) {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            items[selectedIndexPath.row].details = value
+            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
+        }
     }
     
     

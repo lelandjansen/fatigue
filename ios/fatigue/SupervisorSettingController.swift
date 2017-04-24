@@ -1,9 +1,9 @@
 import UIKit
 
-class SupervisorSettingController : UIViewController {
+class SupervisorSettingController: UIViewController, SettingDelegate {
     
-    let supervisorSetting = SupervisorSetting()
-    
+    weak var delegate: SettingsController?
+
     lazy var supervisorSettingView: UIView = {
         let view = SupervisorSettingView(frame: self.view.frame)
         view.backgroundColor = .light
@@ -13,9 +13,7 @@ class SupervisorSettingController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = supervisorSetting.settingName
-        
+        navigationItem.title = SupervisorSetting.settingName
         setupViews()
     }
     

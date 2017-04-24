@@ -1,6 +1,6 @@
 import UIKit
 
-class YesNoQuestionCell : QuestionCell {
+class YesNoQuestionCell: QuestionCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -1,6 +1,6 @@
 import UIKit
 
-class NameSettingView : UIView {
+class NameSettingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

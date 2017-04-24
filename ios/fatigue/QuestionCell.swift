@@ -8,7 +8,7 @@ class QuestionCell: UICollectionViewCell {
     }
     
     
-    weak var delegate: QuestionnaireControllerDelegate?
+    weak var delegate: QuestionnaireDelegate?
     
     
     var question: Question? {

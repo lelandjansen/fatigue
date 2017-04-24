@@ -1,6 +1,6 @@
 import UIKit
 
-class DailyReminderSettingView : UIView {
+class DailyReminderSettingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

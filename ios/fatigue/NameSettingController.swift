@@ -1,8 +1,8 @@
 import UIKit
 
-class NameSettingController : UIViewController {
-    
-    let nameSetting = NameSetting()
+class NameSettingController: UIViewController, SettingDelegate {
+
+    weak var delegate: SettingsController?
     
     lazy var nameSettingView: UIView = {
         let view = NameSettingView(frame: self.view.frame)
@@ -13,9 +13,7 @@ class NameSettingController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = nameSetting.settingName
-        
+        navigationItem.title = NameSetting.settingName
         setupViews()
     }
     

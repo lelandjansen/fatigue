@@ -1,9 +1,6 @@
 import Foundation
 
-class AboutSetting : Setting {
-    
-    var settingName: String = "About"
-    
+class AboutSetting: Setting {
+    static var settingName: String = "About"
     var details: String = String()
-    
 }

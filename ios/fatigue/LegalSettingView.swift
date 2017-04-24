@@ -1,6 +1,6 @@
 import UIKit
 
-class LegalSettingView : UIView {
+class LegalSettingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
