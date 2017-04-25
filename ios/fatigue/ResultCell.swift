@@ -12,7 +12,7 @@ class ResultCell: UICollectionViewCell {
         }
     }
     
-    weak var delegate: QuestionnaireControllerDelegate?
+    weak var delegate: QuestionnaireDelegate?
     
     
     override init(frame: CGRect) {

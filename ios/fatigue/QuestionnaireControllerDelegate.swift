@@ -1,6 +1,6 @@
 import UIKit
 
-protocol QuestionnaireControllerDelegate: class {
+protocol QuestionnaireDelegate: class {
     func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell)
     func updateQuestionnaireOrder()
     func moveToPreviousPage()

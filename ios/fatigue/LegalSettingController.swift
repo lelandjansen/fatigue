@@ -1,9 +1,7 @@
 import UIKit
 
-class LegalSettingController : UIViewController {
-    
-    let legalSetting = LegalSetting()
-    
+class LegalSettingController: UIViewController {
+
     lazy var legalSettingView: UIView = {
         let view = LegalSettingView(frame: self.view.frame)
         view.backgroundColor = .light
@@ -13,9 +11,7 @@ class LegalSettingController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = legalSetting.settingName
-        
+        navigationItem.title = LegalSetting.settingName
         setupViews()
     }
     

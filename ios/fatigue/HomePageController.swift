@@ -28,8 +28,7 @@ class HomePageController: UIViewController, HomePageControllerDelegate {
     }
     
     func presentSettings() {
-        let settingsController = SettingsController.init(style: .grouped)
-        let navigationController = UINavigationController(rootViewController: settingsController)
+        let navigationController = UINavigationController(rootViewController: SettingsController())
         present(navigationController, animated: true, completion: nil)
         
     }

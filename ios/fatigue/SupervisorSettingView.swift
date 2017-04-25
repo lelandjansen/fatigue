@@ -1,6 +1,6 @@
 import UIKit
 
-class SupervisorSettingView : UIView {
+class SupervisorSettingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -1,8 +1,8 @@
 import UIKit
 
-class DailyReminderSettingController : UIViewController {
+class DailyReminderSettingController: UIViewController, SettingDelegate {
     
-    let dailyReminderSetting = DailyReminderSetting()
+    weak var delegate: SettingsController?
     
     lazy var dailyReminderSettingView: UIView = {
         let view = DailyReminderSettingView(frame: self.view.frame)
@@ -14,7 +14,7 @@ class DailyReminderSettingController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = dailyReminderSetting.settingName
+        navigationItem.title = DailyReminderSetting.settingName
         
         setupViews()
     }

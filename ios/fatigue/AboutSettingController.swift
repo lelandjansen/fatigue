@@ -1,8 +1,6 @@
 import UIKit
 
-class AboutSettingController : UIViewController {
-    
-    let aboutSetting = AboutSetting()
+class AboutSettingController: UIViewController {
     
     lazy var aboutSettingView: UIView = {
         let view = AboutSettingView(frame: self.view.frame)
@@ -13,9 +11,7 @@ class AboutSettingController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = aboutSetting.settingName
-        
+        navigationItem.title = AboutSetting.settingName
         setupViews()
     }
     

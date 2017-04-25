@@ -1,9 +1,6 @@
 import Foundation
 
 protocol Setting {
-    
-    var settingName: String { get }
-    
-    var details: String { get }
-    
+    static var settingName: String { get }
+    var details: String { get set }
 }
