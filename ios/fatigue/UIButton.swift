@@ -4,7 +4,7 @@ extension UIButton {
     class func createStyledButton(withColor color: UIColor = .medium, withEmptyColor emptyColor: UIColor = .light) -> UIButton {
         let button = UIButton(type: .custom)
         
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        button.titleLabel!.font = .systemFont(ofSize: 17, weight: UIFontWeightSemibold)
         
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 10
@@ -23,7 +23,7 @@ extension UIButton {
     class func createStyledSelectButton(withColor color: UIColor = .medium, withEmptyColor emptyColor: UIColor = .light) -> UIButton {
         let button = UIButton(type: .custom)
         
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        button.titleLabel!.font = .systemFont(ofSize: 17, weight: UIFontWeightSemibold)
         
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 10

@@ -5,7 +5,7 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
     weak var delegate: SettingsController?
     
     enum CellId: String {
-        case settingsCell
+        case occupationCell
     }
     
     init() {
@@ -22,10 +22,12 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
         view.backgroundColor = .light
     }
     
-    var items: [Occupation] = [
+    let items: [Occupation] = [
         .pilot,
         .engineer
     ]
+    
+    var occupation = UserDefaults.standard.occupation
     
     var selectedIndexPath: IndexPath?
     
@@ -35,13 +37,13 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.settingsCell.rawValue) else {
-                return UITableViewCell(style: .default, reuseIdentifier: CellId.settingsCell.rawValue)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.occupationCell.rawValue) else {
+                return UITableViewCell(style: .default, reuseIdentifier: CellId.occupationCell.rawValue)
             }
             return cell
         }()
         
-        if items[indexPath.row] == UserDefaults.standard.occupation {
+        if items[indexPath.row] == occupation {
             cell.accessoryType = .checkmark
             selectedIndexPath = indexPath
         }
@@ -61,12 +63,16 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
             tableView.cellForRow(at: lastSelectedIndexPath)?.accessoryType = .none
         }
         
-        let selection = items[indexPath.row]
-        UserDefaults.standard.occupation = selection
-        delegate?.setSelectedCellDetails(toValue: selection.rawValue.capitalized)
+        occupation = items[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         selectedIndexPath = indexPath
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UserDefaults.standard.occupation = occupation
+        delegate?.setSelectedCellDetails(toValue: occupation.rawValue.capitalized)
     }
     
 }

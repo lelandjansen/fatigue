@@ -50,7 +50,7 @@ class RangeQuestionCell: QuestionCell {
     
     let optionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 88, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 88, weight: UIFontWeightLight)
         label.textAlignment = .center
         label.textColor = .medium
         return label
@@ -58,7 +58,7 @@ class RangeQuestionCell: QuestionCell {
     
     let unitsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 22, weight: UIFontWeightRegular)
+        label.font = .systemFont(ofSize: 22, weight: UIFontWeightRegular)
         label.textAlignment = .left
         label.textColor = .medium
         return label

@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingsController: UITableViewController, SettingsDelegate {
+class SettingsController: UITableViewController {
     
     init() {
         super.init(style: .grouped)
@@ -88,9 +88,9 @@ class SettingsController: UITableViewController, SettingsDelegate {
     }
     
     
-    func setSelectedCellDetails(toValue value: String) {
+    func setSelectedCellDetails(toValue value: String?) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            items[selectedIndexPath.row].details = value
+            items[selectedIndexPath.row].details = value ?? String()
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
             tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
         }
