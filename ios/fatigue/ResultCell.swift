@@ -23,7 +23,7 @@ class ResultCell: UICollectionViewCell {
     
     let riskScoreTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+        label.font = .systemFont(ofSize: 24, weight: UIFontWeightSemibold)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -33,7 +33,7 @@ class ResultCell: UICollectionViewCell {
     
     let riskScoreLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 88, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 88, weight: UIFontWeightLight)
         label.textAlignment = .center
         label.textColor = .light
         
@@ -47,7 +47,7 @@ class ResultCell: UICollectionViewCell {
     
     let remarkLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -58,7 +58,7 @@ class ResultCell: UICollectionViewCell {
     let releaseToViewScoreLabel: UILabel = {
         let label = UILabel()
         label.text = "Release to view score."
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: 24)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0

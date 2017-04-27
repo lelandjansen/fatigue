@@ -33,7 +33,7 @@ class HomePage: UIView {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Safety in the air begins on the ground."
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0

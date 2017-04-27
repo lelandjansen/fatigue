@@ -131,30 +131,78 @@
 			name = "Home page";
 			sourceTree = "<group>";
 		};
-		719F50D61EA323970037B04F /* Settings */ = {
+		7168DFDE1EB0501A000FFACE /* About */ = {
 			isa = PBXGroup;
 			children = (
 				71555D241EAC407000883C45 /* AboutSetting.swift */,
 				71555D281EAC661E00883C45 /* AboutSettingController.swift */,
 				71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		7168DFDF1EB0502C000FFACE /* Daily reminder */ = {
+			isa = PBXGroup;
+			children = (
 				71555D201EAC403500883C45 /* DailyReminderSetting.swift */,
 				71555D2C1EAC6D7500883C45 /* DailyReminderSettingController.swift */,
 				71555D2E1EAC6D9300883C45 /* DailyReminderSettingView.swift */,
+			);
+			name = "Daily reminder";
+			sourceTree = "<group>";
+		};
+		7168DFE01EB05055000FFACE /* Legal */ = {
+			isa = PBXGroup;
+			children = (
 				71555D181EAC3F5C00883C45 /* LegalSetting.swift */,
 				71555D3C1EAC71E200883C45 /* LegalSettingController.swift */,
 				71555D3E1EAC723400883C45 /* LegalSettingView.swift */,
+			);
+			name = Legal;
+			sourceTree = "<group>";
+		};
+		7168DFE11EB05066000FFACE /* Name */ = {
+			isa = PBXGroup;
+			children = (
 				71555D1E1EAC3FBA00883C45 /* NameSetting.swift */,
 				71555D301EAC6F7F00883C45 /* NameSettingController.swift */,
 				71555D321EAC701400883C45 /* NameSettingView.swift */,
+			);
+			name = Name;
+			sourceTree = "<group>";
+		};
+		7168DFE21EB05072000FFACE /* Occupation */ = {
+			isa = PBXGroup;
+			children = (
 				71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */,
 				71555D341EAC709E00883C45 /* OccupationSettingController.swift */,
-				7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */,
-				719F50DD1EA3DCFB0037B04F /* Setting.swift */,
-				719F50D71EA323A00037B04F /* SettingsController.swift */,
-				7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */,
+			);
+			name = Occupation;
+			sourceTree = "<group>";
+		};
+		7168DFE31EB05093000FFACE /* Supervisor */ = {
+			isa = PBXGroup;
+			children = (
 				71555D1C1EAC3F8600883C45 /* SupervisorSetting.swift */,
 				71555D381EAC711A00883C45 /* SupervisorSettingController.swift */,
 				71555D3A1EAC715A00883C45 /* SupervisorSettingView.swift */,
+			);
+			name = Supervisor;
+			sourceTree = "<group>";
+		};
+		719F50D61EA323970037B04F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				719F50DD1EA3DCFB0037B04F /* Setting.swift */,
+				7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */,
+				719F50D71EA323A00037B04F /* SettingsController.swift */,
+				7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */,
+				7168DFDE1EB0501A000FFACE /* About */,
+				7168DFDF1EB0502C000FFACE /* Daily reminder */,
+				7168DFE01EB05055000FFACE /* Legal */,
+				7168DFE11EB05066000FFACE /* Name */,
+				7168DFE21EB05072000FFACE /* Occupation */,
+				7168DFE31EB05093000FFACE /* Supervisor */,
 			);
 			name = Settings;
 			sourceTree = "<group>";

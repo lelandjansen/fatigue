@@ -24,7 +24,7 @@ class QuestionCell: UICollectionViewCell {
     
     let questionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 22)
+        label.font = .systemFont(ofSize: 22)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -34,7 +34,7 @@ class QuestionCell: UICollectionViewCell {
     
     let detailsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = .systemFont(ofSize: 17)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
