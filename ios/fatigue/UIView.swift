@@ -64,4 +64,52 @@ extension UIView {
         
         return anchors
     }
+    
+    
+    func anchor(toCell cell: UITableViewCell, withMargin margin: CGFloat = 8) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        let topConstraint = NSLayoutConstraint(
+            item: self,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: cell.contentView,
+            attribute: .top,
+            multiplier: 1,
+            constant: margin
+        )
+        
+        let leftConstraint = NSLayoutConstraint(
+            item: self,
+            attribute: .leading,
+            relatedBy: .equal,
+            toItem: cell.contentView,
+            attribute: .leading,
+            multiplier: 1,
+            constant: margin
+        )
+        
+        let bottomConstraint = NSLayoutConstraint(
+            item: self,
+            attribute: .bottom,
+            relatedBy: .equal,
+            toItem: cell.contentView,
+            attribute: .bottom,
+            multiplier: 1,
+            constant: -margin
+        )
+        
+        let rightConstraint = NSLayoutConstraint(
+            item: self,
+            attribute: .trailing,
+            relatedBy: .equal,
+            toItem: cell.contentView,
+            attribute: .trailing,
+            multiplier: 1,
+            constant: -margin
+        )
+        
+        cell.addConstraints([topConstraint, leftConstraint, bottomConstraint, rightConstraint])
+    }
+    
 }
