@@ -1,2 +1,3 @@
-# fatigue-dev
-IAGSA pilot/engineer daily fatigue self-assessment
+# fatigue
+Pilot fatigue self-assessment app
+
