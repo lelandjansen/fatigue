@@ -42,7 +42,7 @@ class HomePage: UIView {
     }()
     
     let beginQuestionnaireButton: UIButton = {
-        let button = UIButton.createStyledButton(withColor: .blue)
+        let button = UIButton.createStyledButton(withColor: .violet)
         button.setTitle("Begin", for: .normal)
         button.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         return button
@@ -105,6 +105,4 @@ class HomePage: UIView {
     func handleSettingsButton() {
         delegate?.presentSettings()
     }
-    
-    
 }

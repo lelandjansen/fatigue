@@ -54,7 +54,7 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
         cell.textLabel?.text = items[indexPath.row].rawValue.capitalized
         cell.textLabel?.textColor = .dark
         cell.backgroundColor = .clear
-        cell.tintColor = .blue
+        cell.tintColor = .violet
         return cell
     }
     
@@ -73,6 +73,5 @@ class OccupationSettingController: UITableViewController, SettingDelegate {
         super.viewWillDisappear(animated)
         UserDefaults.standard.occupation = occupation
         delegate?.setSelectedCellDetails(toValue: occupation.rawValue.capitalized)
-    }
-    
+    }    
 }
