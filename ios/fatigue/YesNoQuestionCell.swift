@@ -49,14 +49,14 @@ class YesNoQuestionCell: QuestionCell {
     
     
     lazy var yesButton: UIButton = {
-        let button = UIButton.createStyledSelectButton(withColor: .blue)
+        let button = UIButton.createStyledSelectButton(withColor: .violet)
         button.setTitle(YesNoQuestion.Answer.yes.rawValue, for: .normal)
         button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
         return button
     }()
     
     lazy var noButton: UIButton = {
-        let button = UIButton.createStyledSelectButton(withColor: .blue)
+        let button = UIButton.createStyledSelectButton(withColor: .violet)
         button.setTitle(YesNoQuestion.Answer.no.rawValue, for: .normal)
         button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
         return button

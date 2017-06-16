@@ -67,7 +67,7 @@ class ResultCell: UICollectionViewCell {
     }()
     
     let shareButton: UIButton = {
-        let button = UIButton.createStyledButton(withColor: .blue)
+        let button = UIButton.createStyledButton(withColor: .violet)
         button.setTitle("Share", for: .normal)
         return button
     }()
@@ -129,7 +129,7 @@ class ResultCell: UICollectionViewCell {
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
-
+        
         shareButton.frame = CGRect(
             x: (self.frame.width - UIConstants.buttonWidth) / 2,
             y: self.frame.height - (self.frame.width - UIConstants.buttonWidth) / 2 - UIConstants.buttonHeight,
@@ -160,7 +160,7 @@ class ResultCell: UICollectionViewCell {
             withDuration: duration,
             animations: {
                 label.layer.backgroundColor = color.cgColor
-            }
+        }
         )
     }
     
@@ -181,7 +181,7 @@ class ResultCell: UICollectionViewCell {
             selector: #selector(incrementRiskScore(forTimer:)),
             userInfo: nil,
             repeats: true
-        ).fire()
+            ).fire()
     }
     
     func determineBackgroundColorFromRiskScore() -> UIColor {
@@ -191,19 +191,19 @@ class ResultCell: UICollectionViewCell {
         case .medium:
             return .yellow
         case .high:
-            return .orange
+            return .yellow
         case .veryHigh:
             return .red
         }
     }
-
+    
     
     func animatePresentRemark() {
         UIView.animate(
             withDuration: 1/4,
             animations: {
                 self.presentRemark()
-            }
+        }
         )
     }
     
@@ -216,7 +216,7 @@ class ResultCell: UICollectionViewCell {
             withDuration: 1/4,
             animations: {
                 self.removeElementGhosting()
-            }
+        }
         )
     }
     

@@ -9,10 +9,10 @@ extension UIButton {
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 10
         button.layer.borderColor = color.cgColor
-
+        
         button.setTitleColor(emptyColor, for: .normal)
-        button.setTitleColor(emptyColor.blend(withColor: color), for: .highlighted)
-
+        button.setTitleColor(emptyColor.withAlphaComponent(1/2), for: .highlighted)
+        
         button.setBackgroundColor(color, for: .normal)
         button.setBackgroundColor(color, for: .highlighted)
         
@@ -31,8 +31,8 @@ extension UIButton {
         
         button.setTitleColor(color, for: .normal)
         button.setTitleColor(emptyColor, for: .selected)
-        button.setTitleColor(emptyColor.blend(withColor: color), for: .highlighted)
-        button.setTitleColor(emptyColor.blend(withColor: color), for: UIControlState.highlighted.union(.selected))
+        button.setTitleColor(color.withAlphaComponent(1/2), for: .highlighted)
+        button.setTitleColor(emptyColor.withAlphaComponent(1/2), for: UIControlState.highlighted.union(.selected))
         
         button.setBackgroundColor(emptyColor, for: .normal)
         button.setBackgroundColor(color, for: .selected)
@@ -41,8 +41,8 @@ extension UIButton {
         
         return button
     }
-
-
+    
+    
     func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
