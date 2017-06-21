@@ -14,7 +14,7 @@ class SettingsController: UITableViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
-        navigationController?.navigationBar.tintColor = .medium
+        navigationController?.navigationBar.tintColor = .violet
         
         navigationItem.title = "Settings"
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
@@ -31,7 +31,7 @@ class SettingsController: UITableViewController {
     var items: [Setting] = [
         NameSetting(),
         OccupationSetting(),
-        DailyReminderSetting(),
+        ReminderSetting(),
         SupervisorSetting(),
         AboutSetting(),
         LegalSetting(),
@@ -67,8 +67,8 @@ class SettingsController: UITableViewController {
                 return NameSettingController()
             case is OccupationSetting:
                 return OccupationSettingController()
-            case is DailyReminderSetting:
-                return DailyReminderSettingController()
+            case is ReminderSetting:
+                return ReminderSettingController()
             case is SupervisorSetting:
                 return SupervisorSettingController()
             case is AboutSetting:

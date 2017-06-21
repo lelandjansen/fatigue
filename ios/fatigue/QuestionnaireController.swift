@@ -122,7 +122,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         )
         navigationBar.barTintColor = .light
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = .medium
+        navigationBar.tintColor = .violet
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()

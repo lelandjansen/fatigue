@@ -10,7 +10,7 @@ struct Questionnaire {
             case Occupation.engineer:
                 return generateEngineerQuestionTree()
             case Occupation.none:
-                fatalError("Career cannot be none")
+                fatalError("Occupation cannot be none")
             }
         }
     }
