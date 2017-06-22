@@ -20,6 +20,7 @@ class ResultCell: UICollectionViewCell {
         setupViews()
     }
     
+    private static let circleRadius = UIConstants.buttonWidth * 3 / 8
     
     let riskScoreTitleLabel: UILabel = {
         let label = UILabel()
@@ -36,10 +37,8 @@ class ResultCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 88, weight: UIFontWeightLight)
         label.textAlignment = .center
         label.textColor = .light
-        
-        let size: CGFloat = 130
-        label.bounds = CGRect(x: 0, y: 0, width: size, height: size)
-        label.layer.cornerRadius = size / 2
+        label.bounds = CGRect(x: 0, y: 0, width: circleRadius, height: circleRadius)
+        label.layer.cornerRadius = circleRadius
         label.layer.backgroundColor = UIColor.medium.cgColor
         label.layer.masksToBounds = true
         return label
@@ -100,24 +99,22 @@ class ResultCell: UICollectionViewCell {
             right: rightAnchor
         )
         
-        let circleRadius = riskScoreLabel.bounds.width / 2
-        
         riskScoreLabel.text = String(describing: 0)
         riskScoreLabel.frame = CGRect(
             x: 0,
             y: 0,
-            width: circleRadius * 2,
-            height: circleRadius * 2
+            width: ResultCell.circleRadius * 2,
+            height: ResultCell.circleRadius * 2
         )
         riskScoreLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor,
-            topConstant: (self.frame.height - UIConstants.navigationBarHeight) / 2 - circleRadius,
-            leftConstant: self.frame.width / 2 - circleRadius,
-            bottomConstant:  (self.frame.height + UIConstants.navigationBarHeight) / 2 - circleRadius,
-            rightConstant: self.frame.width / 2 - circleRadius
+            topConstant: (self.frame.height - UIConstants.navigationBarHeight) / 2 - ResultCell.circleRadius,
+            leftConstant: self.frame.width / 2 - ResultCell.circleRadius,
+            bottomConstant:  (self.frame.height + UIConstants.navigationBarHeight) / 2 - ResultCell.circleRadius,
+            rightConstant: self.frame.width / 2 - ResultCell.circleRadius
         )
         
         remarkLabel.alpha = 0
