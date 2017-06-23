@@ -1,6 +1,6 @@
 import UIKit
 
-class HomePage: UIView {
+class HomePageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,14 +44,12 @@ class HomePage: UIView {
     let beginQuestionnaireButton: UIButton = {
         let button = UIButton.createStyledButton(withColor: .violet)
         button.setTitle("Begin", for: .normal)
-        button.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         return button
     }()
     
     let settingsButton: UIButton = {
         let button = UIButton.createStyledButton()
         button.setTitle("Settings", for: .normal)
-        button.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
         return button
     }()
     
@@ -62,40 +60,41 @@ class HomePage: UIView {
         addSubview(beginQuestionnaireButton)
         addSubview(settingsButton)
         
-        let sidePadding: CGFloat = 16
+        let padding: CGFloat = 16
         
         titleLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
             right: rightAnchor,
             topConstant: 94,
-            leftConstant: sidePadding,
-            rightConstant: sidePadding
+            leftConstant: padding,
+            rightConstant: padding
         )
         
         subtitleLabel.anchorWithConstantsToTop(
             titleLabel.bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 16,
-            leftConstant: sidePadding,
-            rightConstant: sidePadding
+            topConstant: padding,
+            leftConstant: padding,
+            rightConstant: padding
         )
         
         beginQuestionnaireButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
+            y: (self.frame.size.height + UIConstants.navigationBarHeight + UIConstants.tableViewRowHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
+        beginQuestionnaireButton.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         
         settingsButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2,
+            y: (self.frame.size.height + UIConstants.navigationBarHeight + UIConstants.tableViewRowHeight + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
-        
+        settingsButton.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
     }
     
     func handleBeginButton() {
