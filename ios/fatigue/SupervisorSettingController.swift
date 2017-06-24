@@ -70,9 +70,7 @@ class SupervisorSettingController: UITableViewController, SettingDelegate, UITex
         textField.autocapitalizationType = .words
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .done
-        if #available(iOS 10.0, *) {
-            textField.textContentType = .familyName
-        }
+        textField.textContentType = .familyName
         textField.placeholder = "Supervisor's name"
         textField.text = UserDefaults.standard.supervisorName
         return textField
@@ -87,9 +85,7 @@ class SupervisorSettingController: UITableViewController, SettingDelegate, UITex
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .done
         textField.keyboardType = .emailAddress
-        if #available(iOS 10.0, *) {
-            textField.textContentType = .emailAddress
-        }
+        textField.textContentType = .emailAddress
         textField.placeholder = "Email"
         textField.text = UserDefaults.standard.supervisorEmail
         return textField
@@ -103,9 +99,7 @@ class SupervisorSettingController: UITableViewController, SettingDelegate, UITex
         textField.clearButtonMode = .whileEditing
         textField.keyboardType = .phonePad
         textField.placeholder = "Mobile"
-        if #available(iOS 10.0, *) {
-            textField.textContentType = .telephoneNumber
-        }
+        textField.textContentType = .telephoneNumber
         textField.text = UserDefaults.standard.supervisorPhone
         return textField
     }()
