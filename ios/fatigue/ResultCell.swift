@@ -140,7 +140,7 @@ class ResultCell: UICollectionViewCell {
     
     func incrementRiskScore(forTimer timer: Timer) {
         let target = result!.riskScore
-        let number = Int(riskScoreLabel.text!)!
+        let number = Int32(riskScoreLabel.text!)!
         
         if number < target {
             riskScoreLabel.text = String(describing: number + 1)
@@ -200,7 +200,7 @@ class ResultCell: UICollectionViewCell {
             withDuration: 1/4,
             animations: {
                 self.presentRemark()
-        }
+            }
         )
     }
     
@@ -213,7 +213,7 @@ class ResultCell: UICollectionViewCell {
             withDuration: 1/4,
             animations: {
                 self.removeElementGhosting()
-        }
+            }
         )
     }
     

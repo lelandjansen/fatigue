@@ -4,7 +4,6 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.isPagingEnabled = true
-//        collectionView?.bounces = false
         collectionView?.showsVerticalScrollIndicator = false
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.backgroundColor = .light
@@ -25,6 +24,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     func presentQuestionnaire() {
         let questionnaireController = QuestionnaireController()
+        questionnaireController.homePageDelegate = self
         present(questionnaireController, animated: true, completion: nil)
     }
     
@@ -44,6 +44,12 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     func moveToHistoryPage() {
         collectionView?.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredVertically, animated: true)
+    }
+    
+    func refreshHistory() {
+        if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
+            historyCell.reloadHistory()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

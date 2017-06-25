@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 
 class QuestionnaireController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireDelegate {
@@ -253,7 +254,10 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     
+    weak var homePageDelegate: HomePageControllerDelegate?
+    
     func dismissQuestionnaire() {
+        homePageDelegate?.refreshHistory()
         dismiss(animated: true, completion: nil)
     }
     
@@ -303,7 +307,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocity(in: view)
             return fabs(velocity.y) > fabs(velocity.x);
         }
-        
         return false
     }
     
@@ -313,14 +316,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             collectionView.reloadData()
             return
         }
-        
         guard gesture.view is RangeQuestionCell else {
             return
         }
         
         let tolerance: CGFloat = 40
         let yTranslation = gesture.translation(in: view).y
-        
         if tolerance < yTranslation {
             (gesture.view as! RangeQuestionCell).decrementOption()
             gesture.setTranslation(.zero, in: view)
@@ -332,16 +333,14 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     
-    func computeRiskScore() -> Int {
-        var riskScore = 0
-        
-        for question in questionnaireItems {
-            if question is Question {
-                let selection = (question as! Question).selection
-                riskScore += (question as! Question).riskScoreContribution(selection)
+    func computeRiskScore() -> Int32 {
+        var riskScore: Int32 = 0
+        for questionnaireItem in questionnaireItems {
+            if questionnaireItem is Question {
+                let question = questionnaireItem as! Question
+                riskScore += question.riskScoreContribution(question.selection)
             }
         }
-        
         return riskScore
     }
     
@@ -355,6 +354,8 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if questionnaireItems[indexPath.item] is Result {
+            QuestionnaireResponse.saveResponse(forQuestionnaireItems: questionnaireItems)
+            
             let result = questionnaireItems[indexPath.item] as! Result
             result.riskScore = computeRiskScore()
             

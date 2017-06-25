@@ -5,4 +5,5 @@ protocol HomePageControllerDelegate: class {
     func presentSettings()
     func moveToHomePage()
     func moveToHistoryPage()
+    func refreshHistory()
 }

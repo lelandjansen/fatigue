@@ -18,6 +18,7 @@ struct Questionnaire {
         let result = Result()
         let reasonNotToFly = YesNoQuestion(
             question: "Do you know of any other reason you should not fly today?",
+            description: "Other reason not to fly",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
             },
@@ -26,6 +27,7 @@ struct Questionnaire {
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
+            description: "Reported illness",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -33,6 +35,7 @@ struct Questionnaire {
         )
         let deployentTimeQuestion = YesNoQuestion(
             question: "Have you been on tour for more than 75% of your planned deployment?",
+            description: "On tour for more than 75% of planned deployment",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -41,6 +44,7 @@ struct Questionnaire {
         let stressQuestion = YesNoQuestion(
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
+            description: "Elevated stress",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -48,6 +52,7 @@ struct Questionnaire {
         )
         let flightTimeQuestionOnePilot = RangeQuestion(
             question: "How many hours will you be flying today?",
+            description: "Hours in-flight",
             options: Array(0...24),
             selection: 5,
             units: .hours,
@@ -65,6 +70,7 @@ struct Questionnaire {
         )
         let flightTimeQuestionTwoPilots = RangeQuestion(
             question: "How many hours will you and your colleague be flying today?",
+            description: "Hours flying",
             options: Array(0...24),
             selection: 5,
             units: .hours,
@@ -82,12 +88,14 @@ struct Questionnaire {
         )
         let numberOfPilotsQuestion = YesNoQuestion(
             question: "Are you flying with another pilot?",
+            description: "Flying with another pilot",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: flightTimeQuestionTwoPilots,
             nextItemIfNo: flightTimeQuestionOnePilot
         )
         let timeZoneQuantityQuestion = RangeQuestion(
             question: "How many time zones did you travel through to get to the project site?",
+            description: "Time zones travelled to project site",
             options: Array(0...12),
             selection: 0,
             riskScoreContribution: {
@@ -104,12 +112,14 @@ struct Questionnaire {
         )
         let timeZoneTravelQuestion = YesNoQuestion(
             question: "Have you been on-site for less than three full days?",
+            description: "On-site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: numberOfPilotsQuestion
         )
         let forecastHoursAwake = RangeQuestion(
             question: "How many hours do you anticipate having been awake when the aircraft is shut down?",
+            description: "Hours anticipated having been awake when aircraft is shut down",
             options: Array(0...24),
             selection: 6,
             units: .hours,
@@ -127,6 +137,7 @@ struct Questionnaire {
         )
         let sleepInPast48HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 48 hours?",
+            description: "Sleep in past 48 hours",
             options: Array(0...48),
             selection: 14,
             units: .hours,
@@ -144,6 +155,7 @@ struct Questionnaire {
         )
         let sleepInPast24HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 24 hours?",
+            description: "Sleep in past 24 hours",
             options: Array(0...24),
             selection: 7,
             units: .hours,
@@ -167,6 +179,7 @@ struct Questionnaire {
         let result = Result()
         let reasonNotToFly = YesNoQuestion(
             question: "Do you know of any other reason you should not work today?",
+            description: "Other reason not to fly",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
             },
@@ -175,6 +188,7 @@ struct Questionnaire {
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
+            description: "Reported illness",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -182,6 +196,7 @@ struct Questionnaire {
         )
         let deployentTimeQuestion = YesNoQuestion(
             question: "Have you been on tour for more than 75% of your planned deployment?",
+            description: "On tour for more than 75% of planned deployment",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -190,6 +205,7 @@ struct Questionnaire {
         let stressQuestion = YesNoQuestion(
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
+            description: "Elevated stress",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
@@ -197,6 +213,7 @@ struct Questionnaire {
         )
         let maintenanceTimeQuestion = RangeQuestion(
             question: "How many hours will you be performing maintenance today?",
+            description: "Hours performing maintenance",
             options: Array(0...24),
             selection: 5,
             units: .hours,
@@ -214,6 +231,7 @@ struct Questionnaire {
         )
         let timeZoneQuantityQuestion = RangeQuestion(
             question: "How many time zones did you travel through to get to the project site?",
+            description: "Time zones travelled to project site",
             options: Array(0...12),
             selection: 0,
             riskScoreContribution: {
@@ -230,12 +248,14 @@ struct Questionnaire {
         )
         let timeZoneTravelQuestion = YesNoQuestion(
             question: "Have you been on-site for less than three full days?",
+            description: "On-site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: maintenanceTimeQuestion
         )
         let forecastHoursAwake = RangeQuestion(
-            question: "How many hours do you anticipate to have been awake after finishing today's maintenance tasks?",
+            question: "How many hours do you anticipate having been awake after finishing today's maintenance tasks?",
+            description: "Hours anticipated having been awake when maintenance tasks are complete",
             options: Array(0...24),
             selection: 6,
             units: .hours,
@@ -253,6 +273,7 @@ struct Questionnaire {
         )
         let sleepInPast48HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 48 hours?",
+            description: "Sleep in past 48 hours",
             options: Array(0...48),
             selection: 14,
             units: .hours,
@@ -270,6 +291,7 @@ struct Questionnaire {
         )
         let sleepInPast24HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 24 hours?",
+            description: "Sleep in past 24 hours",
             options: Array(0...24),
             selection: 7,
             units: .hours,
