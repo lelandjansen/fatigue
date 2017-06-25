@@ -1,7 +1,6 @@
 import Foundation
 
 struct Questionnaire {
-    
     var questionnaireTreeRoot: QuestionnaireItem {
         get {
             switch UserDefaults.standard.occupation {
@@ -15,11 +14,8 @@ struct Questionnaire {
         }
     }
     
-    
     func generatePilotQuestionTree() -> QuestionnaireItem {
-        
         let result = Result()
-        
         let reasonNotToFly = YesNoQuestion(
             question: "Do you know of any other reason you should not fly today?",
             riskScoreContribution: {
@@ -27,7 +23,6 @@ struct Questionnaire {
             },
             nextItem: result
         )
-        
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
@@ -36,7 +31,6 @@ struct Questionnaire {
             },
             nextItem: reasonNotToFly
         )
-        
         let deployentTimeQuestion = YesNoQuestion(
             question: "Have you been on tour for more than 75% of your planned deployment?",
             riskScoreContribution: {
@@ -44,7 +38,6 @@ struct Questionnaire {
             },
             nextItem: illQuestion
         )
-        
         let stressQuestion = YesNoQuestion(
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
@@ -53,10 +46,9 @@ struct Questionnaire {
             },
             nextItem: deployentTimeQuestion
         )
-        
         let flightTimeQuestionOnePilot = RangeQuestion(
             question: "How many hours will you be flying today?",
-            options: Array(0...12),
+            options: Array(0...24),
             selection: 5,
             units: .hours,
             riskScoreContribution: {
@@ -71,10 +63,9 @@ struct Questionnaire {
             },
             nextItem: stressQuestion
         )
-        
         let flightTimeQuestionTwoPilots = RangeQuestion(
             question: "How many hours will you and your colleague be flying today?",
-            options: Array(0...12),
+            options: Array(0...24),
             selection: 5,
             units: .hours,
             riskScoreContribution: {
@@ -89,14 +80,12 @@ struct Questionnaire {
             },
             nextItem: stressQuestion
         )
-        
         let numberOfPilotsQuestion = YesNoQuestion(
             question: "Are you flying with another pilot?",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: flightTimeQuestionTwoPilots,
             nextItemIfNo: flightTimeQuestionOnePilot
         )
-        
         let timeZoneQuantityQuestion = RangeQuestion(
             question: "How many time zones did you travel through to get to the project site?",
             options: Array(0...12),
@@ -113,17 +102,15 @@ struct Questionnaire {
             },
             nextItem: numberOfPilotsQuestion
         )
-        
         let timeZoneTravelQuestion = YesNoQuestion(
             question: "Have you been on-site for less than three full days?",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: numberOfPilotsQuestion
         )
-        
         let forecastHoursAwake = RangeQuestion(
             question: "How many hours do you anticipate having been awake when the aircraft is shut down?",
-            options: Array(0...16),
+            options: Array(0...24),
             selection: 6,
             units: .hours,
             riskScoreContribution: {
@@ -138,10 +125,9 @@ struct Questionnaire {
             },
             nextItem: timeZoneTravelQuestion
         )
-        
         let sleepInPast48HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 48 hours?",
-            options: Array(0...24),
+            options: Array(0...48),
             selection: 14,
             units: .hours,
             riskScoreContribution: {
@@ -156,10 +142,9 @@ struct Questionnaire {
             },
             nextItem: forecastHoursAwake
         )
-        
         let sleepInPast24HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 24 hours?",
-            options: Array(0...12),
+            options: Array(0...24),
             selection: 7,
             units: .hours,
             riskScoreContribution: {
@@ -174,15 +159,12 @@ struct Questionnaire {
             },
             nextItem: sleepInPast48HoursQuestion
         )
-
         return sleepInPast24HoursQuestion
     }
     
     
     func generateEngineerQuestionTree() -> QuestionnaireItem {
-        
         let result = Result()
-        
         let reasonNotToFly = YesNoQuestion(
             question: "Do you know of any other reason you should not work today?",
             riskScoreContribution: {
@@ -190,7 +172,6 @@ struct Questionnaire {
             },
             nextItem: result
         )
-        
         let illQuestion = YesNoQuestion(
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
@@ -199,7 +180,6 @@ struct Questionnaire {
             },
             nextItem: reasonNotToFly
         )
-        
         let deployentTimeQuestion = YesNoQuestion(
             question: "Have you been on tour for more than 75% of your planned deployment?",
             riskScoreContribution: {
@@ -207,7 +187,6 @@ struct Questionnaire {
             },
             nextItem: illQuestion
         )
-        
         let stressQuestion = YesNoQuestion(
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
@@ -216,10 +195,9 @@ struct Questionnaire {
             },
             nextItem: deployentTimeQuestion
         )
-        
         let maintenanceTimeQuestion = RangeQuestion(
             question: "How many hours will you be performing maintenance today?",
-            options: Array(0...12),
+            options: Array(0...24),
             selection: 5,
             units: .hours,
             riskScoreContribution: {
@@ -234,7 +212,6 @@ struct Questionnaire {
             },
             nextItem: stressQuestion
         )
-        
         let timeZoneQuantityQuestion = RangeQuestion(
             question: "How many time zones did you travel through to get to the project site?",
             options: Array(0...12),
@@ -251,17 +228,15 @@ struct Questionnaire {
             },
             nextItem: maintenanceTimeQuestion
         )
-        
         let timeZoneTravelQuestion = YesNoQuestion(
             question: "Have you been on-site for less than three full days?",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: maintenanceTimeQuestion
         )
-        
         let forecastHoursAwake = RangeQuestion(
             question: "How many hours do you anticipate to have been awake after finishing today's maintenance tasks?",
-            options: Array(0...16),
+            options: Array(0...24),
             selection: 6,
             units: .hours,
             riskScoreContribution: {
@@ -276,10 +251,9 @@ struct Questionnaire {
             },
             nextItem: timeZoneTravelQuestion
         )
-        
         let sleepInPast48HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 48 hours?",
-            options: Array(0...24),
+            options: Array(0...48),
             selection: 14,
             units: .hours,
             riskScoreContribution: {
@@ -294,10 +268,9 @@ struct Questionnaire {
             },
             nextItem: forecastHoursAwake
         )
-        
         let sleepInPast24HoursQuestion = RangeQuestion(
             question: "How long have you slept in the past 24 hours?",
-            options: Array(0...12),
+            options: Array(0...24),
             selection: 7,
             units: .hours,
             riskScoreContribution: {
@@ -312,7 +285,6 @@ struct Questionnaire {
             },
             nextItem: sleepInPast48HoursQuestion
         )
-        
         return sleepInPast24HoursQuestion
     }
 }
