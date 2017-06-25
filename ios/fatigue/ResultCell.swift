@@ -157,7 +157,7 @@ class ResultCell: UICollectionViewCell {
             withDuration: duration,
             animations: {
                 label.layer.backgroundColor = color.cgColor
-        }
+            }
         )
     }
     
@@ -178,7 +178,7 @@ class ResultCell: UICollectionViewCell {
             selector: #selector(incrementRiskScore(forTimer:)),
             userInfo: nil,
             repeats: true
-            ).fire()
+        ).fire()
     }
     
     func determineBackgroundColorFromRiskScore() -> UIColor {

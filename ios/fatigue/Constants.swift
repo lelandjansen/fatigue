@@ -5,4 +5,5 @@ struct UIConstants {
     static let buttonHeight: CGFloat = 50
     static let buttonSpacing: CGFloat = 16
     static let navigationBarHeight: CGFloat = 65
+    static let tableViewRowHeight: CGFloat = 44
 }

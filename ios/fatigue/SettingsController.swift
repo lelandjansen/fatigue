@@ -19,7 +19,7 @@ class SettingsController: UITableViewController {
         navigationItem.title = "Settings"
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissSettings))
         navigationItem.rightBarButtonItem = doneItem
-        
+
         view.backgroundColor = .light
     }
     

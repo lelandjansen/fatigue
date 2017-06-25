@@ -5,10 +5,6 @@ class ReminderSettingController: UITableViewController, SettingDelegate {
     
     weak var delegate: SettingsController?
     
-    enum CellId: String {
-        case reminderCell
-    }
-    
     enum CellTypes: String {
         case toggle, time, timePicker
     }
