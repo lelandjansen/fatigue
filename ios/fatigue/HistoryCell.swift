@@ -6,7 +6,15 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         super.init(frame: frame)
         historyTable.delegate = self
         historyTable.dataSource = self
+        reloadHistory()
         setupViews()
+    }
+    
+    var questionnaireResponses: [QuestionnaireResponse] = []
+    
+    func reloadHistory() {
+        questionnaireResponses = QuestionnaireResponse.loadResponses().reversed()
+        historyTable.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -88,12 +96,14 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        items.remove(at: indexPath.row)
+        let responseToDelete = questionnaireResponses[indexPath.row]
+        questionnaireResponses.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        QuestionnaireResponse.delete(response: responseToDelete)
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return questionnaireResponses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,35 +114,13 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
             return cell
         }()
         
-        cell.textLabel?.text = items[indexPath.row][0] as? String
+        let questionnaireResponse = questionnaireResponses[indexPath.row]
+        cell.textLabel?.text = dateFormatter.string(from: questionnaireResponse.date! as Date)
         cell.textLabel?.textColor = .dark
-        cell.detailTextLabel?.text = String(describing: items[indexPath.row][1])
+        cell.detailTextLabel?.text = String(describing: questionnaireResponse.riskScore)
         cell.detailTextLabel?.textColor = .medium
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .clear
         return cell
     }
-    
-    var items = [
-        ["9:04 AM", 1],
-        ["Yesterday", 4],
-        ["Friday", 0],
-        ["Thursday", 1],
-        ["Wednesday", 3],
-        ["Tuesday", 3],
-        ["Monday", 6],
-        ["Sunday", 1],
-        ["June 17", 2],
-        ["June 16", 6],
-        ["June 15", 1],
-        ["June 14", 1],
-        ["June 13", 1],
-        ["June 12", 7],
-        ["June 11", 0],
-        ["June 10", 6],
-        ["June 9", 7],
-        ["June 8", 2],
-        ["June 7", 7],
-        ["June 6", 6],
-    ]
 }

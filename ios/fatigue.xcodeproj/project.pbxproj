@@ -47,6 +47,10 @@
 		71C957EE1E66895700F163AF /* LongestPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C957ED1E66895700F163AF /* LongestPath.swift */; };
 		71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC91011E581D1A00DA367A /* AppDelegate.swift */; };
 		71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CC91081E581D1A00DA367A /* Assets.xcassets */; };
+		71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71D436F91F00547D00132451 /* fatigue.xcdatamodeld */; };
+		71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4371E1F005D2100132451 /* QuestionaireResponse.swift */; };
+		71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */; };
+		71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CF1F00809E008676E3 /* QuestionResponse.swift */; };
 		71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
@@ -100,6 +104,10 @@
 		71CC91011E581D1A00DA367A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CC91081E581D1A00DA367A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CC910D1E581D1A00DA367A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71D436FA1F00547D00132451 /* fatigue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fatigue.xcdatamodel; sourceTree = "<group>"; };
+		71D4371E1F005D2100132451 /* QuestionaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionaireResponse.swift; sourceTree = "<group>"; };
+		71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireResponse.swift; sourceTree = "<group>"; };
+		71DD26CF1F00809E008676E3 /* QuestionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionResponse.swift; sourceTree = "<group>"; };
 		71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireControllerDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
 		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
 				71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */,
+				71D4371E1F005D2100132451 /* QuestionaireResponse.swift */,
 				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
 				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
 				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
@@ -275,6 +284,7 @@
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
 				7176C8081E59515800E557F0 /* Occupation.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
+				71D436F91F00547D00132451 /* fatigue.xcdatamodeld */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
 				7159E7491EF7594D00656287 /* Formatters */,
@@ -293,6 +303,8 @@
 				7117599E1E921DD700949FB4 /* UIColor.swift */,
 				71F274931E58DC6700983BB4 /* UIView.swift */,
 				7176C8101E595C9100E557F0 /* UserDefaults.swift */,
+				71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */,
+				71DD26CF1F00809E008676E3 /* QuestionResponse.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -384,11 +396,14 @@
 				710F8F9F1EF2197800C96CDB /* Notifications.swift in Sources */,
 				71555D311EAC6F7F00883C45 /* NameSettingController.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
+				71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */,
+				71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */,
 				71555D351EAC709E00883C45 /* OccupationSettingController.swift in Sources */,
 				718839391E9B34B000221316 /* UIButton.swift in Sources */,
 				71555D1F1EAC3FBA00883C45 /* NameSetting.swift in Sources */,
 				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
 				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
+				71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */,
 				713495F81E6E73060073C3C9 /* HomePageCell.swift in Sources */,
 				713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */,
 				71555D1D1EAC3F8600883C45 /* SupervisorSetting.swift in Sources */,
@@ -403,6 +418,7 @@
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
 				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
+				71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
 				71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
@@ -566,6 +582,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		71D436F91F00547D00132451 /* fatigue.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				71D436FA1F00547D00132451 /* fatigue.xcdatamodel */,
+			);
+			currentVersion = 71D436FA1F00547D00132451 /* fatigue.xcdatamodel */;
+			path = fatigue.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 71CC90F61E581D1900DA367A /* Project object */;
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="QuestionnaireResponse" representedClassName="QuestionnaireResponse" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="riskScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="questionResponses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestionResponse" inverseName="questionnaireResponse" inverseEntity="QuestionResponse" syncable="YES"/>
+    </entity>
+    <entity name="QuestionResponse" representedClassName="QuestionResponse" syncable="YES" codeGenerationType="class">
+        <attribute name="questionDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="riskScoreContribution" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="selection" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionnaireResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionnaireResponse" inverseName="questionResponses" inverseEntity="QuestionnaireResponse" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="QuestionnaireResponse" positionX="-279" positionY="-135" width="128" height="88"/>
+        <element name="QuestionResponse" positionX="-36" positionY="36" width="128" height="105"/>
+    </elements>
+</model>

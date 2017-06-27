@@ -6,7 +6,7 @@ class Result: QuestionnaireItem {
         case low, medium, high, veryHigh
     }
     
-    var riskScore: Int = 0 {
+    var riskScore: Int32 = 0 {
         didSet {
             switch UserDefaults.standard.occupation {
             case .pilot:

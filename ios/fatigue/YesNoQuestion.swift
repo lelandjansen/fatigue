@@ -7,6 +7,7 @@ class YesNoQuestion: Question, QuestionnaireItem {
     
     var question: String
     var details: String
+    var description: String
     var options: [String] = [Answer.yes.rawValue, Answer.no.rawValue]
     var selection: String = Answer.none.rawValue {
         didSet {
@@ -23,27 +24,31 @@ class YesNoQuestion: Question, QuestionnaireItem {
     var nextItem: QuestionnaireItem?
     var nextItemIfYes: QuestionnaireItem?
     var nextItemIfNo: QuestionnaireItem?
-    var riskScoreContribution: (String) -> Int
+    var riskScoreContribution: (String) -> Int32
     
-    init(question: String, details: String = String(), riskScoreContribution: @escaping (String) -> Int, nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
+    init(question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
         self.question = question
         self.details = details
+        self.description = description
         self.riskScoreContribution = riskScoreContribution
         self.nextItemIfYes = nextItemIfYes
         self.nextItemIfNo = nextItemIfNo
     }
     
-    init(question: String, details: String = String(), riskScoreContribution: @escaping (String) -> Int, nextItem: QuestionnaireItem) {
+    init(question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItem: QuestionnaireItem) {
         self.question = question
         self.details = details
+        self.description = description
         self.riskScoreContribution = riskScoreContribution
         self.nextItemIfYes = nextItem
         self.nextItemIfNo = nextItem
     }
     
-    init(question: String, riskScoreContribution: @escaping (String) -> Int, details: String = String()) {
+    init(question: String, riskScoreContribution: @escaping (String) -> Int32, details: String = String(), description: String) {
         self.question = question
         self.details = details
+        self.description = description
+        self.description = description
         self.riskScoreContribution = riskScoreContribution
     }
 }
