@@ -95,13 +95,6 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let responseToDelete = questionnaireResponses[indexPath.row]
-        questionnaireResponses.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        QuestionnaireResponse.delete(response: responseToDelete)
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questionnaireResponses.count
     }
@@ -122,5 +115,22 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .clear
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let responseToDelete = self.questionnaireResponses[indexPath.row]
+            self.questionnaireResponses.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            QuestionnaireResponse.delete(response: responseToDelete)
+        }
+        delete.backgroundColor = .red
+        
+        let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
+            // TODO(lelandjansen): Complete this when sharing is implemented.
+        }
+        share.backgroundColor = .violet
+        
+        return [delete, share]
     }
 }
