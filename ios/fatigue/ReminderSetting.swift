@@ -6,7 +6,7 @@ class ReminderSetting : Setting {
     var details: String = {
         if (UserDefaults.standard.reminderEnabled) {
             let date = Calendar.current.date(from: UserDefaults.standard.reminderTime)!
-            return timeFormatter.string(from: date)
+            return String(describingTime: date)!
         }
         return reminderOff
     }()

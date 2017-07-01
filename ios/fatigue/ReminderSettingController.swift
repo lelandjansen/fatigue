@@ -71,7 +71,7 @@ class ReminderSettingController: UITableViewController, SettingDelegate {
             cell.textLabel?.text = "Daily reminder"
         case .time:
             cell.textLabel?.text = "Time"
-            cell.detailTextLabel?.text = timeFormatter.string(from: timePicker.date)
+            cell.detailTextLabel?.text = String(describingTime: timePicker.date)!
         case .timePicker:
             cell.addSubview(timePicker)
             timePicker.anchorToTop(
@@ -95,7 +95,7 @@ class ReminderSettingController: UITableViewController, SettingDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let details = reminderToggle.isOn ? timeFormatter.string(from: timePicker.date) : ReminderSetting.reminderOff
+        let details = reminderToggle.isOn ? String(describingTime: timePicker.date) : ReminderSetting.reminderOff
         delegate?.setSelectedCellDetails(toValue: details)
     }
     
@@ -123,7 +123,7 @@ class ReminderSettingController: UITableViewController, SettingDelegate {
     
     func timePickerValueChanged() {
         let cell = tableView.cellForRow(at: IndexPath(row: items.index(of: .time)!, section: 0))
-        cell?.detailTextLabel?.text = timeFormatter.string(from: timePicker.date)
+        cell?.detailTextLabel?.text = String(describingTime: timePicker.date)
         scheduleLocalNotifications(
             atTime: Calendar.current.dateComponents([.minute, .hour], from: timePicker.date))
     }
