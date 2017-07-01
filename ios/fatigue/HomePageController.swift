@@ -40,15 +40,23 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     func moveToHomePage() {
         collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
+        collectionView?.isScrollEnabled = true
     }
     
     func moveToHistoryPage() {
         collectionView?.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredVertically, animated: true)
+        collectionView?.isScrollEnabled = true
     }
     
     func refreshHistory() {
         if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
             historyCell.reloadHistory()
+        }
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if .zero != collectionView!.contentOffset {
+            collectionView?.isScrollEnabled = false
         }
     }
     
