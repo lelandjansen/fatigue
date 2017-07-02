@@ -14,6 +14,7 @@
 		713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F91E6E73210073C3C9 /* HomePageController.swift */; };
 		713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */; };
 		713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FD4B91EA13A6A00815B44 /* Log.swift */; };
+		714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */; };
 		7155024C1EFF0A0E001005B4 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155024B1EFF0A0E001005B4 /* HistoryCell.swift */; };
 		71555D191EAC3F5C00883C45 /* LegalSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D181EAC3F5C00883C45 /* LegalSetting.swift */; };
 		71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */; };
@@ -31,6 +32,7 @@
 		71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3E1EAC723400883C45 /* LegalSettingView.swift */; };
 		7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */; };
 		7168DFDB1EAF0CD3000FFACE /* SettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */; };
+		7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */; };
 		7176C80C1E59515800E557F0 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8081E59515800E557F0 /* Occupation.swift */; };
 		7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8091E59515800E557F0 /* QuestionCell.swift */; };
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
@@ -59,9 +61,12 @@
 		71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */; };
 		71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */; };
 		71F274941E58DC6700983BB4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F274931E58DC6700983BB4 /* UIView.swift */; };
+		AE00D8C3F368D655A6A2D373 /* Pods_fatigue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373CC3B7F5D41038D7B85F1D /* Pods_fatigue.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		373CC3B7F5D41038D7B85F1D /* Pods_fatigue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fatigue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E2FE07C656765B648FFAB6F /* Pods-fatigue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fatigue.release.xcconfig"; path = "Pods/Target Support Files/Pods-fatigue/Pods-fatigue.release.xcconfig"; sourceTree = "<group>"; };
 		710F8F9E1EF2197800C96CDB /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7117599E1E921DD700949FB4 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7118D6F91EA19FF4004B7E19 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 		713495F91E6E73210073C3C9 /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageControllerDelegate.swift; sourceTree = "<group>"; };
 		713FD4B91EA13A6A00815B44 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-fatigue-acknowledgements.plist"; sourceTree = "<group>"; };
 		7155024B1EFF0A0E001005B4 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		71555D181EAC3F5C00883C45 /* LegalSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSetting.swift; sourceTree = "<group>"; };
 		71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationSetting.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 		71555D3E1EAC723400883C45 /* LegalSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingView.swift; sourceTree = "<group>"; };
 		7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDelegate.swift; sourceTree = "<group>"; };
+		7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingDelegate.swift; sourceTree = "<group>"; };
 		7176C8081E59515800E557F0 /* Occupation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		7176C8091E59515800E557F0 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -116,6 +123,7 @@
 		71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestionCell.swift; sourceTree = "<group>"; };
 		71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireController.swift; sourceTree = "<group>"; };
 		71F274931E58DC6700983BB4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		9087AB618126BB83BB600491 /* Pods-fatigue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fatigue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fatigue/Pods-fatigue.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +131,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE00D8C3F368D655A6A2D373 /* Pods_fatigue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11A7512A28A0406DA565A40B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				373CC3B7F5D41038D7B85F1D /* Pods_fatigue.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		710F8F9D1EF2196E00C96CDB /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +171,7 @@
 				71555D241EAC407000883C45 /* AboutSetting.swift */,
 				71555D281EAC661E00883C45 /* AboutSettingController.swift */,
 				71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */,
+				7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -256,6 +274,8 @@
 			children = (
 				71CC91001E581D1A00DA367A /* fatigue */,
 				71CC90FF1E581D1A00DA367A /* Products */,
+				EE4944832A4044B99D1AC27D /* Pods */,
+				11A7512A28A0406DA565A40B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,6 +290,7 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
+				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
@@ -301,6 +322,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		EE4944832A4044B99D1AC27D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9087AB618126BB83BB600491 /* Pods-fatigue.debug.xcconfig */,
+				5E2FE07C656765B648FFAB6F /* Pods-fatigue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,9 +338,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71CC91101E581D1A00DA367A /* Build configuration list for PBXNativeTarget "fatigue" */;
 			buildPhases = (
+				1BBBB63A0C0A0E829EA0CFC3 /* [CP] Check Pods Manifest.lock */,
 				71CC90FA1E581D1A00DA367A /* Sources */,
 				71CC90FB1E581D1A00DA367A /* Frameworks */,
 				71CC90FC1E581D1A00DA367A /* Resources */,
+				AA22D4D0D45E9E1A3EA79D35 /* [CP] Embed Pods Frameworks */,
+				0E18295A66282DEDA777F317 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,10 +396,59 @@
 			files = (
 				7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
+				714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E18295A66282DEDA777F317 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fatigue/Pods-fatigue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BBBB63A0C0A0E829EA0CFC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA22D4D0D45E9E1A3EA79D35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fatigue/Pods-fatigue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71CC90FA1E581D1A00DA367A /* Sources */ = {
@@ -388,6 +470,7 @@
 				71555D311EAC6F7F00883C45 /* NameSettingController.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
 				71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */,
+				7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */,
 				71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */,
 				71555D351EAC709E00883C45 /* OccupationSettingController.swift in Sources */,
 				718839391E9B34B000221316 /* UIButton.swift in Sources */,
@@ -524,6 +607,7 @@
 		};
 		71CC91111E581D1A00DA367A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9087AB618126BB83BB600491 /* Pods-fatigue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SDRF2SCZQU;
@@ -539,6 +623,7 @@
 		};
 		71CC91121E581D1A00DA367A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E2FE07C656765B648FFAB6F /* Pods-fatigue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SDRF2SCZQU;

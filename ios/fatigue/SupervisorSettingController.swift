@@ -1,4 +1,5 @@
 import UIKit
+import PhoneNumberKit
 
 class SupervisorSettingController: UITableViewController, SettingDelegate, UITextFieldDelegate {
     
@@ -92,7 +93,7 @@ class SupervisorSettingController: UITableViewController, SettingDelegate, UITex
     }()
     
     let supervisorPhoneTextField: UITextField = {
-        let textField = UITextField()
+        let textField = PhoneNumberTextField()
         textField.font = .systemFont(ofSize: 17)
         textField.backgroundColor = .clear
         textField.textColor = .dark

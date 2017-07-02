@@ -1,0 +1,6 @@
+framework module Pods_fatigue {
+  umbrella header "Pods-fatigue-umbrella.h"
+
+  export *
+  module * { export * }
+}
