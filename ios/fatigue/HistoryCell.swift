@@ -6,6 +6,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         super.init(frame: frame)
         historyTable.delegate = self
         historyTable.dataSource = self
+        historyTable.allowsSelection = false
         reloadHistory()
         setupViews()
     }
@@ -31,7 +32,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         navigationBar.barTintColor = .light
         navigationBar.tintColor = .clear
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
-        let navigationItem = UINavigationItem(title: "History")
+        let navigationItem = UINavigationItem(title: "Risk Score History")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleNavigationBarTap)))
@@ -63,8 +64,12 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         delegate?.moveToHistoryPage()
     }
     
-    func handleDone() {
+    func scrollToTop() {
         historyTable.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+    }
+    
+    func handleDone() {
+        scrollToTop()
         delegate?.moveToHomePage()
     }
     
@@ -108,11 +113,10 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         }()
         
         let questionnaireResponse = questionnaireResponses[indexPath.row]
-        cell.textLabel?.text = dateFormatter.string(from: questionnaireResponse.date! as Date)
+        cell.textLabel?.text = String(describingDate: questionnaireResponse.date! as Date)
         cell.textLabel?.textColor = .dark
         cell.detailTextLabel?.text = String(describing: questionnaireResponse.riskScore)
         cell.detailTextLabel?.textColor = .medium
-        cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = .clear
         return cell
     }

@@ -40,12 +40,10 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     func moveToHomePage() {
         collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
-        collectionView?.isScrollEnabled = true
     }
     
     func moveToHistoryPage() {
         collectionView?.scrollToItem(at: IndexPath(item: 1, section: 0), at: .centeredVertically, animated: true)
-        collectionView?.isScrollEnabled = true
     }
     
     func refreshHistory() {
@@ -55,8 +53,16 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if .zero != collectionView!.contentOffset {
-            collectionView?.isScrollEnabled = false
+        if .zero == scrollView.contentOffset {
+            if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
+                (historyCell as HistoryCell).scrollToTop()
+                (historyCell as HistoryCell).historyTable.isScrollEnabled = false
+            }
+        }
+        else {
+            if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
+                (historyCell as HistoryCell).historyTable.isScrollEnabled = true
+            }
         }
     }
     
@@ -84,6 +90,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
         case is HistoryCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.history.rawValue, for: indexPath) as! HistoryCell
             cell.delegate = self
+            cell.historyTable.isScrollEnabled = false
             return cell
         default:
             fatalError("Cell is not one of the supported types")
