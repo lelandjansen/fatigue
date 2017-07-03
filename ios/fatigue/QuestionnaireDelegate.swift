@@ -6,4 +6,5 @@ protocol QuestionnaireDelegate: class {
     func moveToPreviousPage()
     func moveToNextPage()
     func dismissQuestionnaire()
+    func shareResponse()
 }

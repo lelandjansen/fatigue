@@ -1,8 +1,8 @@
 import UIKit
 import CoreData
+import MessageUI
 
-
-class QuestionnaireController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireDelegate {
+class QuestionnaireController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
 
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -200,8 +200,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             options: .curveEaseOut,
             animations: {
                 self.view.layoutIfNeeded()
-            },
-            completion: nil
+            }
         )
     }
     
@@ -216,8 +215,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             options: .curveEaseOut,
             animations: {
                 self.view.layoutIfNeeded()
-            },
-            completion: nil
+            }
         )
     }
     
@@ -253,12 +251,30 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    func shareResponse() {
+        if let latestResponse = QuestionnaireResponse.loadResponses().last {
+            Share.share(
+                questionnaireResponse: latestResponse,
+                inViewController: self,
+                forMFMailComposeViewControllerDelegate: self,
+                forMFMessageComposeViewControllerDelegate: self
+            )
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true)
+    }
     
     weak var homePageDelegate: HomePageControllerDelegate?
     
     func dismissQuestionnaire() {
         homePageDelegate?.refreshHistory()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

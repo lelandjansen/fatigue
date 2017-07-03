@@ -98,7 +98,7 @@ class SettingsController: UITableViewController {
     
     
     func dismissSettings() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
 }
