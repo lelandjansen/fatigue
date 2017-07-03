@@ -10,6 +10,7 @@
 		710F8F9F1EF2197800C96CDB /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F8F9E1EF2197800C96CDB /* Notifications.swift */; };
 		7117599F1E921DD700949FB4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117599E1E921DD700949FB4 /* UIColor.swift */; };
 		7118D6FA1EA19FF4004B7E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118D6F91EA19FF4004B7E19 /* Constants.swift */; };
+		712A09E01F0A9F3500DA9618 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A09DF1F0A9F3500DA9618 /* Share.swift */; };
 		713495F81E6E73060073C3C9 /* HomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F71E6E73060073C3C9 /* HomePageCell.swift */; };
 		713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495F91E6E73210073C3C9 /* HomePageController.swift */; };
 		713495FC1E6E820E0073C3C9 /* HomePageControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */; };
@@ -53,7 +54,7 @@
 		71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4371E1F005D2100132451 /* QuestionaireResponse.swift */; };
 		71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */; };
 		71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CF1F00809E008676E3 /* QuestionResponse.swift */; };
-		71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */; };
+		71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
 		71E953A61E67DD0100A59278 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A51E67DD0100A59278 /* Question.swift */; };
@@ -70,6 +71,7 @@
 		710F8F9E1EF2197800C96CDB /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		7117599E1E921DD700949FB4 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7118D6F91EA19FF4004B7E19 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		712A09DF1F0A9F3500DA9618 /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		713495F71E6E73060073C3C9 /* HomePageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageCell.swift; sourceTree = "<group>"; };
 		713495F91E6E73210073C3C9 /* HomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
 		713495FB1E6E820E0073C3C9 /* HomePageControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageControllerDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 		71D4371E1F005D2100132451 /* QuestionaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionaireResponse.swift; sourceTree = "<group>"; };
 		71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireResponse.swift; sourceTree = "<group>"; };
 		71DD26CF1F00809E008676E3 /* QuestionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionResponse.swift; sourceTree = "<group>"; };
-		71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireControllerDelegate.swift; sourceTree = "<group>"; };
+		71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
 		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
 		71E953A51E67DD0100A59278 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -246,7 +248,7 @@
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
 				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
-				71E9539F1E67DB0900A59278 /* QuestionnaireControllerDelegate.swift */,
+				71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */,
 				71D4371E1F005D2100132451 /* QuestionaireResponse.swift */,
 				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
 				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
@@ -290,16 +292,17 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
-				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
+				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
 				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
 				7176C8081E59515800E557F0 /* Occupation.swift */,
+				712A09DF1F0A9F3500DA9618 /* Share.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
-				71D436F91F00547D00132451 /* fatigue.xcdatamodeld */,
 				71C957EA1E66893100F163AF /* Algorithms */,
 				71FF77A01E62797800A7954B /* Extensions */,
+				71D436F91F00547D00132451 /* fatigue.xcdatamodeld */,
 				713495F61E6E72F30073C3C9 /* Home page */,
 				710F8F9D1EF2196E00C96CDB /* Notifications */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
@@ -492,6 +495,7 @@
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
 				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
+				712A09E01F0A9F3500DA9618 /* Share.swift in Sources */,
 				71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
 				71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */,
@@ -502,7 +506,7 @@
 				71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */,
 				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
 				71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */,
-				71E953A01E67DB0900A59278 /* QuestionnaireControllerDelegate.swift in Sources */,
+				71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */,
 				71D284301F083BAB00F70365 /* String.swift in Sources */,
 				71555D2D1EAC6D7500883C45 /* ReminderSettingController.swift in Sources */,
 				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,

@@ -122,16 +122,17 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let questionnaireResponse = questionnaireResponses[indexPath.row]
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            let responseToDelete = self.questionnaireResponses[indexPath.row]
             self.questionnaireResponses.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            QuestionnaireResponse.delete(response: responseToDelete)
+            QuestionnaireResponse.delete(response: questionnaireResponse)
         }
         delete.backgroundColor = .red
         
         let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
-            // TODO(lelandjansen): Complete this when sharing is implemented.
+            self.delegate?.share(questionnaireResponse: questionnaireResponse)
+            tableView.setEditing(false, animated: true)
         }
         share.backgroundColor = .violet
         

@@ -234,7 +234,7 @@ class ResultCell: UICollectionViewCell {
     
     
     func handleShare() {
-        
+        delegate?.shareResponse()
     }
     
     required init?(coder aDecoder: NSCoder) {

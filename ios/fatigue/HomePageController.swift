@@ -1,6 +1,7 @@
 import UIKit
+import MessageUI
 
-class HomePageController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePageControllerDelegate {
+class HomePageController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePageControllerDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.isPagingEnabled = true
@@ -25,17 +26,17 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     func presentQuestionnaire() {
         let questionnaireController = QuestionnaireController()
         questionnaireController.homePageDelegate = self
-        present(questionnaireController, animated: true, completion: nil)
+        present(questionnaireController, animated: true)
     }
     
     func presentSettings() {
         let navigationController = UINavigationController(rootViewController: SettingsController())
-        present(navigationController, animated: true, completion: nil)
+        present(navigationController, animated: true)
         
     }
     
     func dismissSettings() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     func moveToHomePage() {
@@ -50,6 +51,23 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
         if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
             historyCell.reloadHistory()
         }
+    }
+    
+    func share(questionnaireResponse: QuestionnaireResponse) {
+        Share.share(
+            questionnaireResponse: questionnaireResponse,
+            inViewController: self,
+            forMFMailComposeViewControllerDelegate: self,
+            forMFMessageComposeViewControllerDelegate: self
+        )
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true)
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
