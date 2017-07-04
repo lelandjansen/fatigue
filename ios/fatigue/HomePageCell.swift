@@ -13,6 +13,10 @@ class HomePageCell: UICollectionViewCell {
     
     weak var delegate: HomePageControllerDelegate?
     
+    let logoImage: UIImageView = {
+        return UIImageView(image: #imageLiteral(resourceName: "iagsa_logo"))
+    }()
+    
     let titleLabel: UILabel = {
         let attributedText = NSMutableAttributedString(
             string: "Fatigue Self-Assessment",
@@ -55,13 +59,23 @@ class HomePageCell: UICollectionViewCell {
     
     
     func setupViews() {
+        addSubview(logoImage)
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(beginQuestionnaireButton)
         addSubview(settingsButton)
         
-        let padding: CGFloat = 16
+        logoImage.anchorWithConstantsToTop(
+            nil,
+            left: leftAnchor,
+            bottom: topAnchor,
+            right: rightAnchor,
+            leftConstant: (self.frame.width - logoImage.frame.width) / 2,
+            bottomConstant: 16,
+            rightConstant: (self.frame.width - logoImage.frame.width) / 2
+        )
         
+        let padding: CGFloat = 16
         titleLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
