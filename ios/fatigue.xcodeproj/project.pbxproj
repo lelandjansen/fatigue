@@ -54,6 +54,9 @@
 		71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4371E1F005D2100132451 /* QuestionaireResponse.swift */; };
 		71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */; };
 		71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CF1F00809E008676E3 /* QuestionResponse.swift */; };
+		71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */; };
+		71E33B9D1F0C467300B62789 /* ImageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */; };
+		71E33B9F1F0C499100B62789 /* ImageCreditsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */; };
 		71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
@@ -117,6 +120,9 @@
 		71D4371E1F005D2100132451 /* QuestionaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionaireResponse.swift; sourceTree = "<group>"; };
 		71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireResponse.swift; sourceTree = "<group>"; };
 		71DD26CF1F00809E008676E3 /* QuestionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionResponse.swift; sourceTree = "<group>"; };
+		71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsController.swift; sourceTree = "<group>"; };
+		71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsView.swift; sourceTree = "<group>"; };
+		71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsDelegate.swift; sourceTree = "<group>"; };
 		71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
 		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
@@ -174,6 +180,9 @@
 				71555D281EAC661E00883C45 /* AboutSettingController.swift */,
 				71555D2A1EAC66CA00883C45 /* AboutSettingView.swift */,
 				7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */,
+				71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */,
+				71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */,
+				71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -459,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71555D291EAC661E00883C45 /* AboutSettingController.swift in Sources */,
+				71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */,
 				7168DFDB1EAF0CD3000FFACE /* SettingDelegate.swift in Sources */,
 				719F50DE1EA3DCFB0037B04F /* Setting.swift in Sources */,
 				71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */,
@@ -493,11 +503,13 @@
 				7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */,
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
+				71E33B9F1F0C499100B62789 /* ImageCreditsDelegate.swift in Sources */,
 				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
 				712A09E01F0A9F3500DA9618 /* Share.swift in Sources */,
 				71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
+				71E33B9D1F0C467300B62789 /* ImageCreditsView.swift in Sources */,
 				71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
 				71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */,

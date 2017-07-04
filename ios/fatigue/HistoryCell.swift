@@ -82,15 +82,60 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         return tableView
     }()
     
+    let mountainImage: UIImageView = {
+        return UIImageView(image: #imageLiteral(resourceName: "mountains"))
+    }()
+    
+    let helicopterImage: UIImageView = {
+        return UIImageView(image: #imageLiteral(resourceName: "helicopter"))
+    }()
+    
+    let creditLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Designed by Leland Jansen"
+        label.font = .systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.textColor = .light
+        return label
+    }()
+    
     func setupViews() {
         addSubview(historyTable)
         addSubview(navigationBar)
+        addSubview(mountainImage)
+        addSubview(helicopterImage)
+        addSubview(creditLabel)
         
         historyTable.anchorToTop(
             navigationBar.bottomAnchor,
             left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor
+        )
+        
+        let mountainOffset: CGFloat = 80
+        mountainImage.anchorWithConstantsToTop(
+            bottomAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            topConstant: mountainOffset
+        )
+        
+        let helicopterOffset: CGFloat = 25
+        helicopterImage.anchorWithConstantsToTop(
+            bottomAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            topConstant: mountainOffset - 16,
+            leftConstant: (self.frame.width - helicopterImage.frame.width) / 2 + helicopterOffset,
+            rightConstant: (self.frame.width - helicopterImage.frame.width) / 2 - helicopterOffset
+        )
+        
+        creditLabel.anchorWithConstantsToTop(
+            bottomAnchor,
+            left: leftAnchor,
+            right: rightAnchor,
+            topConstant: mountainOffset + 80
         )
     }
     

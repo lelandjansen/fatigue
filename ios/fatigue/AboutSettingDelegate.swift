@@ -1,5 +1,5 @@
-import Foundation
+import UIKit
 
 protocol AboutSettingDelegate: class {
-    func pushAcknowledgementsViewController()
+    func pushViewController(_ viewController: UIViewController)
 }

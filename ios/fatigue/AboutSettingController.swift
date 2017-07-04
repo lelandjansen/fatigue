@@ -1,5 +1,4 @@
 import UIKit
-import AcknowList
 
 class AboutSettingController: UIViewController, AboutSettingDelegate {
     
@@ -27,9 +26,7 @@ class AboutSettingController: UIViewController, AboutSettingDelegate {
         )
     }
     
-    func pushAcknowledgementsViewController() {
-        let path = Bundle.main.path(forResource: "Pods-fatigue-acknowledgements", ofType: "plist")
-        let acknowListViewController = AcknowListViewController(acknowledgementsPlistPath: path)
-        navigationController?.pushViewController(acknowListViewController, animated: true)
+    func pushViewController(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
