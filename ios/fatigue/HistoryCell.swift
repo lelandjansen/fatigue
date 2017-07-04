@@ -65,7 +65,9 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     func scrollToTop() {
-        historyTable.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        if !questionnaireResponses.isEmpty {
+            historyTable.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
     }
     
     func handleDone() {

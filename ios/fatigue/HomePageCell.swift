@@ -80,13 +80,6 @@ class HomePageCell: UICollectionViewCell {
             rightConstant: padding
         )
         
-        print("self.frame.size.height \(self.frame.size.height)")
-        print("UIConstants.tableViewRowHeight \(UIConstants.tableViewRowHeight)")
-        print("UIConstants.navigationBarHeight \(UIConstants.navigationBarHeight)")
-        print("UIConstants.buttonHeight \(UIConstants.buttonHeight)")
-        print("UIConstants.buttonSpacing \(UIConstants.buttonSpacing)")
-        print("result \((self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2)")
-        
         beginQuestionnaireButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
             y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
