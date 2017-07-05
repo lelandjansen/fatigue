@@ -45,7 +45,7 @@ class HomePageCell: UICollectionViewCell {
         return label
     }()
     
-    let beginQuestionnaireButton: UIButton = {
+    let beginButton: UIButton = {
         let button = UIButton.createStyledButton(withColor: .violet)
         button.setTitle("Begin", for: .normal)
         return button
@@ -62,7 +62,7 @@ class HomePageCell: UICollectionViewCell {
         addSubview(logoImage)
         addSubview(titleLabel)
         addSubview(subtitleLabel)
-        addSubview(beginQuestionnaireButton)
+        addSubview(beginButton)
         addSubview(settingsButton)
         
         let padding: CGFloat = 16
@@ -94,13 +94,13 @@ class HomePageCell: UICollectionViewCell {
             rightConstant: padding
         )
         
-        beginQuestionnaireButton.frame = CGRect(
+        beginButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
             y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
-        beginQuestionnaireButton.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
+        beginButton.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         
         settingsButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,

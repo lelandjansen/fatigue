@@ -139,6 +139,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         return navigationBar
     }()
     
+    var pageControlBottomAnchor: NSLayoutConstraint?
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -147,9 +148,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         pageControl.defersCurrentPageDisplay = true
         return pageControl
     }()
-    
-    
-    var pageControlBottomAnchor: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,11 +168,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             left: view.leftAnchor,
             bottom: view.bottomAnchor,
             right: view.rightAnchor,
-            topConstant: 0,
-            leftConstant: 0,
-            bottomConstant: 0,
-            rightConstant: 0,
-            widthConstant: 0,
             heightConstant: 32
         )[1]
         
@@ -190,8 +183,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     
     fileprivate func moveControlsOffScreen() {
-        self.pageControlBottomAnchor?.constant = 40
-        
+        pageControlBottomAnchor?.constant = 40
         UIView.animate(
             withDuration: 1/2,
             delay: 0,
@@ -206,7 +198,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     fileprivate func moveControlsOnScreen() {
         pageControlBottomAnchor?.constant = 0
-        
         UIView.animate(
             withDuration: 1/2,
             delay: 0,

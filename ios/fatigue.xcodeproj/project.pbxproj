@@ -39,8 +39,15 @@
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
 		7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80B1E59515800E557F0 /* ResultCell.swift */; };
 		7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8101E595C9100E557F0 /* UserDefaults.swift */; };
+		717970C81F0DE9F0000136C1 /* OccupationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970C71F0DE9F0000136C1 /* OccupationCell.swift */; };
+		717970CA1F0DEA26000136C1 /* ReminderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970C91F0DEA26000136C1 /* ReminderCell.swift */; };
+		717970CC1F0DEA63000136C1 /* ShareInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */; };
+		717970CE1F0DEB2D000136C1 /* LegalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970CD1F0DEB2D000136C1 /* LegalCell.swift */; };
+		717970D21F0F1333000136C1 /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970D11F0F1333000136C1 /* OnboardingDelegate.swift */; };
 		718839391E9B34B000221316 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718839381E9B34B000221316 /* UIButton.swift */; };
 		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
+		718DD9241F0C8201000BBB33 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DD9231F0C8201000BBB33 /* OnboardingController.swift */; };
+		718DD9261F0C8249000BBB33 /* WelcomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DD9251F0C8249000BBB33 /* WelcomeCell.swift */; };
 		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
 		719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414BB1E63FCD1009A16D2 /* Questionnaire.swift */; };
 		719F50D81EA323A00037B04F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719F50D71EA323A00037B04F /* SettingsController.swift */; };
@@ -57,6 +64,7 @@
 		71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */; };
 		71E33B9D1F0C467300B62789 /* ImageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */; };
 		71E33B9F1F0C499100B62789 /* ImageCreditsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */; };
+		71E33BA31F0C665B00B62789 /* Onboarding Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */; };
 		71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
@@ -103,8 +111,15 @@
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		7176C80B1E59515800E557F0 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		7176C8101E595C9100E557F0 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		717970C71F0DE9F0000136C1 /* OccupationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationCell.swift; sourceTree = "<group>"; };
+		717970C91F0DEA26000136C1 /* ReminderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderCell.swift; sourceTree = "<group>"; };
+		717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInformationCell.swift; sourceTree = "<group>"; };
+		717970CD1F0DEB2D000136C1 /* LegalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalCell.swift; sourceTree = "<group>"; };
+		717970D11F0F1333000136C1 /* OnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		718839381E9B34B000221316 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		718DD9231F0C8201000BBB33 /* OnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		718DD9251F0C8249000BBB33 /* WelcomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCell.swift; sourceTree = "<group>"; };
 		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
 		719414BB1E63FCD1009A16D2 /* Questionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		719F50D71EA323A00037B04F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -123,6 +138,7 @@
 		71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsController.swift; sourceTree = "<group>"; };
 		71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsView.swift; sourceTree = "<group>"; };
 		71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsDelegate.swift; sourceTree = "<group>"; };
+		71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Onboarding Launch Screen.storyboard"; sourceTree = "<group>"; };
 		71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
 		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
@@ -233,6 +249,20 @@
 			name = Supervisor;
 			sourceTree = "<group>";
 		};
+		718DD9221F0C81E1000BBB33 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				717970CD1F0DEB2D000136C1 /* LegalCell.swift */,
+				717970C71F0DE9F0000136C1 /* OccupationCell.swift */,
+				718DD9231F0C8201000BBB33 /* OnboardingController.swift */,
+				717970C91F0DEA26000136C1 /* ReminderCell.swift */,
+				717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */,
+				718DD9251F0C8249000BBB33 /* WelcomeCell.swift */,
+				717970D11F0F1333000136C1 /* OnboardingDelegate.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
 		719F50D61EA323970037B04F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +334,7 @@
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
 				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
+				71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
 				7176C8081E59515800E557F0 /* Occupation.swift */,
@@ -314,6 +345,7 @@
 				71D436F91F00547D00132451 /* fatigue.xcdatamodeld */,
 				713495F61E6E72F30073C3C9 /* Home page */,
 				710F8F9D1EF2196E00C96CDB /* Notifications */,
+				718DD9221F0C81E1000BBB33 /* Onboarding */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
 				719F50D61EA323970037B04F /* Settings */,
 			);
@@ -406,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E33BA31F0C665B00B62789 /* Onboarding Launch Screen.storyboard in Resources */,
 				7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
 				714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */,
@@ -467,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717970CE1F0DEB2D000136C1 /* LegalCell.swift in Sources */,
 				71555D291EAC661E00883C45 /* AboutSettingController.swift in Sources */,
 				71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */,
 				7168DFDB1EAF0CD3000FFACE /* SettingDelegate.swift in Sources */,
@@ -496,6 +530,7 @@
 				71555D1D1EAC3F8600883C45 /* SupervisorSetting.swift in Sources */,
 				71555D2B1EAC66CA00883C45 /* AboutSettingView.swift in Sources */,
 				71C957EE1E66895700F163AF /* LongestPath.swift in Sources */,
+				717970CC1F0DEA63000136C1 /* ShareInformationCell.swift in Sources */,
 				71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */,
 				7117599F1E921DD700949FB4 /* UIColor.swift in Sources */,
 				71E953A91E67DEF600A59278 /* RangeQuestionCell.swift in Sources */,
@@ -503,15 +538,19 @@
 				7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */,
 				7176C80F1E59515800E557F0 /* ResultCell.swift in Sources */,
 				719414BC1E63FCD1009A16D2 /* Questionnaire.swift in Sources */,
+				718DD9261F0C8249000BBB33 /* WelcomeCell.swift in Sources */,
 				71E33B9F1F0C499100B62789 /* ImageCreditsDelegate.swift in Sources */,
 				713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */,
 				71C957EC1E66894100F163AF /* TopologicalSort.swift in Sources */,
 				712A09E01F0A9F3500DA9618 /* Share.swift in Sources */,
 				71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */,
 				7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */,
+				717970D21F0F1333000136C1 /* OnboardingDelegate.swift in Sources */,
 				71E33B9D1F0C467300B62789 /* ImageCreditsView.swift in Sources */,
 				71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */,
 				71CC91021E581D1A00DA367A /* AppDelegate.swift in Sources */,
+				717970C81F0DE9F0000136C1 /* OccupationCell.swift in Sources */,
+				717970CA1F0DEA26000136C1 /* ReminderCell.swift in Sources */,
 				71E953AB1E67DF1100A59278 /* YesNoQuestionCell.swift in Sources */,
 				71F274901E582F5400983BB4 /* QuestionnaireController.swift in Sources */,
 				71555D251EAC407000883C45 /* AboutSetting.swift in Sources */,
@@ -519,6 +558,7 @@
 				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
 				71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */,
 				71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */,
+				718DD9241F0C8201000BBB33 /* OnboardingController.swift in Sources */,
 				71D284301F083BAB00F70365 /* String.swift in Sources */,
 				71555D2D1EAC6D7500883C45 /* ReminderSettingController.swift in Sources */,
 				719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */,

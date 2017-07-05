@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        window?.rootViewController = HomePageController(collectionViewLayout: layout)
+//        window?.rootViewController = HomePageController(collectionViewLayout: layout)
+        window?.rootViewController = OnboardingController(collectionViewLayout: layout)
         
         registerLocalNotifications()
         
