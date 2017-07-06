@@ -14,9 +14,13 @@ class AboutSettingView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let aboutLabel: UILabel = {
+    let logoImage: UIImageView = {
+        return UIImageView(image: #imageLiteral(resourceName: "iagsa-logo-full-dark"))
+    }()
+    
+    let designedByLabel: UILabel = {
         let label = UILabel()
-        label.text = "About this app"
+        label.text = "Designed by Leland Jansen"
         label.textAlignment = .center
         return label
     }()
@@ -47,17 +51,11 @@ class AboutSettingView : UIView {
     }()
     
     func setupViews() {
-        addSubview(aboutLabel)
+        addSubview(logoImage)
+        addSubview(designedByLabel)
         addSubview(thirdPartySoftwareButton)
         addSubview(imageAssetsButton)
         addSubview(acknowledgementsLabel)
-        
-        aboutLabel.anchorToTop(
-            topAnchor,
-            left: leftAnchor,
-            bottom: bottomAnchor,
-            right: rightAnchor
-        )
         
         let padding: CGFloat = 16
         thirdPartySoftwareButton.anchorWithConstantsToTop(
@@ -90,6 +88,24 @@ class AboutSettingView : UIView {
             leftConstant: padding,
             bottomConstant: padding / 4,
             rightConstant: padding
+        )
+        
+        logoImage.anchorWithConstantsToTop(
+            topAnchor,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor,
+            topConstant: (self.frame.height - logoImage.frame.height) / 2,
+            leftConstant: (self.frame.width - logoImage.frame.width) / 2,
+            bottomConstant: (self.frame.height - logoImage.frame.height) / 2,
+            rightConstant: (self.frame.width - logoImage.frame.width) / 2
+        )
+        
+        designedByLabel.anchorToTop(
+            logoImage.bottomAnchor,
+            left: leftAnchor,
+            bottom: acknowledgementsLabel.topAnchor,
+            right: rightAnchor
         )
     }
     

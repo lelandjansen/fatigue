@@ -14,7 +14,7 @@ class HomePageCell: UICollectionViewCell {
     weak var delegate: HomePageControllerDelegate?
     
     let logoImage: UIImageView = {
-        return UIImageView(image: #imageLiteral(resourceName: "iagsa_logo"))
+        return UIImageView(image: #imageLiteral(resourceName: "iagsa-logo-full-dark"))
     }()
     
     let titleLabel: UILabel = {
@@ -65,22 +65,22 @@ class HomePageCell: UICollectionViewCell {
         addSubview(beginQuestionnaireButton)
         addSubview(settingsButton)
         
+        let padding: CGFloat = 16
         logoImage.anchorWithConstantsToTop(
             nil,
             left: leftAnchor,
             bottom: topAnchor,
             right: rightAnchor,
             leftConstant: (self.frame.width - logoImage.frame.width) / 2,
-            bottomConstant: 16,
+            bottomConstant: padding,
             rightConstant: (self.frame.width - logoImage.frame.width) / 2
         )
         
-        let padding: CGFloat = 16
         titleLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            topConstant: 94,
+            topConstant: 96,
             leftConstant: padding,
             rightConstant: padding
         )
