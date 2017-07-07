@@ -14,8 +14,8 @@ class ImageCreditsView: UIView {
     
     let creditsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Helicopter and mountain images designed by Freepik and modified with permission."
-        label.numberOfLines = 2
+        label.text = "Aircraft, clouds, and mountain images designed by Freepik. Air traffic control tower image designed by Graphiqastock/Freepik. Images modified with permission."
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.textColor = .dark
