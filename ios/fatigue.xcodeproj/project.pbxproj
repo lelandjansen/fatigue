@@ -44,6 +44,7 @@
 		717970CC1F0DEA63000136C1 /* ShareInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */; };
 		717970CE1F0DEB2D000136C1 /* LegalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970CD1F0DEB2D000136C1 /* LegalCell.swift */; };
 		717970D21F0F1333000136C1 /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970D11F0F1333000136C1 /* OnboardingDelegate.swift */; };
+		717970D61F0F3C72000136C1 /* LEGAL in Resources */ = {isa = PBXBuildFile; fileRef = 717970D51F0F3C72000136C1 /* LEGAL */; };
 		718839391E9B34B000221316 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718839381E9B34B000221316 /* UIButton.swift */; };
 		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
 		718DD9241F0C8201000BBB33 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DD9231F0C8201000BBB33 /* OnboardingController.swift */; };
@@ -116,6 +117,7 @@
 		717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareInformationCell.swift; sourceTree = "<group>"; };
 		717970CD1F0DEB2D000136C1 /* LegalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalCell.swift; sourceTree = "<group>"; };
 		717970D11F0F1333000136C1 /* OnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
+		717970D51F0F3C72000136C1 /* LEGAL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LEGAL; sourceTree = "<group>"; };
 		718839381E9B34B000221316 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		718DD9231F0C8201000BBB33 /* OnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
+				717970D51F0F3C72000136C1 /* LEGAL */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
 				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
@@ -442,6 +445,7 @@
 				7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
 				714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */,
+				717970D61F0F3C72000136C1 /* LEGAL in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

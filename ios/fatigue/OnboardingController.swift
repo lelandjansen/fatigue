@@ -142,4 +142,8 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
         pageControl.currentPage = pageNumber
         pageNumber == 0 || pageNumber == pageControl.numberOfPages - 1 ? moveControlsOffScreen() : moveControlsOnScreen()
     }
+    
+    func presentViewController(_ viewController: UIViewController) {
+        present(viewController, animated: true)
+    }
 }
