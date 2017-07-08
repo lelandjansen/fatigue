@@ -178,7 +178,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     fileprivate func registerCells() {
         collectionView.register(RangeQuestionCell.self, forCellWithReuseIdentifier: CellId.rangeQuestion.rawValue)
         collectionView.register(YesNoQuestionCell.self, forCellWithReuseIdentifier: CellId.yesNoQuestion.rawValue)
-        collectionView.register(ResultCell .self, forCellWithReuseIdentifier: CellId.result.rawValue)
+        collectionView.register(ResultCell.self, forCellWithReuseIdentifier: CellId.result.rawValue)
     }
     
     
