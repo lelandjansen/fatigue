@@ -9,10 +9,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
 //        window?.rootViewController = HomePageController(collectionViewLayout: layout)
-        window?.rootViewController = OnboardingController(collectionViewLayout: layout)
+        window?.rootViewController = OnboardingController()
         return true
     }
     
