@@ -172,14 +172,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		710F8F9D1EF2196E00C96CDB /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				710F8F9E1EF2197800C96CDB /* Notifications.swift */,
-			);
-			name = Notifications;
-			sourceTree = "<group>";
-		};
 		713495F61E6E72F30073C3C9 /* Home page */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,10 +249,10 @@
 				717970CD1F0DEB2D000136C1 /* LegalCell.swift */,
 				717970C71F0DE9F0000136C1 /* OccupationCell.swift */,
 				718DD9231F0C8201000BBB33 /* OnboardingController.swift */,
+				717970D11F0F1333000136C1 /* OnboardingDelegate.swift */,
 				717970C91F0DEA26000136C1 /* ReminderCell.swift */,
 				717970CB1F0DEA63000136C1 /* ShareInformationCell.swift */,
 				718DD9251F0C8249000BBB33 /* WelcomeCell.swift */,
-				717970D11F0F1333000136C1 /* OnboardingDelegate.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -340,6 +332,7 @@
 				71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
+				710F8F9E1EF2197800C96CDB /* Notifications.swift */,
 				7176C8081E59515800E557F0 /* Occupation.swift */,
 				712A09DF1F0A9F3500DA9618 /* Share.swift */,
 				71CC91081E581D1A00DA367A /* Assets.xcassets */,
@@ -347,7 +340,6 @@
 				71FF77A01E62797800A7954B /* Extensions */,
 				71D436F91F00547D00132451 /* fatigue.xcdatamodeld */,
 				713495F61E6E72F30073C3C9 /* Home page */,
-				710F8F9D1EF2196E00C96CDB /* Notifications */,
 				718DD9221F0C81E1000BBB33 /* Onboarding */,
 				71A401E81E63FEF7007B548D /* Questionnaire */,
 				719F50D61EA323970037B04F /* Settings */,
