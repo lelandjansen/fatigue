@@ -1,17 +1,24 @@
 import UIKit
 
-class OnboardingController: UICollectionViewController, UICollectionViewDelegateFlowLayout, OnboardingDelegate {
+class OnboardingController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, OnboardingDelegate {
     override func viewDidLoad() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView?.collectionViewLayout = layout
-        collectionView?.isPagingEnabled = true
-        collectionView?.showsVerticalScrollIndicator = false
-        collectionView?.showsHorizontalScrollIndicator = false
-        collectionView?.backgroundColor = .light
+        view.backgroundColor = .light
         setupViews()
         registerCells()
     }
+    
+    lazy var onboardingSequence: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     enum CellId: String {
         case welcome, legal, occupation, reminder, shareInformation
@@ -26,18 +33,18 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
     ]
     
     fileprivate func registerCells() {
-        collectionView?.register(WelcomeCell.self, forCellWithReuseIdentifier: CellId.welcome.rawValue)
-        collectionView?.register(LegalCell.self, forCellWithReuseIdentifier: CellId.legal.rawValue)
-        collectionView?.register(OccupationCell.self, forCellWithReuseIdentifier: CellId.occupation.rawValue)
-        collectionView?.register(ReminderCell.self, forCellWithReuseIdentifier: CellId.reminder.rawValue)
-        collectionView?.register(ShareInformationCell.self, forCellWithReuseIdentifier: CellId.shareInformation.rawValue)
+        onboardingSequence.register(WelcomeCell.self, forCellWithReuseIdentifier: CellId.welcome.rawValue)
+        onboardingSequence.register(LegalCell.self, forCellWithReuseIdentifier: CellId.legal.rawValue)
+        onboardingSequence.register(OccupationCell.self, forCellWithReuseIdentifier: CellId.occupation.rawValue)
+        onboardingSequence.register(ReminderCell.self, forCellWithReuseIdentifier: CellId.reminder.rawValue)
+        onboardingSequence.register(ShareInformationCell.self, forCellWithReuseIdentifier: CellId.shareInformation.rawValue)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cells.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch cells[indexPath.row] {
         case .welcome:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.welcome.rawValue, for: indexPath) as! WelcomeCell
@@ -82,7 +89,14 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
     }()
     
     func setupViews() {
+        view.addSubview(onboardingSequence)
         view.addSubview(pageControl)
+        onboardingSequence.anchorToTop(
+            view.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor
+        )
         pageControlBottomAnchor = pageControl.anchor(
             nil,
             left: view.leftAnchor,
@@ -134,10 +148,18 @@ class OnboardingController: UICollectionViewController, UICollectionViewDelegate
         }
         pageControl.currentPage += 1
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        onboardingSequence.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dismissKeyboard()
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
         pageNumber == 0 || pageNumber == pageControl.numberOfPages - 1 ? moveControlsOffScreen() : moveControlsOnScreen()
