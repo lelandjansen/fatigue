@@ -4,10 +4,10 @@ enum NotificationKeys: String {
     case dailyReminder
 }
 
-func registerLocalNotifications() {
+func registerLocalNotifications(completionIfGranted: @escaping () -> (), completionIfNotGranted: @escaping () -> ()) {
     let notificationCenter = UNUserNotificationCenter.current()
     notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-        
+        granted ? completionIfGranted() : completionIfNotGranted()
     }
 }
 
