@@ -12,6 +12,15 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
         registerCells()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserDefaults.standard.firstLaunch {
+            present(OnboardingController(), animated: false, completion: {
+                UserDefaults.standard.firstLaunch = false
+            })
+        }
+    }
+    
     enum CellId: String {
         case homePage, history
     }

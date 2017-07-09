@@ -34,6 +34,7 @@
 		7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */; };
 		7168DFDB1EAF0CD3000FFACE /* SettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */; };
 		7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */; };
+		7173C6801F12E7A6001E135C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */; };
 		7176C80C1E59515800E557F0 /* Occupation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8081E59515800E557F0 /* Occupation.swift */; };
 		7176C80D1E59515800E557F0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C8091E59515800E557F0 /* QuestionCell.swift */; };
 		7176C80E1E59515800E557F0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176C80A1E59515800E557F0 /* Result.swift */; };
@@ -46,7 +47,6 @@
 		717970D21F0F1333000136C1 /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717970D11F0F1333000136C1 /* OnboardingDelegate.swift */; };
 		717970D61F0F3C72000136C1 /* LEGAL in Resources */ = {isa = PBXBuildFile; fileRef = 717970D51F0F3C72000136C1 /* LEGAL */; };
 		718839391E9B34B000221316 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718839381E9B34B000221316 /* UIButton.swift */; };
-		7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188393C1E9B555A00221316 /* Launch Screen.storyboard */; };
 		718DD9241F0C8201000BBB33 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DD9231F0C8201000BBB33 /* OnboardingController.swift */; };
 		718DD9261F0C8249000BBB33 /* WelcomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718DD9251F0C8249000BBB33 /* WelcomeCell.swift */; };
 		719414BA1E63EF02009A16D2 /* QuestionnaireItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */; };
@@ -65,7 +65,6 @@
 		71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */; };
 		71E33B9D1F0C467300B62789 /* ImageCreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */; };
 		71E33B9F1F0C499100B62789 /* ImageCreditsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */; };
-		71E33BA31F0C665B00B62789 /* Onboarding Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */; };
 		71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */; };
 		71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */; };
 		71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E953A31E67DB7000A59278 /* RangeQuestion.swift */; };
@@ -107,6 +106,7 @@
 		7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		7168DFDA1EAF0CD3000FFACE /* SettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDelegate.swift; sourceTree = "<group>"; };
 		7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingDelegate.swift; sourceTree = "<group>"; };
+		7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7176C8081E59515800E557F0 /* Occupation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Occupation.swift; sourceTree = "<group>"; };
 		7176C8091E59515800E557F0 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		7176C80A1E59515800E557F0 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 		717970D11F0F1333000136C1 /* OnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		717970D51F0F3C72000136C1 /* LEGAL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LEGAL; sourceTree = "<group>"; };
 		718839381E9B34B000221316 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		7188393C1E9B555A00221316 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		718DD9231F0C8201000BBB33 /* OnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		718DD9251F0C8249000BBB33 /* WelcomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeCell.swift; sourceTree = "<group>"; };
 		719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireItem.swift; sourceTree = "<group>"; };
@@ -140,7 +139,6 @@
 		71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsController.swift; sourceTree = "<group>"; };
 		71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsView.swift; sourceTree = "<group>"; };
 		71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsDelegate.swift; sourceTree = "<group>"; };
-		71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Onboarding Launch Screen.storyboard"; sourceTree = "<group>"; };
 		71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDelegate.swift; sourceTree = "<group>"; };
 		71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesNoQuestion.swift; sourceTree = "<group>"; };
 		71E953A31E67DB7000A59278 /* RangeQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeQuestion.swift; sourceTree = "<group>"; };
@@ -328,8 +326,7 @@
 				717970D51F0F3C72000136C1 /* LEGAL */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
-				7188393C1E9B555A00221316 /* Launch Screen.storyboard */,
-				71E33BA21F0C665B00B62789 /* Onboarding Launch Screen.storyboard */,
+				7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */,
 				71CC91011E581D1A00DA367A /* AppDelegate.swift */,
 				7118D6F91EA19FF4004B7E19 /* Constants.swift */,
 				710F8F9E1EF2197800C96CDB /* Notifications.swift */,
@@ -433,8 +430,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71E33BA31F0C665B00B62789 /* Onboarding Launch Screen.storyboard in Resources */,
-				7188393D1E9B555A00221316 /* Launch Screen.storyboard in Resources */,
+				7173C6801F12E7A6001E135C /* Launch Screen.storyboard in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
 				714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */,
 				717970D61F0F3C72000136C1 /* LEGAL in Resources */,

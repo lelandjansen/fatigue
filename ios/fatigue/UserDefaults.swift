@@ -3,7 +3,8 @@ import Foundation
 extension UserDefaults {
     
     enum UserDefaultsKeys: String {
-        case occupation,
+        case firstLaunch,
+            occupation,
             reminderEnabled,
             reminderHour,
             reminderMinute,
@@ -11,6 +12,17 @@ extension UserDefaults {
             supervisorName,
             supervisorEmail,
             supervisorPhone
+    }
+    
+    var firstLaunch: Bool {
+        get {
+            return object(forKey: UserDefaultsKeys.firstLaunch.rawValue) as? Bool ?? true
+        }
+        
+        set {
+            set(newValue, forKey: UserDefaultsKeys.firstLaunch.rawValue)
+            synchronize()
+        }
     }
     
     var occupation: Occupation {
