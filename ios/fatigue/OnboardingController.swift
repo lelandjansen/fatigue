@@ -32,6 +32,11 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         .shareInformation,
     ]
     
+    var visibleCells: [CellId] = [
+        .welcome,
+        .legal,
+    ]
+    
     fileprivate func registerCells() {
         onboardingSequence.register(WelcomeCell.self, forCellWithReuseIdentifier: CellId.welcome.rawValue)
         onboardingSequence.register(LegalCell.self, forCellWithReuseIdentifier: CellId.legal.rawValue)
@@ -41,11 +46,11 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cells.count
+        return visibleCells.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch cells[indexPath.row] {
+        switch visibleCells[indexPath.row] {
         case .welcome:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.welcome.rawValue, for: indexPath) as! WelcomeCell
             cell.delegate = self
@@ -84,7 +89,7 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         pageControl.pageIndicatorTintColor = UIColor.dark.withAlphaComponent(2 / 5)
         pageControl.currentPageIndicatorTintColor = .dark
         pageControl.defersCurrentPageDisplay = true
-        pageControl.numberOfPages = self.cells.count
+        pageControl.numberOfPages = self.cells.count - 1
         return pageControl
     }()
     
@@ -136,18 +141,23 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         )
     }
     
-    func moveToNextPage() {
-        if pageControl.currentPage == pageControl.numberOfPages - 1 {
-            return
+    func addNextPage() {
+        let pageNumber = Int(onboardingSequence.contentOffset.x / view.frame.width)
+        if visibleCells.count == pageNumber + 1 {
+            visibleCells.append(cells[pageNumber + 1])
+            onboardingSequence.reloadData()
         }
-        if 0 == pageControl.currentPage {
+    }
+    
+    func moveToNextPage() {
+        let pageNumber = Int(onboardingSequence.contentOffset.x / view.frame.width)
+        if 0 == pageNumber {
             moveControlsOnScreen()
         }
-        else if pageControl.currentPage == pageControl.numberOfPages - 2 {
-            moveControlsOffScreen()
+        else {
+            pageControl.currentPage += 1
         }
-        pageControl.currentPage += 1
-        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        let indexPath = IndexPath(item: pageNumber + 1, section: 0)
         onboardingSequence.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -161,11 +171,15 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
-        pageControl.currentPage = pageNumber
-        pageNumber == 0 || pageNumber == pageControl.numberOfPages - 1 ? moveControlsOffScreen() : moveControlsOnScreen()
+        pageControl.currentPage = pageNumber - 1
+        pageNumber == 0 ? moveControlsOffScreen() : moveControlsOnScreen()
     }
     
     func presentViewController(_ viewController: UIViewController) {
         present(viewController, animated: true)
+    }
+
+    func dismiss() {
+        dismiss(animated: true)
     }
 }

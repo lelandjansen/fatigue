@@ -41,7 +41,7 @@ class HomePageCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .dark
+        label.textColor = .medium
         return label
     }()
     
@@ -52,11 +52,15 @@ class HomePageCell: UICollectionViewCell {
     }()
     
     let settingsButton: UIButton = {
-        let button = UIButton.createStyledButton()
+        let button = UIButton()
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        button.setTitleColor(.medium, for: .normal)
+        button.setTitleColor(UIColor.medium.withAlphaComponent(1/2), for: .highlighted)
         button.setTitle("Settings", for: .normal)
+        button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     
     func setupViews() {
         addSubview(logoImage)
@@ -96,18 +100,20 @@ class HomePageCell: UICollectionViewCell {
         
         beginButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing) / 2,
+            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing + 16) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
         beginButton.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
         
-        settingsButton.frame = CGRect(
-            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight + UIConstants.buttonHeight + UIConstants.buttonSpacing) / 2,
-            width: UIConstants.buttonWidth,
-            height: UIConstants.buttonHeight
-        )
+//        settingsButton.frame = CGRect(
+//            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
+//            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight + UIConstants.buttonHeight) / 2 + UIConstants.buttonSpacing,
+//            width: UIConstants.buttonWidth,
+//            height: UIConstants.buttonHeight / 2
+//        )
+        settingsButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        settingsButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: UIConstants.tableViewRowHeight + UIConstants.buttonHeight + UIConstants.buttonSpacing).isActive = true
         settingsButton.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
     }
     

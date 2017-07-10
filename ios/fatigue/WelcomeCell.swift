@@ -40,7 +40,7 @@ class WelcomeCell: UICollectionViewCell {
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.textColor = .dark
+        label.textColor = .medium
         return label
     }()
     
@@ -68,7 +68,6 @@ class WelcomeCell: UICollectionViewCell {
         
         backgroundImage.anchorToTop(
             topAnchor,
-            left: leftAnchor,
             bottom: bottomAnchor,
             right: rightAnchor
         )

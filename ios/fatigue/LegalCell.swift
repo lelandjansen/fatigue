@@ -14,7 +14,7 @@ class LegalCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "A few formalities before we begin"
+        label.text = "A few formalities"
         label.font = .systemFont(ofSize: 22)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
@@ -39,14 +39,20 @@ class LegalCell: UICollectionViewCell {
     }()
     
     let agreeButton: UIButton = {
-        let button = UIButton.createStyledButton(withColor: .violet)
+        let button = UIButton.createStyledSelectButton(withColor: .violet)
         button.setTitle("I agree", for: .normal)
         return button
     }()
     
     func handleAgreeButton() {
+        if self.agreeButton.isSelected {
+            self.delegate?.moveToNextPage()
+            return
+        }
         let alertController = UIAlertController(title: "Confirmation", message: String(), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Agree", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: "I agree", style: .default, handler: { _ in
+            self.agreeButton.isSelected = true
+            self.delegate?.addNextPage()
             self.delegate?.moveToNextPage()
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
