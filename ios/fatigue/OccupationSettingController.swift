@@ -1,8 +1,8 @@
 import UIKit
 
-class OccupationSettingController: UITableViewController, SettingDelegate {
+class OccupationSettingController: UITableViewController {
     
-    weak var delegate: SettingsController?
+    weak var delegate: SettingsDelegate?
     
     enum CellId: String {
         case occupationCell

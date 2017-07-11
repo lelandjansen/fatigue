@@ -1,8 +1,8 @@
 import UIKit
 
-class NameSettingController: UITableViewController, SettingDelegate, UITextFieldDelegate {
+class NameSettingController: UITableViewController, UITextFieldDelegate {
 
-    weak var delegate: SettingsController?
+    weak var delegate: SettingsDelegate?
     
     enum CellId: String {
         case nameCell
@@ -60,7 +60,7 @@ class NameSettingController: UITableViewController, SettingDelegate, UITextField
         super.viewWillDisappear(animated)
         let name = nameTextField.text?.trimmingCharacters(in: .whitespaces)
         UserDefaults.standard.name = name
-        delegate?.setSelectedCellDetails(toValue: name)
+        delegate?.setSelectedCellDetails(toValue: name!)
     }
     
     

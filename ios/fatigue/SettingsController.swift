@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingsController: UITableViewController {
+class SettingsController: UITableViewController, SettingsDelegate {
     
     init() {
         super.init(style: .grouped)
@@ -64,13 +64,21 @@ class SettingsController: UITableViewController {
         let controller: UIViewController = {
             switch items[indexPath.row] {
             case is NameSetting:
-                return NameSettingController()
+                let controller = NameSettingController()
+                controller.delegate = self
+                return controller
             case is OccupationSetting:
-                return OccupationSettingController()
+                let controller = OccupationSettingController()
+                controller.delegate = self
+                return controller
             case is ReminderSetting:
-                return ReminderSettingController()
+                let controller = ReminderSettingController()
+                controller.delegate = self
+                return controller
             case is SupervisorSetting:
-                return SupervisorSettingController()
+                let controller = SupervisorSettingController()
+                controller.delegate = self
+                return controller
             case is AboutSetting:
                 return AboutSettingController()
             case is LegalSetting:
@@ -79,23 +87,17 @@ class SettingsController: UITableViewController {
                 fatalError("Selection is not one of the available settings")
             }
         }()
-        
-        if controller is SettingDelegate {
-            (controller as! SettingDelegate).delegate = self
-        }
-        
         navigationController?.pushViewController(controller, animated: true)
     }
     
     
-    func setSelectedCellDetails(toValue value: String?) {
+    func setSelectedCellDetails(toValue value: String) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            items[selectedIndexPath.row].details = value ?? String()
+            items[selectedIndexPath.row].details = value
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
             tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
         }
     }
-    
     
     func dismissSettings() {
         dismiss(animated: true)

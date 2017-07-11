@@ -1,9 +1,9 @@
 import UIKit
 import PhoneNumberKit
 
-class SupervisorSettingController: UITableViewController, SettingDelegate, UITextFieldDelegate {
+class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
     
-    weak var delegate: SettingsController?
+    weak var delegate: SettingsDelegate?
     
     enum CellId: String {
         case supervisorNameCell, supervisorEmailCell, supervisorPhoneCell
@@ -143,7 +143,7 @@ class SupervisorSettingController: UITableViewController, SettingDelegate, UITex
         let phone = supervisorPhoneTextField.text
         UserDefaults.standard.supervisorPhone = phone
         
-        delegate?.setSelectedCellDetails(toValue: name)
+        delegate?.setSelectedCellDetails(toValue: name!)
     }
     
     

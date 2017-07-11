@@ -178,6 +178,10 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     func presentViewController(_ viewController: UIViewController) {
         present(viewController, animated: true)
     }
+    
+    func alertNotificationsNotPermitted() {
+        Notifications.alertNotificationsNotPermitted(inViewController: self)
+    }
 
     func dismiss() {
         dismiss(animated: true)
