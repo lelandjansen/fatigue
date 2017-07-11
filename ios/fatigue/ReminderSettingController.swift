@@ -1,9 +1,9 @@
 import UIKit
 import UserNotifications
 
-class ReminderSettingController: UITableViewController, SettingDelegate {
+class ReminderSettingController: UITableViewController {
     
-    weak var delegate: SettingsController?
+    weak var delegate: SettingsDelegate?
     
     enum CellTypes: String {
         case toggle, time, timePicker
@@ -94,37 +94,89 @@ class ReminderSettingController: UITableViewController, SettingDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        Notifications.registerLocalNotifications(
+            completionIfGranted: {
+                OperationQueue.main.addOperation() {
+                    if self.reminderToggle.isOn {
+                        let time = String(describingTime: self.timePicker.date)!
+                        self.delegate?.setSelectedCellDetails(toValue: time)
+                    }
+                    else {
+                        self.handleReminderDisabled()
+                        self.delegate?.setSelectedCellDetails(toValue: ReminderSetting.reminderOff)
+                    }
+                }
+            },
+            completionIfNotGranted: {
+                OperationQueue.main.addOperation() {
+                    self.handleReminderDisabled()
+                    self.delegate?.setSelectedCellDetails(toValue: ReminderSetting.reminderOff)
+                    
+                }
+            }
+        )
         super.viewWillDisappear(animated)
-        let details = reminderToggle.isOn ? String(describingTime: timePicker.date) : ReminderSetting.reminderOff
-        delegate?.setSelectedCellDetails(toValue: details)
     }
     
     func reminderToggleValueChanged() {
+        let time = Calendar.current.dateComponents([.minute, .hour], from: timePicker.date)
+        reminderToggle.isOn ? tryEnableReminder(atTime: time) : handleReminderDisabled()
+    }
+    
+    func tryEnableReminder(atTime time: DateComponents) {
+        Notifications.registerLocalNotifications(
+            completionIfGranted: {
+                OperationQueue.main.addOperation() {
+                    self.handleReminderEnabled(atTime: time)
+                }
+            },
+            completionIfNotGranted: {
+                OperationQueue.main.addOperation() {
+                    self.handleNotificationPermissionsNotGranted()
+                }
+            }
+        )
+    }
+    
+    func handleReminderEnabled(atTime time: DateComponents) {
         tableView.beginUpdates()
-        if reminderToggle.isOn {
-            tableView.insertRows(
-                at: [IndexPath(row: items.index(of: .time)!, section: 0),
-                     IndexPath(row: items.index(of: .timePicker)!, section: 0)],
-                with: .automatic
-            )
-            scheduleLocalNotifications(
-                atTime: Calendar.current.dateComponents([.minute, .hour], from: timePicker.date))
+        let timeRow = IndexPath(row: items.index(of: .time)!, section: 0)
+        if !tableView.hasRow(atIndexPath: timeRow) {
+            tableView.insertRows(at: [timeRow], with: .automatic)
         }
-        else {
-            tableView.deleteRows(
-                at: [IndexPath(row: items.index(of: .time)!, section: 0),
-                     IndexPath(row: items.index(of: .timePicker)!, section: 0)],
-                with: .automatic
-            )
-            disableLocalNotifications()
+        let timePickerRow = IndexPath(row: items.index(of: .timePicker)!, section: 0)
+        if !tableView.hasRow(atIndexPath: timePickerRow) {
+            tableView.insertRows(at: [timePickerRow], with: .automatic)
+        }
+        let timeCell = tableView.cellForRow(at: timeRow)
+        timeCell?.detailTextLabel?.text = String(describingTime: timePicker.date)
+        Notifications.scheduleLocalNotifications(atTime: time)
+        tableView.endUpdates()
+    }
+    
+    func handleReminderDisabled() {
+        self.reminderToggle.isOn = false
+        tableView.beginUpdates()
+        Notifications.disableLocalNotifications()
+        let timeRow = IndexPath(row: items.index(of: .time)!, section: 0)
+        if tableView.hasRow(atIndexPath: timeRow) {
+            tableView.deleteRows(at: [timeRow], with: .automatic)
+        }
+        let timePickerRow = IndexPath(row: items.index(of: .timePicker)!, section: 0)
+        if tableView.hasRow(atIndexPath: timePickerRow) {
+            tableView.deleteRows(at: [timePickerRow], with: .automatic)
         }
         tableView.endUpdates()
     }
     
+    func handleNotificationPermissionsNotGranted() {
+        Notifications.alertNotificationsNotPermitted(inViewController: self.parent, completion: {
+            self.handleReminderDisabled()
+        })
+    }
+    
     func timePickerValueChanged() {
-        let cell = tableView.cellForRow(at: IndexPath(row: items.index(of: .time)!, section: 0))
-        cell?.detailTextLabel?.text = String(describingTime: timePicker.date)
-        scheduleLocalNotifications(
-            atTime: Calendar.current.dateComponents([.minute, .hour], from: timePicker.date))
+        let time = Calendar.current.dateComponents([.minute, .hour], from: timePicker.date)
+        tryEnableReminder(atTime: time)
     }
 }

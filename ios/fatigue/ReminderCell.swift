@@ -3,15 +3,13 @@ import UIKit
 class ReminderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        notificationTimeLabel.text = off
+        notificationTimeLabel.text = ReminderSetting.reminderOff
         setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    fileprivate var off = "Off"
     
     weak var delegate: OnboardingDelegate?
     
@@ -67,7 +65,7 @@ class ReminderCell: UICollectionViewCell {
     }()
     
     func handleSetReminderButton() {
-        registerLocalNotifications(
+        Notifications.registerLocalNotifications(
             completionIfGranted: {
                 OperationQueue.main.addOperation() {
                     self.handleReminderEnabled()
@@ -84,8 +82,8 @@ class ReminderCell: UICollectionViewCell {
     }
     
     func handleSkipButton() {
-        notificationTimeLabel.text = off
-        disableLocalNotifications()
+        notificationTimeLabel.text = ReminderSetting.reminderOff
+        Notifications.disableLocalNotifications()
         delegate?.addNextPage()
         delegate?.moveToNextPage()
     }
@@ -101,19 +99,13 @@ class ReminderCell: UICollectionViewCell {
         if let timeString = String(describingTime: time) {
             notificationTimeLabel.text = timeString
         }
-        scheduleLocalNotifications(atTime: Calendar.current.dateComponents([.minute, .hour], from: time))
+        Notifications.scheduleLocalNotifications(atTime: Calendar.current.dateComponents([.minute, .hour], from: time))
     }
     
     func handleNotificationPermissionsNotGranted() {
-        notificationTimeLabel.text = off
-        disableLocalNotifications()
-        let alertController = UIAlertController(title: "Notifications not permitted", message: "Notifications can be enabled in Settings.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: { _ in
-            let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)!
-            UIApplication.shared.open(settingsUrl, options: [:])
-        }))
-        delegate?.presentViewController(alertController)
+        notificationTimeLabel.text = ReminderSetting.reminderOff
+        Notifications.disableLocalNotifications()
+        delegate?.alertNotificationsNotPermitted()
     }
     
     func setupViews() {

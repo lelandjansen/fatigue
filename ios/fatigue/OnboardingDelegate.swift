@@ -5,4 +5,5 @@ protocol OnboardingDelegate: class {
     func moveToNextPage()
     func presentViewController(_ viewController: UIViewController)
     func dismiss()
+    func alertNotificationsNotPermitted()
 }
