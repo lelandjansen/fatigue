@@ -146,7 +146,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         UserDefaults.standard.supervisorEmail = email
         let phoneNumber = supervisorPhoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         UserDefaults.standard.supervisorPhone = phoneNumber
-        delegate?.dismiss()
+        delegate?.dismissOnboarding()
     }
     
     enum Section: Int {

@@ -183,7 +183,8 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         Notifications.alertNotificationsNotPermitted(inViewController: self)
     }
 
-    func dismiss() {
+    func dismissOnboarding() {
+        UserDefaults.standard.firstLaunch = false
         dismiss(animated: true)
     }
 }
