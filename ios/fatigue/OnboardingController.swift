@@ -2,6 +2,7 @@ import UIKit
 
 class OnboardingController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, OnboardingDelegate {
     override func viewDidLoad() {
+        observeKeyboardNotifications()
         view.backgroundColor = .light
         setupViews()
         registerCells()
@@ -43,6 +44,37 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         onboardingSequence.register(OccupationCell.self, forCellWithReuseIdentifier: CellId.occupation.rawValue)
         onboardingSequence.register(ReminderCell.self, forCellWithReuseIdentifier: CellId.reminder.rawValue)
         onboardingSequence.register(ShareInformationCell.self, forCellWithReuseIdentifier: CellId.shareInformation.rawValue)
+    }
+    
+    fileprivate func observeKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        UIView.animate(
+            withDuration: 1/2,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.view.frame = CGRect(x: 0, y: -76, width: self.view.frame.width, height: self.view.frame.height)
+            }
+        )
+    }
+    
+    func keyboardWillHide() {
+        UIView.animate(
+            withDuration: 1/2,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            }
+        )
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
