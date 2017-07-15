@@ -15,9 +15,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserDefaults.standard.firstLaunch {
-            present(OnboardingController(), animated: false, completion: {
-                UserDefaults.standard.firstLaunch = false
-            })
+            present(OnboardingController(), animated: false)
         }
     }
     
