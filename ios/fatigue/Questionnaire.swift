@@ -1,5 +1,9 @@
 import Foundation
 
+struct QuestionnaireDefaults {
+    static let sleepInPast24Hours: UInt = 7
+}
+
 struct Questionnaire {
     enum QuestionId: String {
         case sleepInPast24Hours,
@@ -164,7 +168,7 @@ struct Questionnaire {
             question: "How long have you slept in the past 48 hours?",
             description: "Sleep in past 48 hours",
             options: Array(0...48),
-            selection: 14,
+            selection: QuestionnaireDefaults.sleepInPast24Hours * 2,
             units: .hours,
             riskScoreContribution: {
                 selection in switch Int(selection) {
@@ -183,7 +187,7 @@ struct Questionnaire {
             question: "How long have you slept in the past 24 hours?",
             description: "Sleep in past 24 hours",
             options: Array(0...24),
-            selection: 7,
+            selection: QuestionnaireDefaults.sleepInPast24Hours,
             units: .hours,
             riskScoreContribution: {
                 selection in switch Int(selection) {
@@ -310,7 +314,7 @@ struct Questionnaire {
             question: "How long have you slept in the past 48 hours?",
             description: "Sleep in past 48 hours",
             options: Array(0...48),
-            selection: 14,
+            selection: QuestionnaireDefaults.sleepInPast24Hours * 2,
             units: .hours,
             riskScoreContribution: {
                 selection in switch Int(selection) {
@@ -329,7 +333,7 @@ struct Questionnaire {
             question: "How long have you slept in the past 24 hours?",
             description: "Sleep in past 24 hours",
             options: Array(0...24),
-            selection: 7,
+            selection: QuestionnaireDefaults.sleepInPast24Hours,
             units: .hours,
             riskScoreContribution: {
                 selection in switch Int(selection) {
