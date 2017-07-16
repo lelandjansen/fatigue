@@ -36,13 +36,13 @@ class SmartSuggestions {
     var dirtyQuestionIds = Set<Questionnaire.QuestionId>()
     
     func suggestSleepInPast48Hours(forQuestion question: Question) -> Question {
-        var yesterdaySleep = 7
-        var todaySleep = 7
+        var yesterdaySleep = QuestionnaireDefaults.sleepInPast24Hours
+        var todaySleep = QuestionnaireDefaults.sleepInPast24Hours
         var smartQuestion = question
         smartQuestion.details = String()
         if let yesterdaySleepSelection = yesterdaySelectionForQuestion(withId: .sleepInPast24Hours) {
             smartQuestion.details += "Yesterday: \(yesterdaySleepSelection)"
-            if let hours = Int(yesterdaySleepSelection) {
+            if let hours = UInt(yesterdaySleepSelection) {
                 yesterdaySleep = hours
                 smartQuestion.details += (hours == 1) ? " hr" : " hrs"
             }
@@ -50,15 +50,22 @@ class SmartSuggestions {
         }
         if let todaySleepSelection = selectionForQuestion(withId: .sleepInPast24Hours) {
             smartQuestion.details += "Today: \(todaySleepSelection)"
-            if let hours = Int(todaySleepSelection) {
+            if let hours = UInt(todaySleepSelection) {
                 todaySleep = hours
                 smartQuestion.details += (hours == 1) ? " hr" : " hrs"
+                smartQuestion.options = Array(todaySleep...24).map{String($0)}
             }
         }
         if !dirtyQuestionIds.contains(.sleepInPast48Hours) {
             dirtyQuestionIds.insert(.sleepInPast48Hours)
             smartQuestion.selection = String(describing: yesterdaySleep + todaySleep)
         }
+        if let selection = UInt(smartQuestion.selection) {
+            if selection < todaySleep {
+                smartQuestion.selection = String(describing: todaySleep)
+            }
+        }
+        
         return smartQuestion
     }
     

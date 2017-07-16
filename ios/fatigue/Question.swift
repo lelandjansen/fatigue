@@ -5,7 +5,7 @@ protocol Question {
     var question: String { get }
     var details: String { get set }
     var description: String { get }
-    var options: [String] { get }
+    var options: [String] { get set }
     var selection: String { get set }
     var riskScoreContribution: (String) -> Int32 { get set }
 }
