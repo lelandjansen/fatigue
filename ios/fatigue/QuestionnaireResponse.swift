@@ -14,6 +14,7 @@ extension QuestionnaireResponse {
             if questionnaireItem is Question {
                 let question = questionnaireItem as! Question
                 let questionResponse = NSEntityDescription.insertNewObject(forEntityName: QuestionResponse.entityName, into: context) as! QuestionResponse
+                questionResponse.id = question.id.rawValue
                 questionResponse.questionDescription = question.description
                 questionResponse.riskScoreContribution = question.riskScoreContribution(question.selection)
                 questionResponse.selection = question.selection

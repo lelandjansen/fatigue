@@ -5,6 +5,7 @@ class YesNoQuestion: Question, QuestionnaireItem {
         case none = "", yes = "Yes", no = "No"
     }
     
+    var id: Questionnaire.QuestionId
     var question: String
     var details: String
     var description: String
@@ -26,7 +27,8 @@ class YesNoQuestion: Question, QuestionnaireItem {
     var nextItemIfNo: QuestionnaireItem?
     var riskScoreContribution: (String) -> Int32
     
-    init(question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
+    init(id: Questionnaire.QuestionId, question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItemIfYes: QuestionnaireItem, nextItemIfNo: QuestionnaireItem) {
+        self.id = id
         self.question = question
         self.details = details
         self.description = description
@@ -35,7 +37,8 @@ class YesNoQuestion: Question, QuestionnaireItem {
         self.nextItemIfNo = nextItemIfNo
     }
     
-    init(question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItem: QuestionnaireItem) {
+    init(id: Questionnaire.QuestionId, question: String, details: String = String(), description: String, riskScoreContribution: @escaping (String) -> Int32, nextItem: QuestionnaireItem) {
+        self.id = id
         self.question = question
         self.details = details
         self.description = description
@@ -44,7 +47,8 @@ class YesNoQuestion: Question, QuestionnaireItem {
         self.nextItemIfNo = nextItem
     }
     
-    init(question: String, riskScoreContribution: @escaping (String) -> Int32, details: String = String(), description: String) {
+    init(id: Questionnaire.QuestionId, question: String, riskScoreContribution: @escaping (String) -> Int32, details: String = String(), description: String) {
+        self.id = id
         self.question = question
         self.details = details
         self.description = description
