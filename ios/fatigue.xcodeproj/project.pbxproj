@@ -61,6 +61,8 @@
 		71D284301F083BAB00F70365 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2842F1F083BAB00F70365 /* String.swift */; };
 		71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71D436F91F00547D00132451 /* fatigue.xcdatamodeld */; };
 		71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4371E1F005D2100132451 /* QuestionaireResponse.swift */; };
+		71D7C2FB1F1B23BA003D2459 /* ContributorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7C2FA1F1B23BA003D2459 /* ContributorsController.swift */; };
+		71D7C2FD1F1B247D003D2459 /* CONTRIBUTORS in Resources */ = {isa = PBXBuildFile; fileRef = 71D7C2FC1F1B247D003D2459 /* CONTRIBUTORS */; };
 		71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */; };
 		71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CF1F00809E008676E3 /* QuestionResponse.swift */; };
 		71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */; };
@@ -136,6 +138,8 @@
 		71D2842F1F083BAB00F70365 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		71D436FA1F00547D00132451 /* fatigue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fatigue.xcdatamodel; sourceTree = "<group>"; };
 		71D4371E1F005D2100132451 /* QuestionaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionaireResponse.swift; sourceTree = "<group>"; };
+		71D7C2FA1F1B23BA003D2459 /* ContributorsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContributorsController.swift; sourceTree = "<group>"; };
+		71D7C2FC1F1B247D003D2459 /* CONTRIBUTORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CONTRIBUTORS; path = ../../CONTRIBUTORS; sourceTree = "<group>"; };
 		71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireResponse.swift; sourceTree = "<group>"; };
 		71DD26CF1F00809E008676E3 /* QuestionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionResponse.swift; sourceTree = "<group>"; };
 		71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCreditsController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				71E33B9A1F0C3E1800B62789 /* ImageCreditsController.swift */,
 				71E33B9C1F0C467300B62789 /* ImageCreditsView.swift */,
 				71E33B9E1F0C499100B62789 /* ImageCreditsDelegate.swift */,
+				71D7C2FA1F1B23BA003D2459 /* ContributorsController.swift */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 		71CC91001E581D1A00DA367A /* fatigue */ = {
 			isa = PBXGroup;
 			children = (
+				71D7C2FC1F1B247D003D2459 /* CONTRIBUTORS */,
 				717970D51F0F3C72000136C1 /* LEGAL */,
 				71CC910D1E581D1A00DA367A /* Info.plist */,
 				714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */,
@@ -434,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7173C6801F12E7A6001E135C /* Launch Screen.storyboard in Resources */,
+				71D7C2FD1F1B247D003D2459 /* CONTRIBUTORS in Resources */,
 				71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */,
 				714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */,
 				717970D61F0F3C72000136C1 /* LEGAL in Resources */,
@@ -554,6 +561,7 @@
 				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
 				71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */,
 				71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */,
+				71D7C2FB1F1B23BA003D2459 /* ContributorsController.swift in Sources */,
 				718DD9241F0C8201000BBB33 /* OnboardingController.swift in Sources */,
 				71D284301F083BAB00F70365 /* String.swift in Sources */,
 				71555D2D1EAC6D7500883C45 /* ReminderSettingController.swift in Sources */,

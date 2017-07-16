@@ -149,7 +149,7 @@ class AboutSettingView : UIView {
     }
     
     func handleContributorsButton() {
-        delegate?.pushViewController(UIViewController())
+        delegate?.pushViewController(ContributorsController())
     }
     
     func handleCocoaPodsButton() {
