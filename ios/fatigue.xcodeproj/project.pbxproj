@@ -31,6 +31,7 @@
 		71555D391EAC711A00883C45 /* SupervisorSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D381EAC711A00883C45 /* SupervisorSettingController.swift */; };
 		71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3C1EAC71E200883C45 /* LegalSettingController.swift */; };
 		71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3E1EAC723400883C45 /* LegalSettingView.swift */; };
+		715A81D01F1ADAA4004CF16D /* SmartSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */; };
 		7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */; };
 		7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */; };
 		7173C6801F12E7A6001E135C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */; };
@@ -103,6 +104,7 @@
 		71555D381EAC711A00883C45 /* SupervisorSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupervisorSettingController.swift; sourceTree = "<group>"; };
 		71555D3C1EAC71E200883C45 /* LegalSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingController.swift; sourceTree = "<group>"; };
 		71555D3E1EAC723400883C45 /* LegalSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingView.swift; sourceTree = "<group>"; };
+		715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartSuggestions.swift; sourceTree = "<group>"; };
 		7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingDelegate.swift; sourceTree = "<group>"; };
 		7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -275,16 +277,17 @@
 			isa = PBXGroup;
 			children = (
 				71E953A51E67DD0100A59278 /* Question.swift */,
+				71D4371E1F005D2100132451 /* QuestionaireResponse.swift */,
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
 				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
 				71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */,
-				71D4371E1F005D2100132451 /* QuestionaireResponse.swift */,
 				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
 				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
 				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
 				7176C80A1E59515800E557F0 /* Result.swift */,
 				7176C80B1E59515800E557F0 /* ResultCell.swift */,
+				715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */,
 				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
 				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
 			);
@@ -494,6 +497,7 @@
 			files = (
 				717970CE1F0DEB2D000136C1 /* LegalCell.swift in Sources */,
 				71555D291EAC661E00883C45 /* AboutSettingController.swift in Sources */,
+				715A81D01F1ADAA4004CF16D /* SmartSuggestions.swift in Sources */,
 				71E33B9B1F0C3E1800B62789 /* ImageCreditsController.swift in Sources */,
 				719F50DE1EA3DCFB0037B04F /* Setting.swift in Sources */,
 				71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */,

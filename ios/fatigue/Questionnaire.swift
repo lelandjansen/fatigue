@@ -1,6 +1,20 @@
 import Foundation
 
 struct Questionnaire {
+    enum QuestionId: String {
+        case sleepInPast24Hours,
+            sleepInPast48Hours,
+            forecastHoursAwake,
+            timeZoneTravel,
+            timeZoneQuantity,
+            numberOfPilots,
+            workTime,
+            stress,
+            deployentTime,
+            ill,
+            reasonNotToFly
+    }
+    
     var questionnaireTreeRoot: QuestionnaireItem {
         get {
             switch UserDefaults.standard.occupation {
@@ -16,7 +30,8 @@ struct Questionnaire {
     
     func generatePilotQuestionTree() -> QuestionnaireItem {
         let result = Result()
-        let reasonNotToFly = YesNoQuestion(
+        let reasonNotToFlyQuestion = YesNoQuestion(
+            id: .reasonNotToFly,
             question: "Do you know of any other reason you should not fly today?",
             description: "Other reason not to fly",
             riskScoreContribution: {
@@ -25,15 +40,17 @@ struct Questionnaire {
             nextItem: result
         )
         let illQuestion = YesNoQuestion(
+            id: .ill,
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
             description: "Reported illness",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: reasonNotToFly
+            nextItem: reasonNotToFlyQuestion
         )
         let deployentTimeQuestion = YesNoQuestion(
+            id: .deployentTime,
             question: "Have you been on tour for more than 75% of your planned deployment?",
             description: "On tour for more than 75% of planned deployment",
             riskScoreContribution: {
@@ -42,6 +59,7 @@ struct Questionnaire {
             nextItem: illQuestion
         )
         let stressQuestion = YesNoQuestion(
+            id: .stress,
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
             description: "Elevated stress",
@@ -51,6 +69,7 @@ struct Questionnaire {
             nextItem: deployentTimeQuestion
         )
         let flightTimeQuestionOnePilot = RangeQuestion(
+            id: .workTime,
             question: "How many hours will you be flying today?",
             description: "Hours in-flight",
             options: Array(0...24),
@@ -69,6 +88,7 @@ struct Questionnaire {
             nextItem: stressQuestion
         )
         let flightTimeQuestionTwoPilots = RangeQuestion(
+            id: .workTime,
             question: "How many hours will you and your colleague be flying today?",
             description: "Hours flying",
             options: Array(0...24),
@@ -87,6 +107,7 @@ struct Questionnaire {
             nextItem: stressQuestion
         )
         let numberOfPilotsQuestion = YesNoQuestion(
+            id: .numberOfPilots,
             question: "Are you flying with another pilot?",
             description: "Flying with another pilot",
             riskScoreContribution: { _ in 0 },
@@ -94,6 +115,7 @@ struct Questionnaire {
             nextItemIfNo: flightTimeQuestionOnePilot
         )
         let timeZoneQuantityQuestion = RangeQuestion(
+            id: .timeZoneQuantity,
             question: "How many time zones did you travel through to get to the project site?",
             description: "Time zones travelled to project site",
             options: Array(0...12),
@@ -111,13 +133,15 @@ struct Questionnaire {
             nextItem: numberOfPilotsQuestion
         )
         let timeZoneTravelQuestion = YesNoQuestion(
+            id: .timeZoneTravel,
             question: "Have you been on-site for less than three full days?",
             description: "On-site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: numberOfPilotsQuestion
         )
-        let forecastHoursAwake = RangeQuestion(
+        let forecastHoursAwakeQuestion = RangeQuestion(
+            id: .forecastHoursAwake,
             question: "How many hours do you anticipate having been awake when the aircraft is shut down?",
             description: "Hours anticipated having been awake when aircraft is shut down",
             options: Array(0...24),
@@ -136,6 +160,7 @@ struct Questionnaire {
             nextItem: timeZoneTravelQuestion
         )
         let sleepInPast48HoursQuestion = RangeQuestion(
+            id: .sleepInPast48Hours,
             question: "How long have you slept in the past 48 hours?",
             description: "Sleep in past 48 hours",
             options: Array(0...48),
@@ -151,9 +176,10 @@ struct Questionnaire {
                     return 0
                 }
             },
-            nextItem: forecastHoursAwake
+            nextItem: forecastHoursAwakeQuestion
         )
         let sleepInPast24HoursQuestion = RangeQuestion(
+            id: .sleepInPast24Hours,
             question: "How long have you slept in the past 24 hours?",
             description: "Sleep in past 24 hours",
             options: Array(0...24),
@@ -177,7 +203,8 @@ struct Questionnaire {
     
     func generateEngineerQuestionTree() -> QuestionnaireItem {
         let result = Result()
-        let reasonNotToFly = YesNoQuestion(
+        let reasonNotToFlyQuestion = YesNoQuestion(
+            id: .reasonNotToFly,
             question: "Do you know of any other reason you should not work today?",
             description: "Other reason not to fly",
             riskScoreContribution: {
@@ -186,15 +213,17 @@ struct Questionnaire {
             nextItem: result
         )
         let illQuestion = YesNoQuestion(
+            id: .ill,
             question: "Are you ill?",
             details: "Cold, headache, flu, etc.",
             description: "Reported illness",
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: reasonNotToFly
+            nextItem: reasonNotToFlyQuestion
         )
         let deployentTimeQuestion = YesNoQuestion(
+            id: .deployentTime,
             question: "Have you been on tour for more than 75% of your planned deployment?",
             description: "On tour for more than 75% of planned deployment",
             riskScoreContribution: {
@@ -203,6 +232,7 @@ struct Questionnaire {
             nextItem: illQuestion
         )
         let stressQuestion = YesNoQuestion(
+            id: .stress,
             question: "Have you been experiencing elevated stress?",
             details: "Home life, client pressure, team dynamic, etc.",
             description: "Elevated stress",
@@ -212,6 +242,7 @@ struct Questionnaire {
             nextItem: deployentTimeQuestion
         )
         let maintenanceTimeQuestion = RangeQuestion(
+            id: .workTime,
             question: "How many hours will you be performing maintenance today?",
             description: "Hours performing maintenance",
             options: Array(0...24),
@@ -230,6 +261,7 @@ struct Questionnaire {
             nextItem: stressQuestion
         )
         let timeZoneQuantityQuestion = RangeQuestion(
+            id: .timeZoneQuantity,
             question: "How many time zones did you travel through to get to the project site?",
             description: "Time zones travelled to project site",
             options: Array(0...12),
@@ -247,13 +279,15 @@ struct Questionnaire {
             nextItem: maintenanceTimeQuestion
         )
         let timeZoneTravelQuestion = YesNoQuestion(
+            id: .timeZoneTravel,
             question: "Have you been on-site for less than three full days?",
             description: "On-site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: maintenanceTimeQuestion
         )
-        let forecastHoursAwake = RangeQuestion(
+        let forecastHoursAwakeQuestion = RangeQuestion(
+            id: .forecastHoursAwake,
             question: "How many hours do you anticipate having been awake after finishing today's maintenance tasks?",
             description: "Hours anticipated having been awake when maintenance tasks are complete",
             options: Array(0...24),
@@ -272,6 +306,7 @@ struct Questionnaire {
             nextItem: timeZoneTravelQuestion
         )
         let sleepInPast48HoursQuestion = RangeQuestion(
+            id: .sleepInPast48Hours,
             question: "How long have you slept in the past 48 hours?",
             description: "Sleep in past 48 hours",
             options: Array(0...48),
@@ -287,9 +322,10 @@ struct Questionnaire {
                     return 0
                 }
             },
-            nextItem: forecastHoursAwake
+            nextItem: forecastHoursAwakeQuestion
         )
         let sleepInPast24HoursQuestion = RangeQuestion(
+            id: .sleepInPast24Hours,
             question: "How long have you slept in the past 24 hours?",
             description: "Sleep in past 24 hours",
             options: Array(0...24),

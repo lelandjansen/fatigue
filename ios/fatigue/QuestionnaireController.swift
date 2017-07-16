@@ -3,7 +3,6 @@ import CoreData
 import MessageUI
 
 class QuestionnaireController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, QuestionnaireDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
-
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -17,13 +16,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     enum CellId: String {
         case rangeQuestion, yesNoQuestion, result
     }
     
-    
     var questionnaireItems: [QuestionnaireItem] = [Questionnaire().questionnaireTreeRoot]
+    var smartSuggestions: SmartSuggestions?
     
     func setQuestionSelection(toValue value: String, forCell cell: UICollectionViewCell) {
         let indexPath = collectionView.indexPath(for: cell)
@@ -36,7 +34,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             question.selection = value
         }
     }
-    
     
     func updateQuestionnaireOrder() {
         var questionnaireItem = questionnaireItems.first!
@@ -52,14 +49,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.reloadData()
         self.view.layoutIfNeeded()
     }
-    
 
     fileprivate func longestQuestionnaireSequence(fromStartQuestion startQuestion: QuestionnaireItem) -> Int {
         let (graph, destination) = graphFromQuestionnaire(fromQuestion: startQuestion)
         return LongestPath.length(forGraph: graph, toNode: destination)
     }
 
-    
     fileprivate func graphFromQuestionnaire(fromQuestion question: QuestionnaireItem) -> (Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>, ObjectIdentifier) {
         var graph = Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>()
         var destination: ObjectIdentifier?
@@ -84,10 +79,8 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
         
         createGraph(fromNode: question)
-        
         return (graph, destination!)
     }
-    
     
     fileprivate func objectIdentifier(_ node: QuestionnaireItem) -> ObjectIdentifier {
         switch node {
@@ -102,7 +95,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
- 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -115,7 +107,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
-    
     
     lazy var navigationBar: UINavigationBar = {
         let navigationBar: UINavigationBar = UINavigationBar(
@@ -151,6 +142,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        smartSuggestions = SmartSuggestions(forQuestionnaireRoot: questionnaireItems.first!)
         
         view.addSubview(collectionView)
         view.addSubview(pageControl)
@@ -181,7 +173,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.register(ResultCell.self, forCellWithReuseIdentifier: CellId.result.rawValue)
     }
     
-    
     fileprivate func moveControlsOffScreen() {
         pageControlBottomAnchor?.constant = 40
         UIView.animate(
@@ -210,7 +201,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         )
     }
     
-    
     func moveToPreviousPage() {
         if pageControl.currentPage == 0 {
             return
@@ -224,7 +214,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
-    
     
     func moveToNextPage() {
         if pageControl.currentPage == pageControl.numberOfPages - 1 {
@@ -274,7 +263,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
         let cell = collectionView.cellForItem(at: indexPath!)
@@ -308,7 +296,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer is UIPanGestureRecognizer {
             let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocity(in: view)
@@ -316,7 +303,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
         return false
     }
-    
     
     func handleVerticalPan(gesture: UIPanGestureRecognizer) {
         if gesture.state == UIGestureRecognizerState.ended {
@@ -339,7 +325,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    
     func computeRiskScore() -> Int32 {
         var riskScore: Int32 = 0
         for questionnaireItem in questionnaireItems {
@@ -351,51 +336,43 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         return riskScore
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return questionnaireItems.count
     }
-    
     
     var resultCell: ResultCell?
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if questionnaireItems[indexPath.item] is Result {
             QuestionnaireResponse.saveResponse(forQuestionnaireItems: questionnaireItems)
-            
             let result = questionnaireItems[indexPath.item] as! Result
             result.riskScore = computeRiskScore()
-            
             let resultCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.result.rawValue, for: indexPath) as! ResultCell
             resultCell.result = result
             resultCell.delegate = self
             self.resultCell = resultCell
             return resultCell
         }
-        
         if questionnaireItems[indexPath.item] is RangeQuestion {
             let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.rangeQuestion.rawValue, for: indexPath) as! RangeQuestionCell
             let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleVerticalPan(gesture:)))
             panGestureRecognizer.delegate = self
-            
-            questionCell.question = questionnaireItems[indexPath.item] as! RangeQuestion
+            let question = smartSuggestions?.makeSmartSuggestion(forQuestion: questionnaireItems[indexPath.item] as! Question)
+            questionCell.question = question as! RangeQuestion
             questionCell.delegate = self
             questionCell.addGestureRecognizer(panGestureRecognizer)
             return questionCell
         }
-        
         if questionnaireItems[indexPath.item] is YesNoQuestion {
             let questionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.yesNoQuestion.rawValue, for: indexPath) as! YesNoQuestionCell
             questionCell.question = questionnaireItems[indexPath.item] as! YesNoQuestion
             questionCell.delegate = self
             return questionCell
         }
-        
         fatalError("Questionnaire item is not one of the supported types")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height - self.navigationBar.frame.height)
     }
-    
 }

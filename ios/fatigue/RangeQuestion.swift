@@ -5,6 +5,7 @@ class RangeQuestion: Question, QuestionnaireItem {
         case none, hours
     }
     
+    var id: Questionnaire.QuestionId
     var question: String
     var details: String
     var description: String
@@ -15,7 +16,8 @@ class RangeQuestion: Question, QuestionnaireItem {
     var riskScoreContribution: (String) -> Int32
     
     
-    init(question: String, details: String = String(), description: String, options: [UInt], selection: UInt, units: Units = .none, riskScoreContribution: @escaping (String) -> Int32, nextItem: QuestionnaireItem?) {
+    init(id: Questionnaire.QuestionId, question: String, details: String = String(), description: String, options: [UInt], selection: UInt, units: Units = .none, riskScoreContribution: @escaping (String) -> Int32, nextItem: QuestionnaireItem?) {
+        self.id = id
         self.question = question
         self.details = details
         self.description = description
