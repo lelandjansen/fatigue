@@ -166,7 +166,6 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         registerCells()
     }
     
-    
     fileprivate func registerCells() {
         collectionView.register(RangeQuestionCell.self, forCellWithReuseIdentifier: CellId.rangeQuestion.rawValue)
         collectionView.register(YesNoQuestionCell.self, forCellWithReuseIdentifier: CellId.yesNoQuestion.rawValue)
@@ -282,6 +281,14 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
+    func showRangeQuestionTutorial() {
+        UserDefaults.standard.rangeQuestionTutorialShown = true
+        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
+        let cell = collectionView.cellForItem(at: indexPath!)
+        if cell is RangeQuestionCell {
+            (cell as! RangeQuestionCell).rangeQuestionTutorialView.showRangeQuestionTutorial()
+        }
+    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
