@@ -123,12 +123,24 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             title: "Close",
             style: UIBarButtonItemStyle.plain,
             target: nil,
-            action: #selector(dismissQuestionnaire)
+            action: #selector(dismissQuestionnaireWithConfirmation)
         )
         navigationItem.leftBarButtonItem = closeItem
         navigationBar.setItems([navigationItem], animated: false)
         return navigationBar
     }()
+    
+    func updateNavigationBarButtonItemsToDone() {
+        let doneItem = UIBarButtonItem(
+            title: "Done",
+            style: UIBarButtonItemStyle.done,
+            target: nil,
+            action: #selector(self.dismissQuestionnaire)
+        )
+        let navigationItem = UINavigationItem(title: self.navigationBar.topItem?.title ?? String())
+        navigationItem.rightBarButtonItem = doneItem
+        self.navigationBar.setItems([navigationItem], animated: false)
+    }
     
     var pageControlBottomAnchor: NSLayoutConstraint?
     
@@ -256,6 +268,15 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         dismiss(animated: true)
     }
     
+    func dismissQuestionnaireWithConfirmation() {
+        let alertController = UIAlertController(title: "Close questionnaire?", message: "Your progress will not be saved.", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Close", style: .destructive, handler: { _ in
+            self.dismissQuestionnaire()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true)
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if resultCell != nil {
             resultCell?.ghostElements()
@@ -351,6 +372,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if questionnaireItems[indexPath.item] is Result {
+            updateNavigationBarButtonItemsToDone()
             QuestionnaireResponse.saveResponse(forQuestionnaireItems: questionnaireItems)
             let result = questionnaireItems[indexPath.item] as! Result
             result.riskScore = computeRiskScore()
