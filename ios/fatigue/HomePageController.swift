@@ -33,7 +33,11 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     func presentQuestionnaire() {
         let questionnaireController = QuestionnaireController()
         questionnaireController.homePageDelegate = self
-        present(questionnaireController, animated: true)
+        present(questionnaireController, animated: true, completion: {
+            if !UserDefaults.standard.rangeQuestionTutorialShown {
+                questionnaireController.showRangeQuestionTutorial()
+            }
+        })
     }
     
     func presentSettings() {

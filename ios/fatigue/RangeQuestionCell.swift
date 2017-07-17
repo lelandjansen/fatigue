@@ -1,15 +1,12 @@
 import UIKit
 
 class RangeQuestionCell: QuestionCell {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
-    
     var options: [String] = [String()]
-    
     
     var optionIndex: Int = 0 {
         didSet {
@@ -33,7 +30,6 @@ class RangeQuestionCell: QuestionCell {
         }
     }
     
-    
     override var question: Question? {
         didSet {
             guard let question = question, question is RangeQuestion else {
@@ -47,6 +43,9 @@ class RangeQuestionCell: QuestionCell {
         }
     }
     
+    lazy var rangeQuestionTutorialView: RangeQuestionTutorialView = {
+        return RangeQuestionTutorialView(frame: self.frame)
+    }()
     
     let optionLabel: UILabel = {
         let label = UILabel()
@@ -76,7 +75,6 @@ class RangeQuestionCell: QuestionCell {
         return button
     }()
     
-    
     fileprivate func setUnitsLabelLeftAnchor() {
         let singleDigitConstant: CGFloat = 28
         let doubleDigitConstant: CGFloat = 52
@@ -96,26 +94,29 @@ class RangeQuestionCell: QuestionCell {
         leftAnchorConstraint?.isActive = true
     }
     
-    
-    
     override func setupText(forQuestion question: Question) {
         super.setupText(forQuestion: question)
         optionLabel.text = (question as! RangeQuestion).selection
         updateUnitsLabelText()
     }
     
-    
     var leftAnchorConstraint: NSLayoutConstraint?
-    
     
     override func setupViews() {
         super.setupViews()
-        
+        addSubview(rangeQuestionTutorialView)
         addSubview(optionLabel)
         addSubview(unitsLabel)
         addSubview(incrementButton)
         addSubview(decrementButton)
 
+        rangeQuestionTutorialView.anchorToTop(
+            topAnchor,
+            left: leftAnchor,
+            bottom: bottomAnchor,
+            right: rightAnchor
+        )
+        
         optionLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
@@ -147,7 +148,6 @@ class RangeQuestionCell: QuestionCell {
         )
     }
     
-    
     func incrementOption() {
         if optionIndex < options.count - 1 {
             optionIndex += 1
@@ -159,7 +159,6 @@ class RangeQuestionCell: QuestionCell {
             optionIndex -= 1
         }
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -21,7 +21,6 @@ class QuestionCell: UICollectionViewCell {
         }
     }
     
-    
     let questionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22)
@@ -42,7 +41,6 @@ class QuestionCell: UICollectionViewCell {
         return label
     }()
     
-    
     func setupText(forQuestion question: Question) {
         questionLabel.text = question.question
         detailsLabel.text = question.details
@@ -52,9 +50,7 @@ class QuestionCell: UICollectionViewCell {
     func setupViews() {
         addSubview(questionLabel)
         addSubview(detailsLabel)
-        
         let sidePadding: CGFloat = 16
-        
         questionLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
@@ -63,7 +59,6 @@ class QuestionCell: UICollectionViewCell {
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
-        
         detailsLabel.anchorWithConstantsToTop(
             questionLabel.bottomAnchor,
             left: leftAnchor,
@@ -73,7 +68,6 @@ class QuestionCell: UICollectionViewCell {
             rightConstant: sidePadding
         )
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
