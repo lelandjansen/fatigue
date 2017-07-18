@@ -32,6 +32,7 @@ class LegalCell: UICollectionViewCell {
             view.text = fileText.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         view.isEditable = false
+        view.font = .systemFont(ofSize: 14)
         view.textColor = .dark
         view.backgroundColor = .clear
         view.textAlignment = .justified

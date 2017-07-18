@@ -11,22 +11,36 @@ class LegalSettingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let legalLabel: UILabel = {
-        let label = UILabel()
-        label.text = "A few formalities"
-        label.textAlignment = .center
-        return label
+    let legalTextView: UITextView = {
+        let view = UITextView()
+        if let path = Bundle.main.path(forResource: "LEGAL", ofType: String()) {
+            let fileManager = FileManager()
+            let contents = fileManager.contents(atPath: path)
+            let fileText = NSString(data: contents!, encoding: String.Encoding.utf8.rawValue)! as String
+            view.text = fileText.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        view.isEditable = false
+        view.font = .systemFont(ofSize: 14)
+        view.textColor = .dark
+        view.backgroundColor = .clear
+        view.textAlignment = .justified
+        return view
     }()
     
     func setupViews() {
-        addSubview(legalLabel)
-        
-        legalLabel.anchorToTop(
+        addSubview(legalTextView)
+        let padding: CGFloat = 16
+        legalTextView.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
             bottom: bottomAnchor,
-            right: rightAnchor
+            right: rightAnchor,
+            topConstant: padding,
+            leftConstant: padding / 2,
+            bottomConstant: padding,
+            rightConstant: padding / 2
         )
+        
     }
     
 }
