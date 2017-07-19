@@ -34,6 +34,7 @@
 		71555D3F1EAC723400883C45 /* LegalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D3E1EAC723400883C45 /* LegalSettingView.swift */; };
 		715A81D01F1ADAA4004CF16D /* SmartSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */; };
 		7168DFD91EAF0445000FFACE /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */; };
+		7170FC2A1F204B6C00B9A685 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170FC291F204B6C00B9A685 /* UITextField.swift */; };
 		7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */; };
 		7173C6801F12E7A6001E135C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */; };
 		7173C6821F146A6D001E135C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173C6811F146A6D001E135C /* UITableView.swift */; };
@@ -110,6 +111,7 @@
 		71555D3E1EAC723400883C45 /* LegalSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSettingView.swift; sourceTree = "<group>"; };
 		715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartSuggestions.swift; sourceTree = "<group>"; };
 		7168DFD81EAF0445000FFACE /* SettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
+		7170FC291F204B6C00B9A685 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		7173B9941F095D19002EE591 /* AboutSettingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutSettingDelegate.swift; sourceTree = "<group>"; };
 		7173C67F1F12E7A6001E135C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7173C6811F146A6D001E135C /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				71DD26CF1F00809E008676E3 /* QuestionResponse.swift */,
 				71D2842F1F083BAB00F70365 /* String.swift */,
 				7173C6811F146A6D001E135C /* UITableView.swift */,
+				7170FC291F204B6C00B9A685 /* UITextField.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
 				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
 				71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */,
+				7170FC2A1F204B6C00B9A685 /* UITextField.swift in Sources */,
 				713495F81E6E73060073C3C9 /* HomePageCell.swift in Sources */,
 				713495FA1E6E73210073C3C9 /* HomePageController.swift in Sources */,
 				71555D1D1EAC3F8600883C45 /* SupervisorSetting.swift in Sources */,

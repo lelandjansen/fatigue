@@ -99,8 +99,11 @@ class SettingsController: UITableViewController, SettingsDelegate {
         }
     }
     
+    func presentViewController(_ viewController: UIViewController) {
+        present(viewController, animated: true)
+    }
+    
     func dismissSettings() {
         dismiss(animated: true)
     }
-
 }

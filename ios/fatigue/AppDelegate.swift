@@ -8,6 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        
+        UserDefaults.standard.firstLaunch = true
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         window?.rootViewController = HomePageController(collectionViewLayout: layout)

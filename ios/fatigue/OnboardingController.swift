@@ -1,3 +1,4 @@
+import Contacts
 import UIKit
 
 class OnboardingController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, OnboardingDelegate {
@@ -218,5 +219,13 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     func dismissOnboarding() {
         UserDefaults.standard.firstLaunch = false
         dismiss(animated: true)
+    }
+    
+    func populate(nameTextFiled: UITextField, emailTextField: UITextField, phoneNumberTextField: UITextField, withContact contact: CNContact) {
+        nameTextFiled.populateName(fromContact: contact, completion: {
+            emailTextField.populateEmail(fromContact: contact, inViewController: self, completion: {
+                phoneNumberTextField.populatePhoneNumber(fromContact: contact, inViewController: self)
+            })
+        })
     }
 }

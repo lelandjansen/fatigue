@@ -1,7 +1,8 @@
+import ContactsUI
 import UIKit
 import PhoneNumberKit
 
-class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CNContactPickerDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         userNameTextField.delegate = self
@@ -98,9 +99,18 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         return textField
     }()
     
-    let saveButton: UIButton = {
+    lazy var pickFromContactsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Pick from Contacts", for: .normal)
+        button.setTitleColor(.violet, for: .normal)
+        button.addTarget(self, action: #selector(handlePickFromContactsButton), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var saveButton: UIButton = {
         let button = UIButton.createStyledButton(withColor: .violet)
         button.setTitle("Save", for: .normal)
+        button.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
         return button
     }()
     
@@ -117,7 +127,6 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
             leftConstant: padding,
             rightConstant: padding
         )
-        saveButton.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
         saveButton.heightAnchor.constraint(equalToConstant: UIConstants.buttonHeight).isActive = true
         saveButton.anchorWithConstantsToTop(
             nil,
@@ -137,6 +146,16 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         )
     }
     
+    func handlePickFromContactsButton() {
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        delegate?.presentViewController(contactPicker)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        delegate?.populate(nameTextFiled: supervisorNameTextField, emailTextField: supervisorEmailTextField, phoneNumberTextField: supervisorPhoneTextField, withContact: contact)
+    }
+    
     func handleSaveButton() {
         let name = userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         UserDefaults.standard.name = name
@@ -152,14 +171,15 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
     enum Section: Int {
         case user = 0
         case supervisor = 1
+        case numberOfSections = 2
     }
     
     enum CellId: String {
-        case userNameCell, supervisorNameCell, supervisorEmailCell, supervisorPhoneCell
+        case userNameCell, supervisorNameCell, supervisorEmailCell, supervisorPhoneCell, pickFromContacts
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.numberOfSections.rawValue
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,7 +187,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         case Section.user.rawValue:
             return 1
         case Section.supervisor.rawValue:
-            return 3
+            return 4
         default:
             return 0
         }
@@ -185,7 +205,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let (reuseIdentifier, textField): (String, UITextField) = {
+        let (reuseIdentifier, view): (String, UIView) = {
             switch (indexPath.section, indexPath.row) {
             case (Section.user.rawValue, 0):
                 return (CellId.userNameCell.rawValue, userNameTextField)
@@ -195,15 +215,17 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
                 return (CellId.supervisorEmailCell.rawValue, supervisorEmailTextField)
             case (Section.supervisor.rawValue, 2):
                 return (CellId.supervisorPhoneCell.rawValue, supervisorPhoneTextField)
+            case (Section.supervisor.rawValue, 3):
+                return (CellId.pickFromContacts.rawValue, pickFromContactsButton)
             default:
                 fatalError("No cell assigned to IndexPath \(indexPath)")
             }
         }()
         let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
-        cell.contentView.addSubview(textField)
+        cell.contentView.addSubview(view)
         cell.backgroundColor = .clear
-        textField.anchor(toCell: cell)
+        view.anchor(toCell: cell)
         return cell
     }
     
