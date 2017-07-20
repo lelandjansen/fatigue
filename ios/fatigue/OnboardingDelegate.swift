@@ -1,3 +1,4 @@
+import Contacts
 import UIKit
 
 protocol OnboardingDelegate: class {
@@ -6,4 +7,5 @@ protocol OnboardingDelegate: class {
     func presentViewController(_ viewController: UIViewController)
     func dismissOnboarding()
     func alertNotificationsNotPermitted()
+    func populate(nameTextFiled: UITextField, emailTextField: UITextField, phoneNumberTextField: UITextField, withContact contact: CNContact)
 }

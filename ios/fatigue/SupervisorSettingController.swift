@@ -1,19 +1,21 @@
+import ContactsUI
 import UIKit
 import PhoneNumberKit
 
-class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
+class SupervisorSettingController: UITableViewController, UITextFieldDelegate, CNContactPickerDelegate {
     
     weak var delegate: SettingsDelegate?
     
     enum CellId: String {
-        case supervisorNameCell, supervisorEmailCell, supervisorPhoneCell
+        case supervisorName, supervisorEmail, supervisorPhone, pickFromContacts
     }
     
     enum Section: Int {
         case name = 0
         case contact = 1
+        case pickFromContacts = 2
+        case numberOfSections = 3
     }
-    
     
     init() {
         super.init(style: .grouped)
@@ -37,7 +39,7 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.numberOfSections.rawValue
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +48,8 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
             return 1
         case Section.contact.rawValue:
             return 2
+        case Section.pickFromContacts.rawValue:
+            return 1
         default:
             return 0
         }
@@ -61,7 +65,6 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
             return String()
         }
     }
-    
     
     let supervisorNameTextField: UITextField = {
         let textField = UITextField()
@@ -105,28 +108,48 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate {
         return textField
     }()
     
+    lazy var pickFromContactsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Pick from Contacts", for: .normal)
+        button.setTitleColor(.violet, for: .normal)
+        button.addTarget(self, action: #selector(handlePickFromContactsButton), for: .touchUpInside)
+        return button
+    }()
+    
+    func handlePickFromContactsButton() {
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        present(contactPicker, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        supervisorNameTextField.populateName(fromContact: contact, completion: {
+            self.supervisorEmailTextField.populateEmail(fromContact: contact, inViewController: self, completion: {
+                self.supervisorPhoneTextField.populatePhoneNumber(fromContact: contact, inViewController: self)
+            })
+        })
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let (reuseIdentifier, textField): (String, UITextField) = {
+        let (reuseIdentifier, view): (String, UIView) = {
             switch (indexPath.section, indexPath.row) {
             case (Section.name.rawValue, 0):
-                return (CellId.supervisorNameCell.rawValue, supervisorNameTextField)
+                return (CellId.supervisorName.rawValue, supervisorNameTextField)
             case (Section.contact.rawValue, 0):
-                return (CellId.supervisorEmailCell.rawValue, supervisorEmailTextField)
+                return (CellId.supervisorEmail.rawValue, supervisorEmailTextField)
             case (Section.contact.rawValue, 1):
-                return (CellId.supervisorPhoneCell.rawValue, supervisorPhoneTextField)
+                return (CellId.supervisorPhone.rawValue, supervisorPhoneTextField)
+            case (Section.pickFromContacts.rawValue, 0):
+                return (CellId.pickFromContacts.rawValue, pickFromContactsButton)
             default:
                 fatalError("No cell assigned to IndexPath \(indexPath)")
             }
         }()
-        
         let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
-        cell.contentView.addSubview(textField)
+        cell.contentView.addSubview(view)
         cell.backgroundColor = .clear
-        
-        textField.anchor(toCell: cell)
-        
+        view.anchor(toCell: cell)
         return cell
     }
     
