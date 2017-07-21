@@ -49,12 +49,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.reloadData()
         self.view.layoutIfNeeded()
     }
-
+    
     fileprivate func longestQuestionnaireSequence(fromStartQuestion startQuestion: QuestionnaireItem) -> Int {
         let (graph, destination) = graphFromQuestionnaire(fromQuestion: startQuestion)
         return LongestPath.length(forGraph: graph, toNode: destination)
     }
-
+    
     fileprivate func graphFromQuestionnaire(fromQuestion question: QuestionnaireItem) -> (Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>, ObjectIdentifier) {
         var graph = Dictionary<ObjectIdentifier, Set<ObjectIdentifier>>()
         var destination: ObjectIdentifier?
@@ -173,7 +173,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             bottom: view.bottomAnchor,
             right: view.rightAnchor,
             heightConstant: 32
-        )[1]
+            )[1]
         
         registerCells()
     }
@@ -194,7 +194,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             options: .curveEaseOut,
             animations: {
                 self.view.layoutIfNeeded()
-            }
+        }
         )
     }
     
@@ -208,7 +208,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             options: .curveEaseOut,
             animations: {
                 self.view.layoutIfNeeded()
-            }
+        }
         )
     }
     
@@ -284,18 +284,14 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
-        let cell = collectionView.cellForItem(at: indexPath!)
-        
+        let cell = collectionView.cellForItem(at: IndexPath(row: pageControl.currentPage, section: 0))
         if cell is ResultCell {
             (cell as! ResultCell).animateCountUpRiskScore()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
-        let cell = collectionView.cellForItem(at: indexPath!)
-        
+        let cell = collectionView.cellForItem(at: IndexPath(row: pageControl.currentPage, section: 0))
         if cell is ResultCell {
             (cell as! ResultCell).removeElementGhosting()
             (cell as! ResultCell).animateCountUpRiskScore()
@@ -304,8 +300,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     func showRangeQuestionTutorial() {
         UserDefaults.standard.rangeQuestionTutorialShown = true
-        let indexPath = collectionView.indexPath(for: collectionView.visibleCells.first!)
-        let cell = collectionView.cellForItem(at: indexPath!)
+        let cell = collectionView.cellForItem(at: IndexPath(row: pageControl.currentPage, section: 0))
         if cell is RangeQuestionCell {
             (cell as! RangeQuestionCell).rangeQuestionTutorialView.showRangeQuestionTutorial()
         }
@@ -320,7 +315,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             collectionView.isScrollEnabled = false
         }
         else {
-             moveControlsOnScreen()
+            moveControlsOnScreen()
         }
     }
     
