@@ -234,7 +234,7 @@ class ResultCell: UICollectionViewCell {
     
     
     func handleShare() {
-        delegate?.shareResponse()
+        delegate?.shareResponse(withPopoverSourceView: shareButton)
     }
     
     required init?(coder aDecoder: NSCoder) {

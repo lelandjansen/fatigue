@@ -64,10 +64,11 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
         }
     }
     
-    func share(questionnaireResponse: QuestionnaireResponse) {
+    func share(questionnaireResponse: QuestionnaireResponse, withPopoverSourceView popoverSourceView: UIView?) {
         Share.share(
             questionnaireResponse: questionnaireResponse,
             inViewController: self,
+            withPopoverSourceView: popoverSourceView,
             forMFMailComposeViewControllerDelegate: self,
             forMFMessageComposeViewControllerDelegate: self
         )
@@ -101,7 +102,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
-            let offset = view.frame.height - UIConstants.navigationBarHeight - UIConstants.tableViewRowHeight - 10
+            let offset = view.frame.height - UIConstants.navigationBarHeight - UIConstants.tableViewRowHeight * 3 / 2  - 10
             let index = (collectionView?.contentOffset.y)! < offset ? 0 : 1
             historyCell.animateNavigationBar(
                 toColor: cells[index] is HistoryCell ? .white : .light,
@@ -129,7 +130,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
-            return CGSize(width: view.frame.width, height: view.frame.height - UIConstants.navigationBarHeight - UIConstants.tableViewRowHeight)
+            return CGSize(width: view.frame.width, height: view.frame.height - UIConstants.navigationBarHeight - UIConstants.tableViewRowHeight * 3 / 2)
         default:
             return CGSize(width: view.frame.width, height: view.frame.height)
         }

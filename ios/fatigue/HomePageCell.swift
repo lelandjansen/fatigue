@@ -100,18 +100,11 @@ class HomePageCell: UICollectionViewCell {
         
         beginButton.frame = CGRect(
             x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing + 16) / 2,
+            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight - UIConstants.buttonHeight - UIConstants.buttonSpacing + 38) / 2,
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
         beginButton.addTarget(self, action: #selector(handleBeginButton), for: .touchUpInside)
-        
-//        settingsButton.frame = CGRect(
-//            x: (self.frame.size.width - UIConstants.buttonWidth) / 2,
-//            y: (self.frame.size.height + UIConstants.tableViewRowHeight + UIConstants.navigationBarHeight + UIConstants.buttonHeight) / 2 + UIConstants.buttonSpacing,
-//            width: UIConstants.buttonWidth,
-//            height: UIConstants.buttonHeight / 2
-//        )
         settingsButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         settingsButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: UIConstants.tableViewRowHeight + UIConstants.buttonHeight + UIConstants.buttonSpacing).isActive = true
         settingsButton.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)

@@ -114,12 +114,12 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         )
         
         let mountainOffset: CGFloat = 80
-        mountainImage.anchorWithConstantsToTop(
-            bottomAnchor,
-            left: leftAnchor,
-            right: rightAnchor,
-            topConstant: mountainOffset
-        )
+        let aspectRatio = mountainImage.image!.size.width / mountainImage.image!.size.height
+        mountainImage.translatesAutoresizingMaskIntoConstraints = false
+        mountainImage.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        mountainImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / aspectRatio).isActive = true
+        mountainImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        mountainImage.topAnchor.constraint(equalTo: bottomAnchor, constant: mountainOffset).isActive = true
         
         let helicopterOffset: CGFloat = 25
         helicopterImage.anchorWithConstantsToTop(
@@ -178,7 +178,8 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         delete.backgroundColor = .red
         
         let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
-            self.delegate?.share(questionnaireResponse: questionnaireResponse)
+            let cell = self.historyTable.cellForRow(at: indexPath)!
+            self.delegate?.share(questionnaireResponse: questionnaireResponse, withPopoverSourceView: cell)
             tableView.setEditing(false, animated: true)
         }
         share.backgroundColor = .violet

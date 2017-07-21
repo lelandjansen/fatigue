@@ -223,8 +223,8 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     
     func populate(nameTextFiled: UITextField, emailTextField: UITextField, phoneNumberTextField: UITextField, withContact contact: CNContact) {
         nameTextFiled.populateName(fromContact: contact, completion: {
-            emailTextField.populateEmail(fromContact: contact, inViewController: self, completion: {
-                phoneNumberTextField.populatePhoneNumber(fromContact: contact, inViewController: self)
+            emailTextField.populateEmail(fromContact: contact, inTableViewController: self, withPopoverSourceView: emailTextField, completion: {
+                phoneNumberTextField.populatePhoneNumber(fromContact: contact, inViewController: self, withPopoverSourceView: phoneNumberTextField)
             })
         })
     }

@@ -124,8 +124,8 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate, C
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         supervisorNameTextField.populateName(fromContact: contact, completion: {
-            self.supervisorEmailTextField.populateEmail(fromContact: contact, inViewController: self, completion: {
-                self.supervisorPhoneTextField.populatePhoneNumber(fromContact: contact, inViewController: self)
+            self.supervisorEmailTextField.populateEmail(fromContact: contact, inTableViewController: self, withPopoverSourceView: self.supervisorEmailTextField, completion: {
+                self.supervisorPhoneTextField.populatePhoneNumber(fromContact: contact, inViewController: self, withPopoverSourceView: self.supervisorPhoneTextField)
             })
         })
     }

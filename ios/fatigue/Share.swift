@@ -2,7 +2,7 @@ import UIKit
 import MessageUI
 
 struct Share {
-    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate) {
+    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate) {
         let mailAction = UIAlertAction(title: "Mail", style: .default) { _ in
             self.sendEmail(
                 withQuestionnaireResponse: questionnaireResponse,
@@ -20,12 +20,17 @@ struct Share {
         let otherAction = UIAlertAction(title: "Other...", style: .default) { _ in
             self.sendOther(
                 withQuestionnaireResponse: questionnaireResponse,
-                inViewController: viewController
+                inViewController: viewController,
+                withPopoverSourceView: popoverSourceView
             )
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let view = popoverSourceView {
+            actionController.popoverPresentationController?.sourceView = view
+            actionController.popoverPresentationController?.sourceRect = view.bounds
+        }
         for button in [mailAction, messagesAction, otherAction, cancelAction] {
             actionController.addAction(button)
         }
@@ -64,7 +69,7 @@ struct Share {
         viewController.present(messageComposer, animated: true)
     }
     
-    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController) {
+    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?) {
         let message = composeMessage(forQuestionnaireResponse: questionnarieResponse)
         let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
         activityViewController.excludedActivityTypes = [
@@ -81,6 +86,10 @@ struct Share {
             .postToWeibo,
             .saveToCameraRoll,
         ]
+        if let view = popoverSourceView {
+            activityViewController.popoverPresentationController?.sourceView = view
+            activityViewController.popoverPresentationController?.sourceRect = view.bounds
+        }
         viewController.present(activityViewController, animated: true)
     }
 }
