@@ -108,6 +108,15 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         return collectionView
     }()
     
+    let closeItem: UIBarButtonItem = {
+        return UIBarButtonItem(
+            title: "Close",
+            style: UIBarButtonItemStyle.plain,
+            target: nil,
+            action: #selector(dismissQuestionnaireWithConfirmation)
+        )
+    }()
+    
     lazy var navigationBar: UINavigationBar = {
         let navigationBar: UINavigationBar = UINavigationBar(
             frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: UIConstants.navigationBarHeight)
@@ -119,13 +128,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         let navigationItem = UINavigationItem(title: "Questionnaire")
-        let closeItem = UIBarButtonItem(
-            title: "Close",
-            style: UIBarButtonItemStyle.plain,
-            target: nil,
-            action: #selector(dismissQuestionnaireWithConfirmation)
-        )
-        navigationItem.leftBarButtonItem = closeItem
+        navigationItem.leftBarButtonItem = self.closeItem
         navigationBar.setItems([navigationItem], animated: false)
         return navigationBar
     }()
@@ -242,11 +245,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    func shareResponse() {
+    func shareResponse(withPopoverSourceView popoverSourceView: UIView?) {
         if let latestResponse = QuestionnaireResponse.loadResponses().last {
             Share.share(
                 questionnaireResponse: latestResponse,
                 inViewController: self,
+                withPopoverSourceView: popoverSourceView,
                 forMFMailComposeViewControllerDelegate: self,
                 forMFMessageComposeViewControllerDelegate: self
             )
@@ -274,6 +278,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
             self.dismissQuestionnaire()
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.popoverPresentationController?.barButtonItem = closeItem
         present(alertController, animated: true)
     }
     

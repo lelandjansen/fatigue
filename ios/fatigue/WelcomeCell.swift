@@ -23,7 +23,7 @@ class WelcomeCell: UICollectionViewCell {
                 NSFontAttributeName: UIFont.systemFont(ofSize: 22, weight: UIFontWeightSemibold)
             ]
         )
-        
+
         let label = UILabel()
         label.attributedText = attributedText
         label.textAlignment = .center
@@ -66,11 +66,12 @@ class WelcomeCell: UICollectionViewCell {
         addSubview(foregroundCloud)
         getStartedButton.addTarget(self, action: #selector(handleGetStartedButton), for: .touchUpInside)
         
-        backgroundImage.anchorToTop(
-            topAnchor,
-            bottom: bottomAnchor,
-            right: rightAnchor
-        )
+        let aspectRatio = backgroundImage.image!.size.width / backgroundImage.image!.size.height
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImage.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        backgroundImage.widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio).isActive = true
+        backgroundImage.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        backgroundImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         let padding: CGFloat = 16
         titleLabel.anchorWithConstantsToTop(
