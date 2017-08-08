@@ -170,20 +170,24 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let questionnaireResponse = questionnaireResponses[indexPath.row]
+        let cell = historyTable.cellForRow(at: indexPath)!
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.questionnaireResponses.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            QuestionnaireResponse.delete(response: questionnaireResponse)
+            self.delegate?.confirmDeleteHistoryItem(questionnaireResponse, forTableView: tableView, atIndexPath: indexPath, withPopoverSourceView: cell, deleteCompletion: self.deleteHistoryTableItem)
         }
         delete.backgroundColor = .red
-        
         let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
-            let cell = self.historyTable.cellForRow(at: indexPath)!
-            self.delegate?.share(questionnaireResponse: questionnaireResponse, withPopoverSourceView: cell)
-            tableView.setEditing(false, animated: true)
+            self.delegate?.shareHistoryItem(questionnaireResponse, withPopoverSourceView: cell, completion: { _ in
+                tableView.setEditing(false, animated: true)
+            })
         }
         share.backgroundColor = .violet
-        
         return [delete, share]
+    }
+    
+    func deleteHistoryTableItem(inTableView tableView: UITableView, atIndexPath indexPath: IndexPath) {
+        let questionnaireResponse = questionnaireResponses[indexPath.row]
+        questionnaireResponses.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        QuestionnaireResponse.delete(response: questionnaireResponse)
     }
 }

@@ -6,5 +6,6 @@ protocol HomePageControllerDelegate: class {
     func moveToHomePage()
     func moveToHistoryPage()
     func refreshHistory()
-    func share(questionnaireResponse: QuestionnaireResponse, withPopoverSourceView popoverSourceView: UIView?)
+    func shareHistoryItem(_ questionnaireResponse: QuestionnaireResponse, withPopoverSourceView popoverSourceView: UIView?, completion: (() -> ())?)
+    func confirmDeleteHistoryItem(_ questionnaireResponse: QuestionnaireResponse, forTableView tableView: UITableView, atIndexPath indexPath: IndexPath, withPopoverSourceView popoverSourceView: UIView?, deleteCompletion: ((UITableView, IndexPath) -> ())?)
 }

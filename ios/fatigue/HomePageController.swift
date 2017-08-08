@@ -64,14 +64,41 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
         }
     }
     
-    func share(questionnaireResponse: QuestionnaireResponse, withPopoverSourceView popoverSourceView: UIView?) {
+    func shareHistoryItem(_ questionnaireResponse: QuestionnaireResponse, withPopoverSourceView popoverSourceView: UIView?, completion: (() -> ())? = nil) {
         Share.share(
             questionnaireResponse: questionnaireResponse,
             inViewController: self,
             withPopoverSourceView: popoverSourceView,
             forMFMailComposeViewControllerDelegate: self,
-            forMFMessageComposeViewControllerDelegate: self
+            forMFMessageComposeViewControllerDelegate: self,
+            completion: {
+                completion?()
+            }
         )
+    }
+    
+    func confirmDeleteHistoryItem(_ questionnaireResponse: QuestionnaireResponse, forTableView tableView: UITableView, atIndexPath indexPath: IndexPath, withPopoverSourceView popoverSourceView: UIView?, deleteCompletion: ((UITableView, IndexPath) -> ())?) {
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionController.title = "Delete history item?"
+        actionController.popoverPresentationController?.permittedArrowDirections = .right
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            DispatchQueue.main.async {
+                deleteCompletion?(tableView, indexPath)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            DispatchQueue.main.async {
+                tableView.setEditing(false, animated: true)
+            }
+        }
+        if let sourceView = popoverSourceView {
+            actionController.popoverPresentationController?.sourceView = sourceView
+            actionController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 5, height: sourceView.bounds.height)
+        }
+        for button in [deleteAction, cancelAction] {
+            actionController.addAction(button)
+        }
+        present(actionController, animated: true)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

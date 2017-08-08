@@ -2,37 +2,42 @@ import UIKit
 import MessageUI
 
 struct Share {
-    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate) {
+    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionController.popoverPresentationController?.permittedArrowDirections = .right
         let mailAction = UIAlertAction(title: "Mail", style: .default) { _ in
             self.sendEmail(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
-                forMFMailComposeViewControllerDelegate: mfMailComposeViewControllerDelegate
+                forMFMailComposeViewControllerDelegate: mfMailComposeViewControllerDelegate,
+                completion: completion
             )
         }
         let messagesAction = UIAlertAction(title: "Messages", style: .default) { _ in
             self.sendMessage(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
-                forMFMessageComposeViewControllerDelegate: mfMessageComposeViewControllerDelegate
+                forMFMessageComposeViewControllerDelegate: mfMessageComposeViewControllerDelegate,
+                completion: completion
             )
         }
         let otherAction = UIAlertAction(title: "Other...", style: .default) { _ in
             self.sendOther(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
-                withPopoverSourceView: popoverSourceView
+                withPopoverSourceView: popoverSourceView,
+                completion: completion
             )
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if let view = popoverSourceView {
-            actionController.popoverPresentationController?.sourceView = view
-            actionController.popoverPresentationController?.sourceRect = view.bounds
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            completion?()
         }
-        for button in [mailAction, messagesAction, otherAction, cancelAction] {
-            actionController.addAction(button)
+        if let sourceView = popoverSourceView {
+            actionController.popoverPresentationController?.sourceView = sourceView
+            actionController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 5, height: sourceView.bounds.height)
+        }
+        for action in [mailAction, messagesAction, otherAction, cancelAction] {
+            actionController.addAction(action)
         }
         viewController.present(actionController, animated: true)
     }
@@ -48,7 +53,7 @@ struct Share {
         return message.joined(separator: "\n")
     }
     
-    static func sendEmail(withQuestionnaireResponse questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate) {
+    static func sendEmail(withQuestionnaireResponse questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, completion: (() -> ())? = nil) {
         if !MFMailComposeViewController.canSendMail() {
             fatalError("Cannot send email")
         }
@@ -58,20 +63,21 @@ struct Share {
         mailComposer.setSubject("Fatigue self-assessment")
         let message = composeMessage(forQuestionnaireResponse: questionnaireResponse)
         mailComposer.setMessageBody(message, isHTML: false)
-        viewController.present(mailComposer, animated: true)
+        viewController.present(mailComposer, animated: true, completion: completion)
     }
     
-    static func sendMessage(withQuestionnaireResponse questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate) {
+    static func sendMessage(withQuestionnaireResponse questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
         let messageComposer = MFMessageComposeViewController()
         messageComposer.messageComposeDelegate = mfMessageComposeViewControllerDelegate
         messageComposer.recipients = [UserDefaults.standard.supervisorPhone ?? String()]
         messageComposer.body = composeMessage(forQuestionnaireResponse: questionnaireResponse)
-        viewController.present(messageComposer, animated: true)
+        viewController.present(messageComposer, animated: true, completion: completion)
     }
     
-    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?) {
+    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, completion: (() -> ())? = nil) {
         let message = composeMessage(forQuestionnaireResponse: questionnarieResponse)
         let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.permittedArrowDirections = .right
         activityViewController.excludedActivityTypes = [
             .addToReadingList,
             .airDrop,
@@ -86,9 +92,12 @@ struct Share {
             .postToWeibo,
             .saveToCameraRoll,
         ]
-        if let view = popoverSourceView {
-            activityViewController.popoverPresentationController?.sourceView = view
-            activityViewController.popoverPresentationController?.sourceRect = view.bounds
+        if let sourceView = popoverSourceView {
+            activityViewController.popoverPresentationController?.sourceView = sourceView
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 5, height: sourceView.bounds.height)
+        }
+        activityViewController.completionWithItemsHandler = { _ in
+            completion?()
         }
         viewController.present(activityViewController, animated: true)
     }
