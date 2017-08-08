@@ -23,7 +23,7 @@ extension UITextField {
             let address = String(describing: email.value)
             let title = { () -> String in
                 if let label = email.label {
-                    return "\(address) (\(CNLabeledValue<NSString>.localizedString(forLabel: label)))"
+                    return "\(address) – \(CNLabeledValue<NSString>.localizedString(forLabel: label))"
                 }
                 else {
                     return address
@@ -63,13 +63,13 @@ extension UITextField {
             let number = phoneNumber.value.stringValue
             let title = { () -> String in
                 if let label = phoneNumber.label {
-                    return "\(number) (\(CNLabeledValue<NSString>.localizedString(forLabel: label)))"
+                    return "\(number) – \(CNLabeledValue<NSString>.localizedString(forLabel: label))"
                 }
                 else {
                     return number
                 }
             }()
-            alertController.addAction(UIAlertAction(title: title, style: .default , handler: { _ in
+            alertController.addAction(UIAlertAction(title: title, style: .default, handler: { _ in
                 self.text = number
                 completion?()
             }))

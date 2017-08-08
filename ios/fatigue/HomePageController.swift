@@ -112,13 +112,16 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if .zero == scrollView.contentOffset {
             if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
-                (historyCell as HistoryCell).scrollToTop()
-                (historyCell as HistoryCell).historyTable.isScrollEnabled = false
+                historyCell.scrollToTop()
+                historyCell.historyTable.isScrollEnabled = false
             }
         }
         else {
             if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
-                (historyCell as HistoryCell).historyTable.isScrollEnabled = true
+                historyCell.historyTable.isScrollEnabled = true
+                if !UserDefaults.standard.userTriedEditingRow {
+                    historyCell.showRowEditTutorial()
+                }
             }
         }
     }

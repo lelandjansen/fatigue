@@ -169,6 +169,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        UserDefaults.standard.userTriedEditingRow = true
         let questionnaireResponse = questionnaireResponses[indexPath.row]
         let cell = historyTable.cellForRow(at: indexPath)!
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
@@ -189,5 +190,38 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         questionnaireResponses.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         QuestionnaireResponse.delete(response: questionnaireResponse)
+    }
+    
+    func showRowEditTutorial() {
+        if questionnaireResponses.isEmpty {
+            return
+        }
+        let translation: CGFloat = 32
+        let indexPath = IndexPath(row: 0, section: 0)
+        if let cell = historyTable.cellForRow(at: indexPath) {
+            UIView.animate(
+                withDuration: 1 / 3,
+                delay: 1 / 2,
+                options: [.allowAnimatedContent, .curveEaseInOut, .allowUserInteraction],
+                animations: {
+                    cell.frame = CGRect(x: cell.frame.origin.x - translation,
+                                        y: cell.frame.origin.y,
+                                        width: cell.bounds.width,
+                                        height: cell.bounds.height)
+                }
+            ) { finished in
+                if finished {
+                    UIView.animate(
+                        withDuration: 1 / 3,
+                        animations: {
+                            cell.frame = CGRect(x: cell.frame.origin.x + translation,
+                                                y: cell.frame.origin.y,
+                                                width: cell.bounds.width,
+                                                height: cell.bounds.height)
+                        }
+                    )
+                }
+            }
+        }
     }
 }
