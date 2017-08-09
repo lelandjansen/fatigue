@@ -4,6 +4,7 @@ extension UserDefaults {
     
     enum UserDefaultsKeys: String {
         case firstLaunch,
+            userTriedEditingRow,
             rangeQuestionTutorialShown,
             occupation,
             reminderEnabled,
@@ -22,6 +23,17 @@ extension UserDefaults {
         
         set {
             set(newValue, forKey: UserDefaultsKeys.firstLaunch.rawValue)
+            synchronize()
+        }
+    }
+    
+    var userTriedEditingRow: Bool {
+        get {
+            return object(forKey: UserDefaultsKeys.userTriedEditingRow.rawValue) as? Bool ?? false
+        }
+        
+        set {
+            set(newValue, forKey: UserDefaultsKeys.userTriedEditingRow.rawValue)
             synchronize()
         }
     }
