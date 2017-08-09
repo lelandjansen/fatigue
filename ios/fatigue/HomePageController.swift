@@ -52,6 +52,11 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     func moveToHomePage() {
         collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
+        if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
+            historyCell.scrollToTop()
+            historyCell.historyTable.isScrollEnabled = false
+            historyCell.historyTable.setEditing(false, animated: true)
+        }
     }
     
     func moveToHistoryPage() {
@@ -111,10 +116,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if .zero == scrollView.contentOffset {
-            if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
-                historyCell.scrollToTop()
-                historyCell.historyTable.isScrollEnabled = false
-            }
+            moveToHomePage()
         }
         else {
             if let historyCell = collectionView?.visibleCells.first(where: {$0 is HistoryCell}) as? HistoryCell {
