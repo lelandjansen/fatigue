@@ -1,15 +1,16 @@
 import UIKit
 
 class QuestionCell: UICollectionViewCell {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     weak var delegate: QuestionnaireDelegate?
-    
     
     var question: Question? {
         didSet {
@@ -67,10 +68,6 @@ class QuestionCell: UICollectionViewCell {
             leftConstant: sidePadding,
             rightConstant: sidePadding
         )
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

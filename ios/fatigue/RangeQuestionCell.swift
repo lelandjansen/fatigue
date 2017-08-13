@@ -6,6 +6,10 @@ class RangeQuestionCell: QuestionCell {
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     var options: [String] = [String()]
     
     var optionIndex: Int = 0 {
@@ -158,9 +162,5 @@ class RangeQuestionCell: QuestionCell {
         if 0 < optionIndex {
             optionIndex -= 1
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

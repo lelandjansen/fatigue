@@ -20,6 +20,10 @@ class ResultCell: UICollectionViewCell {
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     private static let circleRadius = UIConstants.buttonWidth * 3 / 8
     
     let riskScoreTitleLabel: UILabel = {
@@ -235,9 +239,5 @@ class ResultCell: UICollectionViewCell {
     
     func handleShare() {
         delegate?.shareResponse(withPopoverSourceView: shareButton)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

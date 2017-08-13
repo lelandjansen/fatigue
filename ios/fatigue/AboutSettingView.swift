@@ -11,7 +11,7 @@ class AboutSettingView : UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     let logoWebsiteUrl = URL(string: "http://www.iagsa.ca")
