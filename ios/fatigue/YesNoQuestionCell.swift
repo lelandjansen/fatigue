@@ -7,6 +7,9 @@ class YesNoQuestionCell: QuestionCell {
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override var question: Question? {
         didSet {
@@ -95,10 +98,5 @@ class YesNoQuestionCell: QuestionCell {
             width: UIConstants.buttonWidth,
             height: UIConstants.buttonHeight
         )
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
