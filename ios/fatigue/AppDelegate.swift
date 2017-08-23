@@ -27,4 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if let viewController = UIApplication.topViewController() as? HomePageController {
+            viewController.refreshHistory()
+        }
+    }
 }
