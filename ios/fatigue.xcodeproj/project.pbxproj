@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		710F8F9F1EF2197800C96CDB /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F8F9E1EF2197800C96CDB /* Notifications.swift */; };
+		7110F6171F4CD4B5004F125B /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110F6161F4CD4B5004F125B /* UIApplication.swift */; };
 		7117599F1E921DD700949FB4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7117599E1E921DD700949FB4 /* UIColor.swift */; };
 		7118D6FA1EA19FF4004B7E19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7118D6F91EA19FF4004B7E19 /* Constants.swift */; };
 		712A09E01F0A9F3500DA9618 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A09DF1F0A9F3500DA9618 /* Share.swift */; };
@@ -85,6 +86,7 @@
 		373CC3B7F5D41038D7B85F1D /* Pods_fatigue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fatigue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E2FE07C656765B648FFAB6F /* Pods-fatigue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fatigue.release.xcconfig"; path = "Pods/Target Support Files/Pods-fatigue/Pods-fatigue.release.xcconfig"; sourceTree = "<group>"; };
 		710F8F9E1EF2197800C96CDB /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		7110F6161F4CD4B5004F125B /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		7117599E1E921DD700949FB4 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7118D6F91EA19FF4004B7E19 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		712A09DF1F0A9F3500DA9618 /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				71D2842F1F083BAB00F70365 /* String.swift */,
 				7173C6811F146A6D001E135C /* UITableView.swift */,
 				7170FC291F204B6C00B9A685 /* UITextField.swift */,
+				7110F6161F4CD4B5004F125B /* UIApplication.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				71555D251EAC407000883C45 /* AboutSetting.swift in Sources */,
 				71E953A41E67DB7000A59278 /* RangeQuestion.swift in Sources */,
 				7176C8111E595C9100E557F0 /* UserDefaults.swift in Sources */,
+				7110F6171F4CD4B5004F125B /* UIApplication.swift in Sources */,
 				71555D3D1EAC71E200883C45 /* LegalSettingController.swift in Sources */,
 				71E953A01E67DB0900A59278 /* QuestionnaireDelegate.swift in Sources */,
 				71D7C2FB1F1B23BA003D2459 /* ContributorsController.swift in Sources */,
