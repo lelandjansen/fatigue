@@ -83,8 +83,11 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func confirmDeleteHistoryItem(_ questionnaireResponse: QuestionnaireResponse, forTableView tableView: UITableView, atIndexPath indexPath: IndexPath, withPopoverSourceView popoverSourceView: UIView?, deleteCompletion: ((UITableView, IndexPath) -> ())?) {
-        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionController.title = "Delete history item?"
+        let actionController = UIAlertController(
+            title: "Delete history item?",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
         actionController.popoverPresentationController?.permittedArrowDirections = .right
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             DispatchQueue.main.async {

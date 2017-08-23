@@ -26,8 +26,16 @@ extension QuestionnaireResponse {
         do {
             try context.save()
         }
-        catch let error {
-            fatalError("Failed to save questionnaire response: \(error)")
+        catch {
+            if let topViewController = UIApplication.topViewController() {
+                let alert = UIAlertController(
+                    title: "Unable to save questionnaire response.",
+                    message: nil,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                topViewController.present(alert, animated: true)
+            }
         }
     }
     
@@ -37,10 +45,18 @@ extension QuestionnaireResponse {
         do {
             return try context.fetch(request)
         }
-        catch let error {
-            fatalError("Failed to load questionnaire response: \(error)")
+        catch {
+            if let topViewController = UIApplication.topViewController() {
+                let alert = UIAlertController(
+                    title: "Unable to load questionnaire responses.",
+                    message: nil,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                topViewController.present(alert, animated: true)
+            }
         }
-        
+        return []
     }
     
     static func delete(response: QuestionnaireResponse) {
@@ -49,8 +65,16 @@ extension QuestionnaireResponse {
         do {
             try context.save()
         }
-        catch let error {
-            fatalError("Failed to save questionnaire response: \(error)")
+        catch {
+            if let topViewController = UIApplication.topViewController() {
+                let alert = UIAlertController(
+                    title: "Unable to delete questionnaire response.",
+                    message: nil,
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                topViewController.present(alert, animated: true)
+            }
         }
     }
 }
