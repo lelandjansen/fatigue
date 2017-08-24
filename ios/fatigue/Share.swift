@@ -2,9 +2,9 @@ import UIKit
 import MessageUI
 
 struct Share {
-    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
+    static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, withPermittedArrowDirections permittedArrowDirections: UIPopoverArrowDirection, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionController.popoverPresentationController?.permittedArrowDirections = .right
+        actionController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         let mailAction = UIAlertAction(title: "Mail", style: .default) { _ in
             self.sendEmail(
                 withQuestionnaireResponse: questionnaireResponse,
@@ -26,6 +26,7 @@ struct Share {
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
                 withPopoverSourceView: popoverSourceView,
+                withPermittedArrowDirections: permittedArrowDirections,
                 completion: completion
             )
         }
@@ -34,7 +35,7 @@ struct Share {
         }
         if let sourceView = popoverSourceView {
             actionController.popoverPresentationController?.sourceView = sourceView
-            actionController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 5, height: sourceView.bounds.height)
+            actionController.popoverPresentationController?.sourceRect = makePopoverSourceView(fromSourceView: sourceView, withPermittedArrowDirections: permittedArrowDirections)
         }
         for action in [mailAction, messagesAction, otherAction, cancelAction] {
             actionController.addAction(action)
@@ -74,10 +75,10 @@ struct Share {
         viewController.present(messageComposer, animated: true, completion: completion)
     }
     
-    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, completion: (() -> ())? = nil) {
+    static func sendOther(withQuestionnaireResponse questionnarieResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, withPermittedArrowDirections permittedArrowDirections: UIPopoverArrowDirection, completion: (() -> ())? = nil) {
         let message = composeMessage(forQuestionnaireResponse: questionnarieResponse)
         let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.permittedArrowDirections = .right
+        activityViewController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
         activityViewController.excludedActivityTypes = [
             .addToReadingList,
             .airDrop,
@@ -94,11 +95,27 @@ struct Share {
         ]
         if let sourceView = popoverSourceView {
             activityViewController.popoverPresentationController?.sourceView = sourceView
-            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 5, height: sourceView.bounds.height)
+            activityViewController.popoverPresentationController?.sourceRect = makePopoverSourceView(fromSourceView: sourceView, withPermittedArrowDirections: permittedArrowDirections)
         }
         activityViewController.completionWithItemsHandler = { _ in
             completion?()
         }
         viewController.present(activityViewController, animated: true)
+    }
+    
+    static fileprivate func makePopoverSourceView(fromSourceView sourceView: UIView, withPermittedArrowDirections permittedArrowDirections: UIPopoverArrowDirection) -> CGRect {
+        let constant: CGFloat = 1
+        switch permittedArrowDirections {
+        case [.up]:
+            return CGRect(x: sourceView.bounds.minX, y: sourceView.bounds.maxY - constant, width: sourceView.bounds.width, height: constant)
+        case [.down]:
+            return CGRect(x: sourceView.bounds.minX, y: sourceView.bounds.minY, width: sourceView.bounds.width, height: constant)
+        case [.left]:
+            return CGRect(x: sourceView.bounds.maxX - constant, y: sourceView.bounds.minY, width: 1, height: sourceView.bounds.height)
+        case [.right]:
+            return CGRect(x: sourceView.bounds.maxX, y: sourceView.bounds.minY, width: 1, height: sourceView.bounds.height)
+        default:
+            return CGRect(x: sourceView.bounds.minX, y: sourceView.bounds.minY, width: sourceView.bounds.width, height: sourceView.bounds.height)
+        }
     }
 }
