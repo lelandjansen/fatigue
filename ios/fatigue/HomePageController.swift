@@ -74,6 +74,7 @@ class HomePageController: UICollectionViewController, UICollectionViewDelegateFl
             questionnaireResponse: questionnaireResponse,
             inViewController: self,
             withPopoverSourceView: popoverSourceView,
+            withPermittedArrowDirections: .right,
             forMFMailComposeViewControllerDelegate: self,
             forMFMessageComposeViewControllerDelegate: self,
             completion: {

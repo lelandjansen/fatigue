@@ -251,6 +251,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
                 questionnaireResponse: latestResponse,
                 inViewController: self,
                 withPopoverSourceView: popoverSourceView,
+                withPermittedArrowDirections: .up,
                 forMFMailComposeViewControllerDelegate: self,
                 forMFMessageComposeViewControllerDelegate: self
             )
