@@ -93,31 +93,6 @@ class ReminderSettingController: UITableViewController {
         return items[indexPath.row] == .timePicker ? timePicker.frame.size.height : tableView.rowHeight
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        Notifications.registerLocalNotifications(
-            completionIfGranted: {
-                OperationQueue.main.addOperation() {
-                    if self.reminderToggle.isOn {
-                        let time = String(describingTime: self.timePicker.date)!
-                        self.delegate?.setSelectedCellDetails(toValue: time)
-                    }
-                    else {
-                        self.handleReminderDisabled()
-                        self.delegate?.setSelectedCellDetails(toValue: ReminderSetting.reminderOff)
-                    }
-                }
-            },
-            completionIfNotGranted: {
-                OperationQueue.main.addOperation() {
-                    self.handleReminderDisabled()
-                    self.delegate?.setSelectedCellDetails(toValue: ReminderSetting.reminderOff)
-                    
-                }
-            }
-        )
-        super.viewWillDisappear(animated)
-    }
-    
     func reminderToggleValueChanged() {
         let time = Calendar.current.dateComponents([.minute, .hour], from: timePicker.date)
         reminderToggle.isOn ? tryEnableReminder(atTime: time) : handleReminderDisabled()
@@ -149,9 +124,11 @@ class ReminderSettingController: UITableViewController {
             tableView.insertRows(at: [timePickerRow], with: .automatic)
         }
         let timeCell = tableView.cellForRow(at: timeRow)
-        timeCell?.detailTextLabel?.text = String(describingTime: timePicker.date)
+        let timeString = String(describingTime: timePicker.date)!
+        timeCell?.detailTextLabel?.text = timeString
         Notifications.scheduleLocalNotifications(atTime: time)
         tableView.endUpdates()
+        self.delegate?.setSelectedCellDetails(toValue: timeString)
     }
     
     func handleReminderDisabled() {
@@ -167,6 +144,7 @@ class ReminderSettingController: UITableViewController {
             tableView.deleteRows(at: [timePickerRow], with: .automatic)
         }
         tableView.endUpdates()
+        self.delegate?.setSelectedCellDetails(toValue: ReminderSetting.reminderOff)
     }
     
     func handleNotificationPermissionsNotGranted() {
