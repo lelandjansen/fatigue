@@ -41,7 +41,7 @@ class LegalCell: UICollectionViewCell {
     
     let agreeButton: UIButton = {
         let button = UIButton.createStyledSelectButton(withColor: .violet)
-        button.setTitle("I agree", for: .normal)
+        button.setTitle("I Agree", for: .normal)
         return button
     }()
     
@@ -51,7 +51,7 @@ class LegalCell: UICollectionViewCell {
             return
         }
         let alertController = UIAlertController(title: "Confirmation", message: String(), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "I agree", style: .default, handler: { _ in
+        alertController.addAction(UIAlertAction(title: "I Agree", style: .default, handler: { _ in
             self.agreeButton.isSelected = true
             self.delegate?.addNextPage()
             self.delegate?.moveToNextPage()
