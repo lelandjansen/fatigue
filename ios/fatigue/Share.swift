@@ -5,7 +5,7 @@ struct Share {
     static func share(questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, withPopoverSourceView popoverSourceView: UIView?, withPermittedArrowDirections permittedArrowDirections: UIPopoverArrowDirection, forMFMailComposeViewControllerDelegate mfMailComposeViewControllerDelegate: MFMailComposeViewControllerDelegate, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionController.popoverPresentationController?.permittedArrowDirections = permittedArrowDirections
-        let mailAction = UIAlertAction(title: "Mail", style: .default) { _ in
+        let mailAction = UIAlertAction(title: "Mail…", style: .default) { _ in
             self.sendEmail(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
@@ -13,7 +13,7 @@ struct Share {
                 completion: completion
             )
         }
-        let messagesAction = UIAlertAction(title: "Messages", style: .default) { _ in
+        let messagesAction = UIAlertAction(title: "Messages…", style: .default) { _ in
             self.sendMessage(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
@@ -21,7 +21,7 @@ struct Share {
                 completion: completion
             )
         }
-        let otherAction = UIAlertAction(title: "Other...", style: .default) { _ in
+        let otherAction = UIAlertAction(title: "Other…", style: .default) { _ in
             self.sendOther(
                 withQuestionnaireResponse: questionnaireResponse,
                 inViewController: viewController,
