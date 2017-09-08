@@ -53,7 +53,7 @@ class SmartSuggestions {
             if let hours = UInt(todaySleepSelection) {
                 todaySleep = hours
                 smartQuestion.details += (hours == 1) ? " hr" : " hrs"
-                smartQuestion.options = Array(todaySleep...24).map{String($0)}
+                smartQuestion.options = Array(todaySleep...48).map{String($0)}
             }
         }
         if !dirtyQuestionIds.contains(.sleepInPast48Hours) {
