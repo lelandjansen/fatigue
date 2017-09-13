@@ -30,7 +30,7 @@ class SettingsController: UITableViewController, SettingsDelegate {
     
     var items: [Setting] = [
         NameSetting(),
-        OccupationSetting(),
+        RoleSetting(),
         ReminderSetting(),
         SupervisorSetting(),
         AboutSetting(),
@@ -67,8 +67,8 @@ class SettingsController: UITableViewController, SettingsDelegate {
                 let controller = NameSettingController()
                 controller.delegate = self
                 return controller
-            case is OccupationSetting:
-                let controller = OccupationSettingController()
+            case is RoleSetting:
+                let controller = RoleSettingController()
                 controller.delegate = self
                 return controller
             case is ReminderSetting:

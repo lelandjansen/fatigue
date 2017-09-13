@@ -1,6 +1,6 @@
 import UIKit
 
-class OccupationCell: UICollectionViewCell {
+class RoleCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -14,7 +14,7 @@ class OccupationCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "What is your occupation?"
+        label.text = "What is your role?"
         label.font = .systemFont(ofSize: 22)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
@@ -25,19 +25,19 @@ class OccupationCell: UICollectionViewCell {
     
     lazy var pilotButton: UIButton = {
         let button = UIButton.createStyledSelectButton(withColor: .violet)
-        button.setTitle(Occupation.pilot.rawValue.capitalized, for: .normal)
+        button.setTitle(Role.pilot.rawValue.capitalized, for: .normal)
         button.addTarget(self, action: #selector(handlePilotButton), for: .touchUpInside)
         return button
     }()
     
     lazy var engineerButton: UIButton = {
         let button = UIButton.createStyledSelectButton(withColor: .violet)
-        button.setTitle(Occupation.engineer.rawValue.capitalized, for: .normal)
+        button.setTitle(Role.engineer.rawValue.capitalized, for: .normal)
         button.addTarget(self, action: #selector(handleEngineerButton), for: .touchUpInside)
         return button
     }()
     
-    var selection: Occupation = .none {
+    var selection: Role = .none {
         didSet {
             switch selection {
             case .pilot:
@@ -50,7 +50,7 @@ class OccupationCell: UICollectionViewCell {
                 pilotButton.isSelected = false
                 engineerButton.isSelected = false
             }
-            UserDefaults.standard.occupation = selection
+            UserDefaults.standard.role = selection
         }
     }
     

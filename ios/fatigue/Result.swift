@@ -6,46 +6,50 @@ class Result: QuestionnaireItem {
         case low, medium, high, veryHigh
     }
     
+    static func getQualitativeRisk(forRiskScore riskScore: Int32) -> QualitativeRisk {
+        if riskScore < 6 {
+            return .low
+        } else if riskScore < 15 {
+            return .medium
+        } else if riskScore < 18 {
+            return .high
+        } else {
+            return .veryHigh
+        }
+    }
+    
+    static func getRemark(forRiskScore riskScore: Int32, role: Role) -> String {
+        let qualitativeRisk = getQualitativeRisk(forRiskScore: riskScore)
+        return getRemark(forQualitativeRisk: qualitativeRisk, role: role)
+    }
+    
+    static func getRemark(forQualitativeRisk qualitativeRisk: QualitativeRisk, role: Role) -> String {
+        switch (role, qualitativeRisk) {
+        case (.none, _):
+            fatalError("Role cannot be none")
+        case (_, .low):
+            return "Continue as normal."
+        case (.pilot, .medium):
+            return "Reduce flight time and if possible reduce duty period."
+        case (.engineer, .medium):
+            return "Reduce duty day and defer all non-essential tasks."
+        case (.pilot, .high):
+            return "Proceed upon approval from your supervisor."
+        case (.engineer, .high):
+            return "Proceed upon approval from your supervisor."
+        case (.pilot, .veryHigh):
+            return "Stay on the ground."
+        case (.engineer, .veryHigh):
+            return "Defer all maintenance."
+        default:
+            fatalError("No remark for qualitative risk and occupation (\(qualitativeRisk), \(role))")
+        }
+    }
+    
     var riskScore: Int32 = 0 {
         didSet {
-            switch UserDefaults.standard.occupation {
-            case .pilot:
-                if riskScore < 6 {
-                    remark = "Continue as normal."
-                    qualitativeRisk = QualitativeRisk.low
-                }
-                else if riskScore < 15 {
-                    remark = "Reduce flight time and if possible reduce duty period."
-                    qualitativeRisk = QualitativeRisk.medium
-                }
-                else if riskScore < 18 {
-                    remark = "Proceed upon approval from your supervisor."
-                    qualitativeRisk = QualitativeRisk.high
-                }
-                else {
-                    remark = "Stay on the ground."
-                    qualitativeRisk = QualitativeRisk.veryHigh
-                }
-            case .engineer:
-                if riskScore < 6 {
-                    remark = "Continue as normal."
-                    qualitativeRisk = QualitativeRisk.low
-                }
-                else if riskScore < 15 {
-                    remark = "Reduce duty day and defer all non-essential tasks."
-                    qualitativeRisk = QualitativeRisk.medium
-                }
-                else if riskScore < 18 {
-                    remark = "Proceed upon approval from your supervisor."
-                    qualitativeRisk = QualitativeRisk.high
-                }
-                else {
-                    remark = "Defer all maintenance."
-                    qualitativeRisk = QualitativeRisk.veryHigh
-                }
-            default:
-                fatalError("Career cannot be none")
-            }
+            qualitativeRisk = Result.getQualitativeRisk(forRiskScore: riskScore)
+            remark = Result.getRemark(forQualitativeRisk: qualitativeRisk!, role: UserDefaults.standard.role)
         }
     }
     var remark: String = String()

@@ -18,6 +18,7 @@
 		713CA14B1F1D56FE00D4DB1D /* LEGAL in Resources */ = {isa = PBXBuildFile; fileRef = 713CA14A1F1D56FE00D4DB1D /* LEGAL */; };
 		713FD4BA1EA13A6A00815B44 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713FD4B91EA13A6A00815B44 /* Log.swift */; };
 		714E31FB1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */; };
+		7152C1A71FC020B60023D577 /* QuestionnaireDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152C1A61FC020B60023D577 /* QuestionnaireDefaults.swift */; };
 		7155024C1EFF0A0E001005B4 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155024B1EFF0A0E001005B4 /* HistoryCell.swift */; };
 		71555D191EAC3F5C00883C45 /* LegalSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D181EAC3F5C00883C45 /* LegalSetting.swift */; };
 		71555D1B1EAC3F7300883C45 /* OccupationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */; };
@@ -63,7 +64,6 @@
 		71CC91091E581D1A00DA367A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CC91081E581D1A00DA367A /* Assets.xcassets */; };
 		71D284301F083BAB00F70365 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2842F1F083BAB00F70365 /* String.swift */; };
 		71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 71D436F91F00547D00132451 /* fatigue.xcdatamodeld */; };
-		71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4371E1F005D2100132451 /* QuestionaireResponse.swift */; };
 		71D7C2FB1F1B23BA003D2459 /* ContributorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D7C2FA1F1B23BA003D2459 /* ContributorsController.swift */; };
 		71D7C2FD1F1B247D003D2459 /* CONTRIBUTORS in Resources */ = {isa = PBXBuildFile; fileRef = 71D7C2FC1F1B247D003D2459 /* CONTRIBUTORS */; };
 		71DD26CE1F007FED008676E3 /* QuestionnaireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */; };
@@ -96,6 +96,7 @@
 		713CA14A1F1D56FE00D4DB1D /* LEGAL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LEGAL; path = ../../LEGAL; sourceTree = "<group>"; };
 		713FD4B91EA13A6A00815B44 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		714E31FA1F09645F00BECF4C /* Pods-fatigue-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-fatigue-acknowledgements.plist"; sourceTree = "<group>"; };
+		7152C1A61FC020B60023D577 /* QuestionnaireDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireDefaults.swift; sourceTree = "<group>"; };
 		7155024B1EFF0A0E001005B4 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		71555D181EAC3F5C00883C45 /* LegalSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalSetting.swift; sourceTree = "<group>"; };
 		71555D1A1EAC3F7300883C45 /* OccupationSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupationSetting.swift; sourceTree = "<group>"; };
@@ -143,7 +144,6 @@
 		71CC910D1E581D1A00DA367A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71D2842F1F083BAB00F70365 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		71D436FA1F00547D00132451 /* fatigue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = fatigue.xcdatamodel; sourceTree = "<group>"; };
-		71D4371E1F005D2100132451 /* QuestionaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionaireResponse.swift; sourceTree = "<group>"; };
 		71D7C2FA1F1B23BA003D2459 /* ContributorsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContributorsController.swift; sourceTree = "<group>"; };
 		71D7C2FC1F1B247D003D2459 /* CONTRIBUTORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CONTRIBUTORS; path = ../../CONTRIBUTORS; sourceTree = "<group>"; };
 		71DD26CD1F007FED008676E3 /* QuestionnaireResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionnaireResponse.swift; sourceTree = "<group>"; };
@@ -288,20 +288,20 @@
 			isa = PBXGroup;
 			children = (
 				71E953A51E67DD0100A59278 /* Question.swift */,
-				71D4371E1F005D2100132451 /* QuestionaireResponse.swift */,
 				7176C8091E59515800E557F0 /* QuestionCell.swift */,
 				719414BB1E63FCD1009A16D2 /* Questionnaire.swift */,
 				71F2748F1E582F5400983BB4 /* QuestionnaireController.swift */,
+				7152C1A61FC020B60023D577 /* QuestionnaireDefaults.swift */,
 				71E9539F1E67DB0900A59278 /* QuestionnaireDelegate.swift */,
 				719414B91E63EF02009A16D2 /* QuestionnaireItem.swift */,
 				71E953A31E67DB7000A59278 /* RangeQuestion.swift */,
 				71E953A81E67DEF600A59278 /* RangeQuestionCell.swift */,
+				7181023B1F1C0BA500D6E5C3 /* RangeQuestionTutorialView.swift */,
 				7176C80A1E59515800E557F0 /* Result.swift */,
 				7176C80B1E59515800E557F0 /* ResultCell.swift */,
 				715A81CF1F1ADAA4004CF16D /* SmartSuggestions.swift */,
 				71E953A11E67DB4B00A59278 /* YesNoQuestion.swift */,
 				71E953AA1E67DF1100A59278 /* YesNoQuestionCell.swift */,
-				7181023B1F1C0BA500D6E5C3 /* RangeQuestionTutorialView.swift */,
 			);
 			name = Questionnaire;
 			sourceTree = "<group>";
@@ -415,7 +415,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Leland Jansen";
 				TargetAttributes = {
 					71CC90FD1E581D1A00DA367A = {
@@ -527,13 +527,13 @@
 				710F8F9F1EF2197800C96CDB /* Notifications.swift in Sources */,
 				71555D311EAC6F7F00883C45 /* NameSettingController.swift in Sources */,
 				7176C80E1E59515800E557F0 /* Result.swift in Sources */,
-				71D4371F1F005D2100132451 /* QuestionaireResponse.swift in Sources */,
 				7173B9951F095D19002EE591 /* AboutSettingDelegate.swift in Sources */,
 				71DD26D01F00809E008676E3 /* QuestionResponse.swift in Sources */,
 				7181023C1F1C0BA500D6E5C3 /* RangeQuestionTutorialView.swift in Sources */,
 				71555D351EAC709E00883C45 /* OccupationSettingController.swift in Sources */,
 				718839391E9B34B000221316 /* UIButton.swift in Sources */,
 				71555D1F1EAC3FBA00883C45 /* NameSetting.swift in Sources */,
+				7152C1A71FC020B60023D577 /* QuestionnaireDefaults.swift in Sources */,
 				71E953A61E67DD0100A59278 /* Question.swift in Sources */,
 				71E953A21E67DB4B00A59278 /* YesNoQuestion.swift in Sources */,
 				71D436FB1F00547D00132451 /* fatigue.xcdatamodeld in Sources */,
@@ -593,7 +593,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -601,7 +603,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -643,7 +649,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -651,7 +659,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

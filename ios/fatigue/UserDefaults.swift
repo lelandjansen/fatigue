@@ -6,7 +6,7 @@ extension UserDefaults {
         case firstLaunch,
             userTriedEditingRow,
             rangeQuestionTutorialShown,
-            occupation,
+            role,
             reminderEnabled,
             reminderHour,
             reminderMinute,
@@ -49,13 +49,13 @@ extension UserDefaults {
         }
     }
     
-    var occupation: Occupation {
+    var role: Role {
         get {
-            return Occupation(rawValue: string(forKey: UserDefaultsKeys.occupation.rawValue) ?? Occupation.none.rawValue)!
+            return Role(rawValue: string(forKey: UserDefaultsKeys.role.rawValue) ?? Role.none.rawValue)!
         }
 
         set {
-            set(newValue.rawValue, forKey: UserDefaultsKeys.occupation.rawValue)
+            set(newValue.rawValue, forKey: UserDefaultsKeys.role.rawValue)
             synchronize()
         }
     }
@@ -102,7 +102,8 @@ extension UserDefaults {
         }
         
         set {
-            set(newValue, forKey: UserDefaultsKeys.name.rawValue)
+            let name = newValue?.trimmingCharacters(in: .whitespacesAndNewlines)
+            set(name, forKey: UserDefaultsKeys.name.rawValue)
             synchronize()
         }
     }

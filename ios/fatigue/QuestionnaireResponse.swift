@@ -77,4 +77,38 @@ extension QuestionnaireResponse {
             }
         }
     }
+    
+    func maxWorkTimeExceeded(forRole role: Role) -> Bool {
+        switch role {
+        case .pilot:
+            var flyingWithAnotherPilot = false
+            for response in questionResponses! {
+                if (response as! QuestionResponse).id == Questionnaire.QuestionId.numberOfPilots.rawValue {
+                    flyingWithAnotherPilot = ((response as! QuestionResponse).selection == YesNoQuestion.Answer.yes.rawValue)
+                    
+                }
+            }
+            for response in questionResponses! {
+                if (response as! QuestionResponse).id == Questionnaire.QuestionId.workTime.rawValue {
+                    let hoursFlying = Int((response as! QuestionResponse).selection!)!
+                    if flyingWithAnotherPilot {
+                        return QuestionnaireDefaults.maxFlightTimeManyPilots < hoursFlying
+                    } else {
+                        return QuestionnaireDefaults.maxFlightTimeOnePilot < hoursFlying
+                    }
+                    
+                }
+            }
+        case .engineer:
+            for response in questionResponses! {
+                if (response as! QuestionResponse).id == Questionnaire.QuestionId.workTime.rawValue {
+                    let workTime = Int((response as! QuestionResponse).selection!)!
+                    return workTime < QuestionnaireDefaults.maxWorkTimeEngineer
+                }
+            }
+        case .none:
+            fatalError("Role cannot be none")
+        }
+        fatalError("Could not determine if flight time was exceeded")
+    }
 }

@@ -1,9 +1,5 @@
 import Foundation
 
-struct QuestionnaireDefaults {
-    static let sleepInPast24Hours: UInt = 7
-}
-
 struct Questionnaire {
     enum QuestionId: String {
         case sleepInPast24Hours,
@@ -21,13 +17,13 @@ struct Questionnaire {
     
     var questionnaireTreeRoot: QuestionnaireItem {
         get {
-            switch UserDefaults.standard.occupation {
-            case Occupation.pilot:
+            switch UserDefaults.standard.role {
+            case Role.pilot:
                 return generatePilotQuestionTree()
-            case Occupation.engineer:
+            case Role.engineer:
                 return generateEngineerQuestionTree()
-            case Occupation.none:
-                fatalError("Occupation cannot be none")
+            case Role.none:
+                fatalError("Role cannot be none")
             }
         }
     }
@@ -83,7 +79,7 @@ struct Questionnaire {
                 selection in switch Int(selection) {
                 case let x where x! < 6:
                     return 0
-                case let x where x! < 9:
+                case let x where x! < QuestionnaireDefaults.maxFlightTimeOnePilot + 1:
                     return 2
                 default:
                     return 6
@@ -102,7 +98,7 @@ struct Questionnaire {
                 selection in switch Int(selection) {
                 case let x where x! < 8:
                     return 0
-                case let x where x! < 11:
+                case let x where x! < QuestionnaireDefaults.maxFlightTimeManyPilots + 1:
                     return 2
                 default:
                     return 6
@@ -138,8 +134,8 @@ struct Questionnaire {
         )
         let timeZoneTravelQuestion = YesNoQuestion(
             id: .timeZoneTravel,
-            question: "Have you been on-site for less than three full days?",
-            description: "On-site for less than three full days",
+            question: "Have you been on site for less than three full days?",
+            description: "On site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: numberOfPilotsQuestion
@@ -256,7 +252,7 @@ struct Questionnaire {
                 selection in switch Int(selection) {
                 case let x where x! < 6:
                     return 0
-                case let x where x! < 9:
+                case let x where x! < QuestionnaireDefaults.maxWorkTimeEngineer + 1:
                     return 2
                 default:
                     return 6
@@ -284,8 +280,8 @@ struct Questionnaire {
         )
         let timeZoneTravelQuestion = YesNoQuestion(
             id: .timeZoneTravel,
-            question: "Have you been on-site for less than three full days?",
-            description: "On-site for less than three full days",
+            question: "Have you been on site for less than three full days?",
+            description: "On site for less than three full days",
             riskScoreContribution: { _ in 0 },
             nextItemIfYes: timeZoneQuantityQuestion,
             nextItemIfNo: maintenanceTimeQuestion
