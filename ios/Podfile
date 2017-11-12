@@ -2,7 +2,7 @@ platform :ios, '10.0'
 use_frameworks!
 workspace 'fatigue'
 target 'fatigue' do
-  pod 'AcknowList', '~> 1.2'
-  pod 'PhoneNumberKit', '~> 1.2'
+  pod 'AcknowList', '~> 1.4'
+  pod 'PhoneNumberKit', '~> 2.0'
 end
 

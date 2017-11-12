@@ -291,7 +291,7 @@ final class PhoneNumberParser {
                 }
                 else {
                     let index = number.index(number.startIndex, offsetBy: firstMatchString.characters.count)
-                    transformedNumber = number.substring(from: index)
+                    transformedNumber = String(number[index...])
                 }
                 if (regex.hasValue(nationalNumberRule) && regex.matchesEntirely(nationalNumberRule, string: number) && regex.matchesEntirely(nationalNumberRule, string: transformedNumber) == false){
                     return
