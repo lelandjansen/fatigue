@@ -97,7 +97,7 @@ struct Share {
             activityViewController.popoverPresentationController?.sourceView = sourceView
             activityViewController.popoverPresentationController?.sourceRect = makePopoverSourceView(fromSourceView: sourceView, withPermittedArrowDirections: permittedArrowDirections)
         }
-        activityViewController.completionWithItemsHandler = { _ in
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivityType?, completed:Bool, returnedItems:[Any]?, error: Error?) in
             completion?()
         }
         viewController.present(activityViewController, animated: true)

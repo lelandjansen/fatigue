@@ -177,7 +177,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         }
         delete.backgroundColor = .red
         let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
-            self.delegate?.shareHistoryItem(questionnaireResponse, withPopoverSourceView: cell, completion: { _ in
+            self.delegate?.shareHistoryItem(questionnaireResponse, withPopoverSourceView: cell, completion: { () in
                 tableView.setEditing(false, animated: true)
             })
         }
