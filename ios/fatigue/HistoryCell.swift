@@ -31,7 +31,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         navigationBar.isTranslucent = true
         navigationBar.barTintColor = .light
         navigationBar.tintColor = .clear
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.dark]
         let navigationItem = UINavigationItem(title: "Risk Score History")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         navigationBar.setItems([navigationItem], animated: false)
@@ -60,7 +60,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         )
     }
     
-    func handleNavigationBarTap() {
+    @objc func handleNavigationBarTap() {
         delegate?.moveToHistoryPage()
     }
     
@@ -70,7 +70,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func handleDone() {
+    @objc func handleDone() {
         scrollToTop()
         delegate?.moveToHomePage()
     }

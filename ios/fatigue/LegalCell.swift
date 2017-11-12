@@ -45,7 +45,7 @@ class LegalCell: UICollectionViewCell {
         return button
     }()
     
-    func handleAgreeButton() {
+    @objc func handleAgreeButton() {
         if self.agreeButton.isSelected {
             self.delegate?.moveToNextPage()
             return

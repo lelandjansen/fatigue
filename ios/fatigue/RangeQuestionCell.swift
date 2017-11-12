@@ -53,7 +53,7 @@ class RangeQuestionCell: QuestionCell {
     
     let optionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 88, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 88, weight: UIFont.Weight.light)
         label.textAlignment = .center
         label.textColor = .medium
         return label
@@ -61,7 +61,7 @@ class RangeQuestionCell: QuestionCell {
     
     let unitsLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 22, weight: UIFontWeightRegular)
+        label.font = .systemFont(ofSize: 22, weight: UIFont.Weight.regular)
         label.textAlignment = .left
         label.textColor = .medium
         return label
@@ -152,13 +152,13 @@ class RangeQuestionCell: QuestionCell {
         )
     }
     
-    func incrementOption() {
+    @objc func incrementOption() {
         if optionIndex < options.count - 1 {
             optionIndex += 1
         }
     }
     
-    func decrementOption() {
+    @objc func decrementOption() {
         if 0 < optionIndex {
             optionIndex -= 1
         }

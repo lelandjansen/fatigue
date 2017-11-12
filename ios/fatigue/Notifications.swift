@@ -36,7 +36,7 @@ class Notifications {
         notificationCenter.add(request, withCompletionHandler: nil)
     }
     
-    static func alertNotificationsNotPermitted(inViewController viewController: UIViewController?, completion: @escaping () -> () = { _ in }) {
+    static func alertNotificationsNotPermitted(inViewController viewController: UIViewController?, completion: @escaping () -> () = {  }) {
         let alertController = UIAlertController(title: "Fatigue is not not permitted to send notifications", message: "Notifications can be enabled in Settings.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             completion()

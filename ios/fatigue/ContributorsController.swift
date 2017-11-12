@@ -13,7 +13,7 @@ class ContributorsController: UIViewController {
             let text = fileText.trimmingCharacters(in: .whitespacesAndNewlines)
             let attributedString = NSMutableAttributedString(string: text)
             attributedString.addAttribute(
-                NSParagraphStyleAttributeName,
+                NSAttributedStringKey.paragraphStyle,
                 value: paragraphStyle,
                 range: NSMakeRange(0, attributedString.length)
             )

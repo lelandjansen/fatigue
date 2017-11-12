@@ -55,7 +55,7 @@ class ReminderCell: UICollectionViewCell {
     
     let skipButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         button.setTitleColor(.medium, for: .normal)
         button.setTitleColor(UIColor.medium.withAlphaComponent(1/2), for: .highlighted)
         button.setTitle("Skip", for: .normal)
@@ -64,7 +64,7 @@ class ReminderCell: UICollectionViewCell {
         return button
     }()
     
-    func handleSetReminderButton() {
+    @objc func handleSetReminderButton() {
         Notifications.registerLocalNotifications(
             completionIfGranted: {
                 OperationQueue.main.addOperation() {
@@ -81,14 +81,14 @@ class ReminderCell: UICollectionViewCell {
         )
     }
     
-    func handleSkipButton() {
+    @objc func handleSkipButton() {
         notificationTimeLabel.text = ReminderSetting.reminderOff
         Notifications.disableLocalNotifications()
         delegate?.addNextPage()
         delegate?.moveToNextPage()
     }
     
-    func timePickerValueChanged() {
+    @objc func timePickerValueChanged() {
         if UserDefaults.standard.reminderEnabled {
             handleReminderEnabled()
         }

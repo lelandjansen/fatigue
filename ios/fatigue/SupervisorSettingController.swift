@@ -116,7 +116,7 @@ class SupervisorSettingController: UITableViewController, UITextFieldDelegate, C
         return button
     }()
     
-    func handlePickFromContactsButton() {
+    @objc func handlePickFromContactsButton() {
         let contactPicker = CNContactPickerViewController()
         contactPicker.delegate = self
         present(contactPicker, animated: true, completion: nil)

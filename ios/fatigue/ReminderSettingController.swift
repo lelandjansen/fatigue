@@ -93,7 +93,7 @@ class ReminderSettingController: UITableViewController {
         return items[indexPath.row] == .timePicker ? timePicker.frame.size.height : tableView.rowHeight
     }
     
-    func reminderToggleValueChanged() {
+    @objc func reminderToggleValueChanged() {
         let time = Calendar.current.dateComponents([.minute, .hour], from: timePicker.date)
         reminderToggle.isOn ? tryEnableReminder(atTime: time) : handleReminderDisabled()
     }
@@ -153,7 +153,7 @@ class ReminderSettingController: UITableViewController {
         })
     }
     
-    func timePickerValueChanged() {
+    @objc func timePickerValueChanged() {
         let time = Calendar.current.dateComponents([.minute, .hour], from: timePicker.date)
         tryEnableReminder(atTime: time)
     }

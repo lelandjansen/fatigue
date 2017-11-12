@@ -21,7 +21,7 @@ class HomePageCell: UICollectionViewCell {
         let attributedText = NSMutableAttributedString(
             string: "Fatigue Self-Assessment",
             attributes: [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 22, weight: UIFontWeightSemibold)
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.semibold)
             ]
         )
         
@@ -53,7 +53,7 @@ class HomePageCell: UICollectionViewCell {
     
     let settingsButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = .systemFont(ofSize: 17, weight: UIFontWeightSemibold)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         button.setTitleColor(.medium, for: .normal)
         button.setTitleColor(UIColor.medium.withAlphaComponent(1/2), for: .highlighted)
         button.setTitle("Settings", for: .normal)
@@ -110,11 +110,11 @@ class HomePageCell: UICollectionViewCell {
         settingsButton.addTarget(self, action: #selector(handleSettingsButton), for: .touchUpInside)
     }
     
-    func handleBeginButton() {
+    @objc func handleBeginButton() {
         delegate?.presentQuestionnaire()
     }
     
-    func handleSettingsButton() {
+    @objc func handleSettingsButton() {
         delegate?.presentSettings()
     }
 }

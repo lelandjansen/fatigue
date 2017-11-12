@@ -52,7 +52,7 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         UIView.animate(
             withDuration: 1/2,
             delay: 0,
@@ -65,7 +65,7 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
         )
     }
     
-    func keyboardWillHide() {
+    @objc func keyboardWillHide() {
         UIView.animate(
             withDuration: 1/2,
             delay: 0,
