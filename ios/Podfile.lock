@@ -1,10 +1,10 @@
 PODS:
-  - AcknowList (1.2)
-  - PhoneNumberKit (1.2.3):
-    - PhoneNumberKit/PhoneNumberKitCore (= 1.2.3)
-    - PhoneNumberKit/UIKit (= 1.2.3)
-  - PhoneNumberKit/PhoneNumberKitCore (1.2.3)
-  - PhoneNumberKit/UIKit (1.2.3):
+  - AcknowList (1.4)
+  - PhoneNumberKit (1.4.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 1.4.0)
+    - PhoneNumberKit/UIKit (= 1.4.0)
+  - PhoneNumberKit/PhoneNumberKitCore (1.4.0)
+  - PhoneNumberKit/UIKit (1.4.0):
     - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
@@ -12,8 +12,8 @@ DEPENDENCIES:
   - PhoneNumberKit (~> 1.2)
 
 SPEC CHECKSUMS:
-  AcknowList: 18ccee4d933a153622416cce2d36e6864ec147ea
-  PhoneNumberKit: 1e5cca669113fc361a8c82ec1ee559c62b8cd0f7
+  AcknowList: 1fae3fa62f256ddd1001adf20ba5c52743515ac7
+  PhoneNumberKit: a739c359d05701e2e9745654f53e7c64379c2516
 
 PODFILE CHECKSUM: 5686590c025d4a9672e1209b7118217280e48ed8
 
