@@ -24,6 +24,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     
     weak var delegate: HomePageControllerDelegate?
     
+    
     lazy var navigationBar: UINavigationBar = {
         let navigationBar: UINavigationBar = UINavigationBar(
             frame: CGRect(x: 0, y: 0, width: self.frame.width, height: UIConstants.navigationBarHeight)
@@ -36,6 +37,9 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleNavigationBarTap)))
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = false
+        }
         return navigationBar
     }()
     

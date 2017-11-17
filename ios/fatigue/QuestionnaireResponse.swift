@@ -7,7 +7,7 @@ extension QuestionnaireResponse {
     static func saveResponse(forQuestionnaireItems questionnaireItems: [QuestionnaireItem]) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let questionnaireResponse = NSEntityDescription.insertNewObject(forEntityName: QuestionnaireResponse.entityName, into: context) as! QuestionnaireResponse
-        questionnaireResponse.date = NSDate()
+        questionnaireResponse.date = Date()
         
         var riskScore: Int32 = 0
         for questionnaireItem in questionnaireItems {
