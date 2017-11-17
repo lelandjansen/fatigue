@@ -140,25 +140,25 @@ class AboutSettingView : UIView {
         acknowledgementsLabel.bottomAnchor.constraint(equalTo: acknowledgementsStackView.topAnchor).isActive = true
     }
     
-    func handleLogoWebsiteButton() {
+    @objc func handleLogoWebsiteButton() {
         delegate?.openUrl(logoWebsiteUrl!)
     }
     
-    func handleDesignedByWebsiteButton() {
+    @objc func handleDesignedByWebsiteButton() {
         delegate?.openUrl(designedByUrl!)
     }
     
-    func handleContributorsButton() {
+    @objc func handleContributorsButton() {
         delegate?.pushViewController(ContributorsController())
     }
     
-    func handleCocoaPodsButton() {
+    @objc func handleCocoaPodsButton() {
         let path = Bundle.main.path(forResource: "Pods-fatigue-acknowledgements", ofType: "plist")
         let acknowListViewController = AcknowListViewController(acknowledgementsPlistPath: path)
         delegate?.pushViewController(acknowListViewController)
     }
     
-    func handleImagesButton() {
+    @objc func handleImagesButton() {
         delegate?.pushViewController(ImageCreditsController())
     }
 }

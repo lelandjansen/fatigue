@@ -28,7 +28,7 @@ class ResultCell: UICollectionViewCell {
     
     let riskScoreTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24, weight: UIFontWeightSemibold)
+        label.font = .systemFont(ofSize: 24, weight: UIFont.Weight.semibold)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -38,7 +38,7 @@ class ResultCell: UICollectionViewCell {
     
     let riskScoreLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 88, weight: UIFontWeightLight)
+        label.font = .systemFont(ofSize: 88, weight: UIFont.Weight.light)
         label.textAlignment = .center
         label.textColor = .light
         label.bounds = CGRect(x: 0, y: 0, width: circleRadius, height: circleRadius)
@@ -142,7 +142,7 @@ class ResultCell: UICollectionViewCell {
     
     
     
-    func incrementRiskScore(forTimer timer: Timer) {
+    @objc func incrementRiskScore(forTimer timer: Timer) {
         let target = result!.riskScore
         let number = Int32(riskScoreLabel.text!)!
         
@@ -237,7 +237,7 @@ class ResultCell: UICollectionViewCell {
     }
     
     
-    func handleShare() {
+    @objc func handleShare() {
         delegate?.shareResponse(withPopoverSourceView: shareButton)
     }
 }

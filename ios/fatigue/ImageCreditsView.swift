@@ -30,7 +30,7 @@ class ImageCreditsView: UIView {
         return button
     }()
     
-    func handleWebsiteButton() {
+    @objc func handleWebsiteButton() {
         delegate?.openUrl(URL(string: websiteButton.title(for: .normal)!)!)
     }
     

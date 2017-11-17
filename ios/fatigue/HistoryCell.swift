@@ -24,6 +24,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
     
     weak var delegate: HomePageControllerDelegate?
     
+    
     lazy var navigationBar: UINavigationBar = {
         let navigationBar: UINavigationBar = UINavigationBar(
             frame: CGRect(x: 0, y: 0, width: self.frame.width, height: UIConstants.navigationBarHeight)
@@ -31,11 +32,14 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         navigationBar.isTranslucent = true
         navigationBar.barTintColor = .light
         navigationBar.tintColor = .clear
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.dark]
         let navigationItem = UINavigationItem(title: "Risk Score History")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleNavigationBarTap)))
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = false
+        }
         return navigationBar
     }()
     
@@ -60,7 +64,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         )
     }
     
-    func handleNavigationBarTap() {
+    @objc func handleNavigationBarTap() {
         delegate?.moveToHistoryPage()
     }
     
@@ -70,7 +74,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func handleDone() {
+    @objc func handleDone() {
         scrollToTop()
         delegate?.moveToHomePage()
     }
@@ -177,7 +181,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         }
         delete.backgroundColor = .red
         let share = UITableViewRowAction(style: .destructive, title: "Share") { (action, indexPath) in
-            self.delegate?.shareHistoryItem(questionnaireResponse, withPopoverSourceView: cell, completion: { _ in
+            self.delegate?.shareHistoryItem(questionnaireResponse, withPopoverSourceView: cell, completion: { () in
                 tableView.setEditing(false, animated: true)
             })
         }

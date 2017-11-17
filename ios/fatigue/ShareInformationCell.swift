@@ -146,7 +146,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         )
     }
     
-    func handlePickFromContactsButton() {
+    @objc func handlePickFromContactsButton() {
         let contactPicker = CNContactPickerViewController()
         contactPicker.delegate = self
         delegate?.presentViewController(contactPicker)
@@ -156,7 +156,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         delegate?.populate(nameTextFiled: supervisorNameTextField, emailTextField: supervisorEmailTextField, phoneNumberTextField: supervisorPhoneTextField, withContact: contact)
     }
     
-    func handleSaveButton() {
+    @objc func handleSaveButton() {
         let name = userNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         UserDefaults.standard.name = name
         let supervisorName = supervisorNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -234,7 +234,7 @@ class ShareInformationCell: UICollectionViewCell, UITableViewDataSource, UITable
         return false
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         endEditing(true)
     }
 }

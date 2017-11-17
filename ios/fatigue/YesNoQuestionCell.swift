@@ -66,13 +66,13 @@ class YesNoQuestionCell: QuestionCell {
     }()
     
     
-    func handleYes() {
+    @objc func handleYes() {
         selection = .yes
         delegate?.updateQuestionnaireOrder()
         delegate?.moveToNextPage()
     }
     
-    func handleNo() {
+    @objc func handleNo() {
         selection = .no
         delegate?.updateQuestionnaireOrder()
         delegate?.moveToNextPage()

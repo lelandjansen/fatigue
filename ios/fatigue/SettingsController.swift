@@ -13,7 +13,7 @@ class SettingsController: UITableViewController, SettingsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.dark]
         navigationController?.navigationBar.tintColor = .violet
         
         navigationItem.title = "Settings"
@@ -103,7 +103,7 @@ class SettingsController: UITableViewController, SettingsDelegate {
         present(viewController, animated: true)
     }
     
-    func dismissSettings() {
+    @objc func dismissSettings() {
         dismiss(animated: true)
     }
 }

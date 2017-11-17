@@ -54,13 +54,13 @@ class OccupationCell: UICollectionViewCell {
         }
     }
     
-    func handlePilotButton() {
+    @objc func handlePilotButton() {
         selection = .pilot
         delegate?.addNextPage()
         delegate?.moveToNextPage()
     }
     
-    func handleEngineerButton() {
+    @objc func handleEngineerButton() {
         selection = .engineer
         delegate?.addNextPage()
         delegate?.moveToNextPage()

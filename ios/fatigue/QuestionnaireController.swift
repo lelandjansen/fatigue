@@ -124,7 +124,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         navigationBar.barTintColor = .light
         navigationBar.isTranslucent = false
         navigationBar.tintColor = .violet
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.dark]
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         let navigationItem = UINavigationItem(title: "Questionnaire")
@@ -268,12 +268,12 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
     
     weak var homePageDelegate: HomePageControllerDelegate?
     
-    func dismissQuestionnaire() {
+    @objc func dismissQuestionnaire() {
         homePageDelegate?.refreshHistory()
         dismiss(animated: true)
     }
     
-    func dismissQuestionnaireWithConfirmation() {
+    @objc func dismissQuestionnaireWithConfirmation() {
         let alertController = UIAlertController(title: "Close questionnaire?", message: "Your progress will not be saved.", preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Close", style: .destructive, handler: { _ in
             self.dismissQuestionnaire()
@@ -333,7 +333,7 @@ class QuestionnaireController: UIViewController, UICollectionViewDataSource, UIC
         return false
     }
     
-    func handleVerticalPan(gesture: UIPanGestureRecognizer) {
+    @objc func handleVerticalPan(gesture: UIPanGestureRecognizer) {
         if gesture.state == UIGestureRecognizerState.ended {
             collectionView.reloadData()
             return

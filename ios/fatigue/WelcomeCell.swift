@@ -20,7 +20,7 @@ class WelcomeCell: UICollectionViewCell {
         let attributedText = NSMutableAttributedString(
             string: "Fatigue Self-Assessment",
             attributes: [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 22, weight: UIFontWeightSemibold)
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.semibold)
             ]
         )
 
@@ -54,7 +54,7 @@ class WelcomeCell: UICollectionViewCell {
         return UIImageView(image: #imageLiteral(resourceName: "foreground-cloud"))
     }()
     
-    func handleGetStartedButton() {
+    @objc func handleGetStartedButton() {
         delegate?.moveToNextPage()
     }
     
