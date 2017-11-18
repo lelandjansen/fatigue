@@ -23,7 +23,6 @@ class SettingsController: UITableViewController, SettingsDelegate {
         view.backgroundColor = .light
     }
     
-    
     enum CellId: String {
         case cell
     }
@@ -41,7 +40,6 @@ class SettingsController: UITableViewController, SettingsDelegate {
         return items.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.cell.rawValue) else {
@@ -49,7 +47,6 @@ class SettingsController: UITableViewController, SettingsDelegate {
             }
             return cell
         }()
-        
         cell.textLabel?.text = type(of: items[indexPath.row]).settingName
         cell.textLabel?.textColor = .dark
         cell.detailTextLabel?.text = items[indexPath.row].details
@@ -58,7 +55,6 @@ class SettingsController: UITableViewController, SettingsDelegate {
         cell.backgroundColor = .clear
         return cell
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller: UIViewController = {
@@ -90,6 +86,19 @@ class SettingsController: UITableViewController, SettingsDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    var logoView: UIImageView {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "iagsa-logo-full-dark"))
+        imageView.contentMode = .bottom
+        return imageView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return logoView.image!.size.height + UIConstants.tableViewRowHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return logoView
+    }
     
     func setSelectedCellDetails(toValue value: String) {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
