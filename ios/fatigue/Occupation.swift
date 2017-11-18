@@ -1,5 +1,5 @@
 import Foundation
 
-enum Occupation: String {
+enum Role: String {
     case none, pilot, engineer
 }

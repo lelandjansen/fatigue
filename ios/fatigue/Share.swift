@@ -45,12 +45,20 @@ struct Share {
     
     static func composeMessage(forQuestionnaireResponse questionnaireResponse: QuestionnaireResponse) -> String {
         var message: [String] = []
-        if let name = UserDefaults.standard.name { message.append("Name: \(name)") }
-        message.append("Occupation: \(UserDefaults.standard.occupation.rawValue.capitalized)")
+        let name = UserDefaults.standard.name ?? ""
+        if !name.isEmpty {
+            message.append("Name: \(name)")
+        }
+        let role = UserDefaults.standard.role
+        message.append("Role: \(role.rawValue.capitalized)")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm zzz"
         message.append("Date: \(dateFormatter.string(from: questionnaireResponse.date! as Date))")
-        message.append("Risk score: \(questionnaireResponse.riskScore as Int32)")
+        let riskScore = questionnaireResponse.riskScore as Int32
+        message.append("Fatigue self-assessment score: \(riskScore) - \(Result.getRemark(forRiskScore: riskScore, role: role))")
+        if role == .pilot && questionnaireResponse.maxWorkTimeExceeded(forRole: .pilot) {
+            message.append("Maximum flight time exceeded.")
+        }
         return message.joined(separator: "\n")
     }
     
@@ -61,13 +69,22 @@ struct Share {
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = mfMailComposeViewControllerDelegate
         mailComposer.setToRecipients([UserDefaults.standard.supervisorEmail ?? String()])
-        mailComposer.setSubject("Fatigue self-assessment")
+        let subject = "Fatigue self-assessment"
+        let name = UserDefaults.standard.name ?? ""
+        if name.isEmpty {
+            mailComposer.setSubject("\(subject)")
+        } else {
+            mailComposer.setSubject("\(name): \(subject)")
+        }
         let message = composeMessage(forQuestionnaireResponse: questionnaireResponse)
         mailComposer.setMessageBody(message, isHTML: false)
         viewController.present(mailComposer, animated: true, completion: completion)
     }
     
     static func sendMessage(withQuestionnaireResponse questionnaireResponse: QuestionnaireResponse, inViewController viewController: UIViewController, forMFMessageComposeViewControllerDelegate mfMessageComposeViewControllerDelegate: MFMessageComposeViewControllerDelegate, completion: (() -> ())? = nil) {
+        if !MFMessageComposeViewController.canSendText() {
+            fatalError("Cannot send message")
+        }
         let messageComposer = MFMessageComposeViewController()
         messageComposer.messageComposeDelegate = mfMessageComposeViewControllerDelegate
         messageComposer.recipients = [UserDefaults.standard.supervisorPhone ?? String()]

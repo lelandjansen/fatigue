@@ -23,13 +23,13 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     }()
     
     enum CellId: String {
-        case welcome, legal, occupation, reminder, shareInformation
+        case welcome, legal, role, reminder, shareInformation
     }
     
     let cells: [CellId] = [
         .welcome,
         .legal,
-        .occupation,
+        .role,
         .reminder,
         .shareInformation,
     ]
@@ -42,7 +42,7 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
     fileprivate func registerCells() {
         onboardingSequence.register(WelcomeCell.self, forCellWithReuseIdentifier: CellId.welcome.rawValue)
         onboardingSequence.register(LegalCell.self, forCellWithReuseIdentifier: CellId.legal.rawValue)
-        onboardingSequence.register(OccupationCell.self, forCellWithReuseIdentifier: CellId.occupation.rawValue)
+        onboardingSequence.register(RoleCell.self, forCellWithReuseIdentifier: CellId.role.rawValue)
         onboardingSequence.register(ReminderCell.self, forCellWithReuseIdentifier: CellId.reminder.rawValue)
         onboardingSequence.register(ShareInformationCell.self, forCellWithReuseIdentifier: CellId.shareInformation.rawValue)
     }
@@ -92,8 +92,8 @@ class OnboardingController: UIViewController, UICollectionViewDataSource, UIColl
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.legal.rawValue, for: indexPath) as! LegalCell
             cell.delegate = self
             return cell
-        case .occupation:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.occupation.rawValue, for: indexPath) as! OccupationCell
+        case .role:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellId.role.rawValue, for: indexPath) as! RoleCell
             cell.delegate = self
             return cell
         case .reminder:

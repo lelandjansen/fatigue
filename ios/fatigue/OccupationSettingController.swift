@@ -1,11 +1,11 @@
 import UIKit
 
-class OccupationSettingController: UITableViewController {
+class RoleSettingController: UITableViewController {
     
     weak var delegate: SettingsDelegate?
     
     enum CellId: String {
-        case occupationCell
+        case roleCell
     }
     
     init() {
@@ -18,16 +18,16 @@ class OccupationSettingController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = OccupationSetting.settingName
+        navigationItem.title = RoleSetting.settingName
         view.backgroundColor = .light
     }
     
-    let items: [Occupation] = [
+    let items: [Role] = [
         .pilot,
         .engineer
     ]
     
-    var occupation = UserDefaults.standard.occupation
+    var role = UserDefaults.standard.role
     
     var selectedIndexPath: IndexPath?
     
@@ -37,13 +37,13 @@ class OccupationSettingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.occupationCell.rawValue) else {
-                return UITableViewCell(style: .default, reuseIdentifier: CellId.occupationCell.rawValue)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellId.roleCell.rawValue) else {
+                return UITableViewCell(style: .default, reuseIdentifier: CellId.roleCell.rawValue)
             }
             return cell
         }()
         
-        if items[indexPath.row] == occupation {
+        if items[indexPath.row] == role {
             cell.accessoryType = .checkmark
             selectedIndexPath = indexPath
         }
@@ -63,7 +63,7 @@ class OccupationSettingController: UITableViewController {
             tableView.cellForRow(at: lastSelectedIndexPath)?.accessoryType = .none
         }
         
-        occupation = items[indexPath.row]
+        role = items[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         selectedIndexPath = indexPath
@@ -71,7 +71,7 @@ class OccupationSettingController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UserDefaults.standard.occupation = occupation
-        delegate?.setSelectedCellDetails(toValue: occupation.rawValue.capitalized)
+        UserDefaults.standard.role = role
+        delegate?.setSelectedCellDetails(toValue: role.rawValue.capitalized)
     }    
 }

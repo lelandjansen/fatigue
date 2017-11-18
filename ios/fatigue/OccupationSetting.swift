@@ -1,6 +1,6 @@
 import Foundation
 
-class OccupationSetting: Setting {
-    static var settingName: String = "Occupation"
-    var details: String = UserDefaults.standard.occupation.rawValue.capitalized
+class RoleSetting: Setting {
+    static var settingName: String = "Role"
+    var details: String = UserDefaults.standard.role.rawValue.capitalized
 }
