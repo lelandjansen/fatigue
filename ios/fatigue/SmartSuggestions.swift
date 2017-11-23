@@ -43,7 +43,8 @@ class SmartSuggestions {
             return question
         }
         let yesterday24HoursSleep: Int = {
-            if let sleep = Int(yesterdaySelectionForQuestion(withId: .sleepInPast24Hours)!) {
+            if let yesterdaySelection = yesterdaySelectionForQuestion(withId: .sleepInPast24Hours) {
+                let sleep = Int(yesterdaySelection)!
                 smartQuestion.details += "Yesterday: \(sleep) "
                 smartQuestion.details += (sleep == 1) ? "hr" : "hrs"
                 smartQuestion.details += "\n"
