@@ -56,9 +56,6 @@ struct Share {
         message.append("Date: \(dateFormatter.string(from: questionnaireResponse.date! as Date))")
         let riskScore = questionnaireResponse.riskScore as Int32
         message.append("Fatigue self-assessment score: \(riskScore) - \(Result.getRemark(forRiskScore: riskScore, role: role))")
-        if role == .pilot && questionnaireResponse.maxWorkTimeExceeded(forRole: .pilot) {
-            message.append("Maximum flight time exceeded.")
-        }
         return message.joined(separator: "\n")
     }
     
