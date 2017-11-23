@@ -32,7 +32,7 @@ class HistoryCell: UICollectionViewCell, UITableViewDelegate, UITableViewDataSou
         navigationBar.barTintColor = .light
         navigationBar.tintColor = .clear
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.dark]
-        let navigationItem = UINavigationItem(title: "Risk Score History")
+        let navigationItem = UINavigationItem(title: "Score History")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
         navigationBar.setItems([navigationItem], animated: false)
         navigationBar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleNavigationBarTap)))

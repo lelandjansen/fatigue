@@ -55,7 +55,8 @@ struct Share {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm zzz"
         message.append("Date: \(dateFormatter.string(from: questionnaireResponse.date! as Date))")
         let riskScore = questionnaireResponse.riskScore as Int32
-        message.append("Fatigue self-assessment score: \(riskScore) - \(Result.getRemark(forRiskScore: riskScore, role: role))")
+        message.append("Fatigue self-assessment score: \(riskScore)")
+        message.append("Recommendation: \(Result.getRemark(forRiskScore: riskScore, role: role))")
         return message.joined(separator: "\n")
     }
     

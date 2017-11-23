@@ -85,7 +85,7 @@ class ResultCell: UICollectionViewCell {
         
         let sidePadding: CGFloat = 16
         
-        riskScoreTitleLabel.text = "Risk Score"
+        riskScoreTitleLabel.text = "Self-Assessment Score"
         riskScoreTitleLabel.anchorWithConstantsToTop(
             topAnchor,
             left: leftAnchor,
