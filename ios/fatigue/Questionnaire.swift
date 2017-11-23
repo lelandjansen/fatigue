@@ -30,15 +30,6 @@ struct Questionnaire {
     
     func generatePilotQuestionTree() -> QuestionnaireItem {
         let result = Result()
-        let reasonNotToFlyQuestion = YesNoQuestion(
-            id: .reasonNotToFly,
-            question: "Do you know of any other reason you should not fly today?",
-            description: "Other reason not to fly",
-            riskScoreContribution: {
-                selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
-            },
-            nextItem: result
-        )
         let illQuestion = YesNoQuestion(
             id: .ill,
             question: "Are you ill?",
@@ -47,7 +38,7 @@ struct Questionnaire {
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: reasonNotToFlyQuestion
+            nextItem: result
         )
         let deployentTimeQuestion = YesNoQuestion(
             id: .deployentTime,
@@ -203,15 +194,6 @@ struct Questionnaire {
     
     func generateEngineerQuestionTree() -> QuestionnaireItem {
         let result = Result()
-        let reasonNotToFlyQuestion = YesNoQuestion(
-            id: .reasonNotToFly,
-            question: "Do you know of any other reason you should not work today?",
-            description: "Other reason not to fly",
-            riskScoreContribution: {
-                selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 18 : 0
-            },
-            nextItem: result
-        )
         let illQuestion = YesNoQuestion(
             id: .ill,
             question: "Are you ill?",
@@ -220,7 +202,7 @@ struct Questionnaire {
             riskScoreContribution: {
                 selection in (selection == YesNoQuestion.Answer.yes.rawValue) ? 1 : 0
             },
-            nextItem: reasonNotToFlyQuestion
+            nextItem: result
         )
         let deployentTimeQuestion = YesNoQuestion(
             id: .deployentTime,
