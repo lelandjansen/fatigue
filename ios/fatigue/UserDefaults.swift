@@ -51,7 +51,8 @@ extension UserDefaults {
     
     var role: Role {
         get {
-            return Role(rawValue: string(forKey: UserDefaultsKeys.role.rawValue) ?? Role.none.rawValue)!
+            let legacyRoleKey = "occupation"
+            return Role(rawValue: string(forKey: UserDefaultsKeys.role.rawValue) ?? string(forKey: legacyRoleKey) ?? Role.none.rawValue)!
         }
 
         set {
