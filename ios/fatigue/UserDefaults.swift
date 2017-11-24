@@ -6,7 +6,7 @@ extension UserDefaults {
         case firstLaunch,
             userTriedEditingRow,
             rangeQuestionTutorialShown,
-            role,
+            role = "occupation",
             reminderEnabled,
             reminderHour,
             reminderMinute,
@@ -51,8 +51,7 @@ extension UserDefaults {
     
     var role: Role {
         get {
-            let legacyRoleKey = "occupation"
-            return Role(rawValue: string(forKey: UserDefaultsKeys.role.rawValue) ?? string(forKey: legacyRoleKey) ?? Role.none.rawValue)!
+            return Role(rawValue: string(forKey: UserDefaultsKeys.role.rawValue) ?? Role.none.rawValue)!
         }
 
         set {
