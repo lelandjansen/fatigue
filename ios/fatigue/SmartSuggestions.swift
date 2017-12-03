@@ -34,7 +34,7 @@ class SmartSuggestions {
     }
     
     var dirtyQuestionIds = Set<Questionnaire.QuestionId>()
-    var previousToday24HoursSleep = Int(QuestionnaireDefaults.sleepInPast24Hours)
+    var previousToday24HoursSleep: Int?
     
     func suggestSleepInPast48Hours(forQuestion question: Question) -> Question {
         var smartQuestion = question
@@ -56,8 +56,8 @@ class SmartSuggestions {
         smartQuestion.details += "Today: \(today24HoursSleep) "
         smartQuestion.details += (today24HoursSleep == 1) ? "hr" : "hrs"
         smartQuestion.options = Array(today24HoursSleep...48).map{String($0)}
-        if let today48HoursSleep = Int(question.selection) {
-            smartQuestion.selection = String(describing: today48HoursSleep + today24HoursSleep - previousToday24HoursSleep)
+        if let today48HoursSleep = Int(question.selection), let previous = previousToday24HoursSleep {
+            smartQuestion.selection = String(describing: today48HoursSleep + today24HoursSleep - previous)
         } else {
             smartQuestion.selection = String(describing: yesterday24HoursSleep + today24HoursSleep)
         }
